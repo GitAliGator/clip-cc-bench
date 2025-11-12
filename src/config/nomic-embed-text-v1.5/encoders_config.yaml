@@ -1,0 +1,51 @@
+# Nomic-Embed-text-v1.5 Isolated Encoder Configuration
+
+encoder:
+  name: "nomic-embed-text-v1.5"
+  path: "encoder_models/nomic-embed-text-v1.5"
+  type: "nomic_embed"
+  batch_size: 32                      # Optimal batch size for efficient processing
+  max_length: 8192                    # Max context length for Nomic-Embed
+  device_map: "auto"
+  trust_remote_code: true
+  additional_params:
+    embedding_dimension: 768          # Nomic-Embed text embedding dimension
+    normalize_embeddings: true
+    task_type: "classification"       # Symmetric task for text similarity
+    torch_dtype: "bfloat16"           # Efficient precision
+    use_matryoshka: false             # Nomic-Embed doesn't use matryoshka
+    pooling_strategy: "mean"          # Mean pooling for sentence embeddings
+
+processing:
+  clear_cache_interval: 25
+  progress_interval: 10
+  device: "cuda:0"
+
+data_paths:
+  # Use relative paths - will be resolved from base directory
+  ground_truth_file: "data/ground_truth/clip_cc_dataset.json"
+  predictions_dir: "data/models"
+  results_base_dir: "results"
+
+# Text generation models to evaluate
+models_to_evaluate:
+  - "internvl"
+  - "llava_next_video"
+  - "llava_one_vision"
+  - "longva"
+  - "longvu"
+  - "minicpm"
+  - "mplug"
+  - "oryx"
+  - "sharegpt4"
+  - "timechat"
+  - "ts_llava"
+  - "videochatflash"
+  - "videollama3"
+  - "video_xl"
+  - "vilamp"
+
+logging:
+  level: "INFO"
+  log_dir: "results/encoders/logs/nomic-embed-text-v1.5"
+  log_prefix: "nomic_embed_evaluation"

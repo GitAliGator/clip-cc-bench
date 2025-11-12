@@ -1,0 +1,66 @@
+# Stella-en-1.5b-v5 Isolated Encoder Configuration
+# Optimized for production use with sentence-transformers
+
+encoder:
+  name: "stella-en-1.5b-v5"
+  path: "encoder_models/stella-en-1.5b-v5"
+  type: "stella"
+  batch_size: 16                     # Recommended batch size for Stella (can be increased to 32 on high-end GPUs)
+  max_length: 512                    # Recommended text length (Stella performs best at 512 tokens)
+  device_map: "auto"
+  trust_remote_code: true            # Required for Stella models
+  additional_params:
+    normalize_embeddings: true       # Normalize output embeddings for better similarity computation
+    embedding_dimension: 8192        # Maximum embedding dimension for best performance (options: 512, 768, 1024, 2048, 4096, 6144, 8192)
+    prompt_type: "discriminative"    # Optimized for fine-grained discrimination (options: "s2s", "s2p", "discriminative")
+
+processing:
+  use_gpu: true
+  device: "cuda:0"                   # Adjust based on available GPUs
+  clear_cache_interval: 25           # Clear cache every 25 iterations
+  force_gc_interval: 50              # Force garbage collection every 50 iterations
+  save_intermediate_results: true
+  progress_interval: 10
+
+data_paths:
+  # Use relative paths - will be resolved from base directory
+  ground_truth_file: "data/ground_truth/clip_cc_dataset.json"
+  predictions_dir: "data/models"
+  results_base_dir: "results"
+
+# Text generation models to evaluate
+models_to_evaluate:
+  - "internvl"
+  - "llava_next_video"
+  - "llava_one_vision"
+  - "longva"
+  - "longvu"
+  - "minicpm"
+  - "mplug"
+  - "oryx"
+  - "sharegpt4"
+  - "timechat"
+  - "ts_llava"
+  - "videochatflash"
+  - "videollama3"
+  - "video_xl"
+  - "vilamp"
+
+logging:
+  level: "INFO"
+  log_dir: "results/encoders/logs/stella-en-1.5b-v5"
+  log_prefix: "stella_evaluation"
+
+embedding:
+  cache_embeddings: true             # Cache ground truth embeddings for efficiency
+  cache_ground_truth_embeddings: true
+  cache_dir: "results/encoders/cache"
+  normalize_text: false              # Let Stella handle text normalization
+  truncate_strategy: "none"          # Use max_length parameter instead
+  similarity_metric: "cosine"        # Primary similarity metric
+  normalize_embeddings: true         # Normalize for better similarity computation
+
+# Metrics to compute
+metrics:
+  - "cosine_similarity"
+  - "normalized_cosine"

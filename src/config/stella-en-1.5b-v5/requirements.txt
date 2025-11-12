@@ -1,0 +1,38 @@
+# Stella-en-1.5b-v5 Minimal Requirements (production-ready configuration)
+# Based on sentence-transformers approach for stable, lightweight implementation
+
+# Core dependencies
+torch==2.4.0
+transformers==4.44.2
+tokenizers==0.19.1
+
+# Sentence transformers - primary approach for Stella
+sentence-transformers>=3.0.0
+
+# Essential utilities
+numpy>=1.21.0
+PyYAML>=6.0
+tqdm
+pandas
+psutil
+
+# HuggingFace integration
+huggingface-hub>=0.21.0
+safetensors>=0.4.3
+
+# Text processing and utilities
+scikit-learn>=1.3.0  # For additional similarity metrics if needed
+scipy>=1.10.0  # For mathematical operations
+
+# Model-specific requirements for Stella
+# Trust remote code is required for Stella models
+datasets>=2.14.0  # For potential data handling
+
+# Performance optimizations (optional but recommended)
+accelerate>=0.20.0  # For better GPU utilization
+optimum  # For model optimization
+
+# Note: Stella models work with standard sentence-transformers
+# No special dependencies like FlagEmbedding required
+# Model supports MRL (Multiple Representation Learning) with dimensions: 512, 768, 1024, 2048, 4096, 6144, 8192
+# Default dimension: 1024 (recommended for best performance/efficiency balance)

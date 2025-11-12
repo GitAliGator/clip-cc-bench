@@ -1,0 +1,204 @@
+# CLIP-CC-Bench .gitignore
+
+# ============================================================================
+# Python
+# ============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ============================================================================
+# Virtual Environments (OLD - in src/config and src/scripts)
+# ============================================================================
+# These are the old venvs that will be removed after migration
+src/config/*/venv/
+src/config/*/.venv/
+src/scripts/*/venv/
+src/scripts/*/.venv/
+
+# ============================================================================
+# Virtual Environments (NEW - centralized)
+# ============================================================================
+# These are now outside the repo in parent directory, but ignore if someone copies them
+venv/
+venv_*/
+.venv/
+env/
+ENV/
+
+# ============================================================================
+# Encoder Models (LARGE - 119GB)
+# ============================================================================
+# Models are now centralized outside repo, but ignore symlink and any copies
+encoder_models/
+# Keep the symlink in git but not the actual directory contents
+!encoder_models
+# If someone creates actual directory instead of symlink, ignore its contents
+encoder_models/*
+
+# ============================================================================
+# Data Files
+# ============================================================================
+# Large dataset files - keep structure, ignore data
+data/ground_truth/*.json
+data/ground_truth/*.jsonl
+data/models/*.json
+data/models/*.jsonl
+data/videos/
+data/frames/
+data/cache/
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+
+# But keep example/small files
+!data/ground_truth/.gitkeep
+!data/models/.gitkeep
+!**/example_*.json
+!**/sample_*.json
+
+# ============================================================================
+# Results & Outputs
+# ============================================================================
+# Ignore all results but keep directory structure
+results/*
+!results/.gitkeep
+!results/encoders/
+results/encoders/*
+!results/encoders/.gitkeep
+
+outputs/
+logs/
+*.log
+
+# ============================================================================
+# Model Checkpoints & Weights
+# ============================================================================
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+checkpoint*/
+model_*/
+
+# ============================================================================
+# Jupyter Notebooks
+# ============================================================================
+.ipynb_checkpoints/
+*.ipynb
+
+# Keep notebooks but not outputs
+# If you want to version notebooks, use nbstripout
+
+# ============================================================================
+# IDE & Editors
+# ============================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Claude Code settings (keep these)
+!.claude/
+
+# ============================================================================
+# SLURM & HPC
+# ============================================================================
+slurm_logs/*.out
+slurm_logs/*.err
+*.out
+*.err
+# Keep slurm scripts
+!slurm_scripts/*.sh
+!slurm_scripts/*.sbatch
+
+# ============================================================================
+# Temporary & Cache Files
+# ============================================================================
+tmp/
+temp/
+*.tmp
+.cache/
+*.cache
+wandb/
+mlruns/
+
+# ============================================================================
+# LaTeX (for WACV paper)
+# ============================================================================
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.pdf
+# Keep specific PDFs if needed
+!paper.pdf
+!supplementary.pdf
+
+# ============================================================================
+# OS & System Files
+# ============================================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================================================================
+# Archives & Compressed Files
+# ============================================================================
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# ============================================================================
+# Environment & Secrets
+# ============================================================================
+.env
+.env.local
+.env.*.local
+secrets/
+credentials/
+*.pem
+*.key
+api_keys.txt
+
+# ============================================================================
+# HuggingFace Cache
+# ============================================================================
+.huggingface/
+transformers_cache/
+sentence_transformers_cache/
+
+# ============================================================================
+# Legacy & Backups
+# ============================================================================
+legacy/
+backup/
+old/
+*.backup
+*.bak
+
+# ============================================================================
+# Specific Large Files to Ignore
+# ============================================================================
+# Add specific large files if needed
+# e.g., *.mp4, *.avi for video files if they end up in repo

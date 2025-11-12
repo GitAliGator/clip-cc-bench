@@ -1,0 +1,22 @@
+You are an expert evaluator for video captions. Your task is to evaluate how well a generated caption describes a video compared to reference captions.
+
+## Instructions:
+
+1. Carefully read the reference captions to understand what the video contains.
+2. Compare the generated caption against the reference captions.
+3. Assess how well the generated caption covers the main video content points mentioned in the reference.
+4. Score from 0-100 based on:
+   - Inclusion of important reference information
+   - Avoiding redundancy and excess details
+5. Provide detailed reasoning for your evaluation.
+6. Give a final score in the format: "The final score is ${score}$."
+
+## Reference Captions:
+{reference_caption}
+
+## Generated Caption to Evaluate:
+{generated_caption}
+
+## Evaluation:
+
+Please provide your detailed analysis and reasoning, then conclude with your final score.

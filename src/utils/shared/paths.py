@@ -1,0 +1,120 @@
+"""
+Shared Path Management System
+
+Centralized path management with configurable base directory for portability.
+All paths are relative to a single configurable base directory.
+"""
+
+import os
+from pathlib import Path
+from typing import Dict, Any
+
+
+class ProjectPaths:
+    """Centralized path management for the entire project."""
+
+    # Default base directory - can be easily changed for different systems
+    DEFAULT_BASE_DIR = "/mmfs2/home/jacks.local/mali9292/aaai_student_abstract/clip-cc-bench"
+
+    def __init__(self, base_dir: str = None):
+        """Initialize with base directory."""
+        self.base_dir = Path(base_dir or os.environ.get('CLIP_CC_BASE_DIR', self.DEFAULT_BASE_DIR))
+
+    def get_base_dir(self) -> Path:
+        """Get the base directory."""
+        return self.base_dir
+
+    def get_src_dir(self) -> Path:
+        """Get src directory."""
+        return self.base_dir / "src"
+
+    def get_data_dir(self) -> Path:
+        """Get data directory."""
+        return self.base_dir / "data"
+
+    def get_results_dir(self) -> Path:
+        """Get results directory."""
+        return self.base_dir / "results"
+
+    def get_config_dir(self) -> Path:
+        """Get config directory."""
+        return self.get_src_dir() / "config"
+
+    def get_utils_dir(self) -> Path:
+        """Get utils directory."""
+        return self.get_src_dir() / "utils"
+
+    def get_scripts_dir(self) -> Path:
+        """Get scripts directory."""
+        return self.get_src_dir() / "scripts"
+
+    def get_ground_truth_file(self) -> Path:
+        """Get ground truth dataset file."""
+        return self.get_data_dir() / "ground_truth" / "clip_cc_dataset.json"
+
+    def get_predictions_dir(self) -> Path:
+        """Get model predictions directory."""
+        return self.get_data_dir() / "models"
+
+    def get_encoder_results_dir(self) -> Path:
+        """Get encoder results base directory."""
+        return self.get_results_dir() / "encoders"
+
+    def get_encoder_logs_dir(self) -> Path:
+        """Get encoder logs directory."""
+        return self.get_encoder_results_dir() / "logs"
+
+    def get_individual_results_dir(self) -> Path:
+        """Get individual results directory."""
+        return self.get_encoder_results_dir() / "individual_results"
+
+    def get_aggregated_results_dir(self) -> Path:
+        """Get aggregated results directory."""
+        return self.get_encoder_results_dir() / "aggregated_results"
+
+    def get_encoder_config_dir(self, encoder_name: str) -> Path:
+        """Get encoder-specific config directory."""
+        return self.get_config_dir() / encoder_name
+
+    def get_encoder_utils_dir(self, encoder_name: str) -> Path:
+        """Get encoder-specific utils directory."""
+        return self.get_utils_dir() / encoder_name
+
+    def get_encoder_scripts_dir(self, encoder_name: str) -> Path:
+        """Get encoder-specific scripts directory."""
+        return self.get_scripts_dir() / encoder_name
+
+    def get_encoder_models_dir(self) -> Path:
+        """Get encoder models directory (centralized in parent directory)."""
+        return self.base_dir.parent / "encoder_models"
+
+    def to_dict(self) -> Dict[str, str]:
+        """Convert paths to dictionary for config files."""
+        return {
+            'base_dir': str(self.base_dir),
+            'src_dir': str(self.get_src_dir()),
+            'data_dir': str(self.get_data_dir()),
+            'results_dir': str(self.get_results_dir()),
+            'config_dir': str(self.get_config_dir()),
+            'ground_truth_file': str(self.get_ground_truth_file()),
+            'predictions_dir': str(self.get_predictions_dir()),
+            'encoder_results_dir': str(self.get_encoder_results_dir()),
+            'encoder_logs_dir': str(self.get_encoder_logs_dir()),
+            'individual_results_dir': str(self.get_individual_results_dir()),
+            'aggregated_results_dir': str(self.get_aggregated_results_dir())
+        }
+
+
+# Global instance - can be reconfigured by setting environment variable
+project_paths = ProjectPaths()
+
+
+def set_base_directory(base_dir: str):
+    """Set a new base directory for all paths."""
+    global project_paths
+    project_paths = ProjectPaths(base_dir)
+
+
+def get_project_paths() -> ProjectPaths:
+    """Get the global project paths instance."""
+    return project_paths

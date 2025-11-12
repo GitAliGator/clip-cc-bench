@@ -1,0 +1,50 @@
+# BGE-ICL Isolated Encoder Configuration
+
+encoder:
+  name: "bge-en-icl"
+  path: "encoder_models/bge-en-icl"
+  type: "bge_en_icl"
+  batch_size: 8                  # Reduced for ICL with long context
+  max_length: 8192               # BGE-ICL supports long context for ICL
+  device_map: "auto"
+  trust_remote_code: true
+  additional_params:
+    normalize_embeddings: true
+    pooling_method: "mean"       # Mean pooling for better performance with ICL
+    use_flashattn: true          # Enable FlashAttention for long context
+    embedding_dimension: 1024    # BGE-en-ICL maximum embedding dimension
+
+processing:
+  clear_cache_interval: 25
+  progress_interval: 10
+
+data_paths:
+  # Use relative paths - will be resolved from base directory
+  ground_truth_file: "data/ground_truth/clip_cc_dataset.json"
+  predictions_dir: "data/models"
+  results_base_dir: "results"
+
+# Text generation models to evaluate
+models_to_evaluate:
+  - "internvl"
+  - "llava_next_video"
+  - "llava_one_vision"
+  - "longva"
+  - "longvu"
+  - "minicpm"
+  - "mplug"
+  - "oryx"
+  - "sharegpt4"
+  - "timechat"
+  - "ts_llava"
+  - "videochatflash"
+  - "videollama3"
+  - "video_xl"
+  - "vilamp"
+
+logging:
+  level: "INFO"
+  log_dir: "results/encoders/logs/bge-icl"
+  log_prefix: "bge_icl_evaluation"
+
+

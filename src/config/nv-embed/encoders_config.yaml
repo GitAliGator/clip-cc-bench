@@ -1,0 +1,47 @@
+# NV-Embed Isolated Encoder Configuration
+
+encoder:
+  name: "nv-embed"
+  path: "encoder_models/nv-embed"
+  type: "nvembed"
+  batch_size: 8             # Default from NV-Embed repo
+  max_length: 32768         # Default max context length
+  device_map: "auto"
+  trust_remote_code: true
+  additional_params:
+    instruction_for_retrieval: "Given a ground truth video summary, assess the quality and alignment of predicted summaries with fine-grained discrimination."  # Standard instruction across all encoders
+
+processing:
+  clear_cache_interval: 25
+  progress_interval: 10
+
+data_paths:
+  # Use relative paths - will be resolved from base directory
+  ground_truth_file: "data/ground_truth/clip_cc_dataset.json"
+  predictions_dir: "data/models"
+  results_base_dir: "results"
+
+# Text generation models to evaluate
+models_to_evaluate:
+  - "internvl"
+  - "llava_next_video"
+  - "llava_one_vision"
+  - "longva"
+  - "longvu"
+  - "minicpm"
+  - "mplug"
+  - "oryx"
+  - "sharegpt4"
+  - "timechat"
+  - "ts_llava"
+  - "videochatflash"
+  - "videollama3"
+  - "video_xl"
+  - "vilamp"
+
+logging:
+  level: "INFO"
+  log_dir: "results/encoders/logs/nv-embed"
+  log_prefix: "nv_embed_evaluation"
+
+

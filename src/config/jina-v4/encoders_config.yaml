@@ -1,0 +1,51 @@
+# Jina-v4 Isolated Encoder Configuration
+
+encoder:
+  name: "jina-v4"
+  path: "jinaai/jina-embeddings-v4"  # HuggingFace repository
+  local_path: "encoder_models/jina-embeddings-v4"  # Local path (relative to base_dir)
+  type: "jina_v4"
+  batch_size: 8                      # Optimal for 2048D embeddings
+  max_length: 32768                  # Full 32K context capability
+  device_map: "auto"
+  trust_remote_code: true
+  additional_params:
+    embedding_dimension: 2048        # MAXIMUM dimension - no artificial caps
+    normalize_embeddings: true
+    task_type: "text-matching"       # Symmetric embeddings for cosine similarity
+    torch_dtype: "bfloat16"          # Official recommended dtype
+    use_matryoshka: true             # Enable full 2048D capability
+
+processing:
+  clear_cache_interval: 25
+  progress_interval: 10
+  device: "cuda:0"
+
+data_paths:
+  # Use relative paths - will be resolved from base directory
+  ground_truth_file: "data/ground_truth/clip_cc_dataset.json"
+  predictions_dir: "data/models"
+  results_base_dir: "results"
+
+# Text generation models to evaluate
+models_to_evaluate:
+  - "internvl"
+  - "llava_next_video"
+  - "llava_one_vision"
+  - "longva"
+  - "longvu"
+  - "minicpm"
+  - "mplug"
+  - "oryx"
+  - "sharegpt4"
+  - "timechat"
+  - "ts_llava"
+  - "videochatflash"
+  - "videollama3"
+  - "video_xl"
+  - "vilamp"
+
+logging:
+  level: "INFO"
+  log_dir: "results/encoders/logs/jina-v4"
+  log_prefix: "jina_v4_evaluation"

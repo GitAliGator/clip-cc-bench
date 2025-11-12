@@ -1,0 +1,23 @@
+# BGE-en-ICL Minimal Requirements (based on official documentation)
+# Using zero-shot mode for discriminative embeddings
+
+# Core dependencies
+torch==2.4.0
+transformers==4.44.2
+tokenizers==0.19.1
+
+# BGE-ICL specific
+FlagEmbedding>=1.2.10
+
+# Essential utilities
+numpy>=1.21.0
+PyYAML>=6.0
+tqdm
+pandas
+psutil
+
+# HuggingFace integration
+huggingface-hub>=0.21.0
+safetensors>=0.4.3
+
+# Optional: FlashAttention for performance (handled by setup script)
