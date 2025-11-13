@@ -33,7 +33,7 @@ env/
 ENV/
 
 # ============================================================================
-# Encoder Models (LARGE - 119GB)
+# Encoder/Decoder Models (LARGE - 119GB)
 # ============================================================================
 # Models are now centralized outside repo, but ignore symlink and any copies
 encoder_models/
@@ -42,14 +42,14 @@ encoder_models/
 # If someone creates actual directory instead of symlink, ignore its contents
 encoder_models/*
 
+# Ignore decoder models symlink
+decoder_models/
+
 # ============================================================================
 # Data Files
 # ============================================================================
-# Large dataset files - keep structure, ignore data
-data/ground_truth/*.json
-data/ground_truth/*.jsonl
-data/models/*.json
-data/models/*.jsonl
+# Allow data/ground_truth and data/models to be uploaded to GitHub
+# Ignore other large data directories
 data/videos/
 data/frames/
 data/cache/
