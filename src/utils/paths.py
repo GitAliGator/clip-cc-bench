@@ -36,9 +36,9 @@ class ProjectPaths:
         """Get results directory."""
         return self.base_dir / "results"
 
-    def get_config_dir(self) -> Path:
-        """Get config directory."""
-        return self.get_src_dir() / "config"
+    def get_configs_dir(self) -> Path:
+        """Get configs directory."""
+        return self.get_src_dir() / "configs"
 
     def get_utils_dir(self) -> Path:
         """Get utils directory."""
@@ -56,37 +56,29 @@ class ProjectPaths:
         """Get model predictions directory."""
         return self.get_data_dir() / "models"
 
-    def get_encoder_results_dir(self) -> Path:
-        """Get encoder results base directory."""
-        return self.get_results_dir() / "encoders"
+    def get_decoder_results_dir(self) -> Path:
+        """Get decoder results base directory."""
+        return self.get_results_dir() / "decoders"
 
-    def get_encoder_logs_dir(self) -> Path:
-        """Get encoder logs directory."""
-        return self.get_encoder_results_dir() / "logs"
+    def get_decoder_logs_dir(self) -> Path:
+        """Get decoder logs directory."""
+        return self.get_decoder_results_dir() / "logs"
 
     def get_individual_results_dir(self) -> Path:
         """Get individual results directory."""
-        return self.get_encoder_results_dir() / "individual_results"
+        return self.get_decoder_results_dir() / "individual_results"
 
     def get_aggregated_results_dir(self) -> Path:
         """Get aggregated results directory."""
-        return self.get_encoder_results_dir() / "aggregated_results"
+        return self.get_decoder_results_dir() / "aggregated_results"
 
-    def get_encoder_config_dir(self, encoder_name: str) -> Path:
-        """Get encoder-specific config directory."""
-        return self.get_config_dir() / encoder_name
+    def get_decoder_config_file(self, decoder_name: str) -> Path:
+        """Get decoder-specific config file (flattened structure)."""
+        return self.get_configs_dir() / f"{decoder_name}.yaml"
 
-    def get_encoder_utils_dir(self, encoder_name: str) -> Path:
-        """Get encoder-specific utils directory."""
-        return self.get_utils_dir() / encoder_name
-
-    def get_encoder_scripts_dir(self, encoder_name: str) -> Path:
-        """Get encoder-specific scripts directory."""
-        return self.get_scripts_dir() / encoder_name
-
-    def get_encoder_models_dir(self) -> Path:
-        """Get encoder models directory (centralized in parent directory)."""
-        return self.base_dir.parent / "encoder_models"
+    def get_decoder_models_dir(self) -> Path:
+        """Get decoder models directory (centralized in parent directory)."""
+        return self.base_dir.parent / "decoder_models"
 
     def to_dict(self) -> Dict[str, str]:
         """Convert paths to dictionary for config files."""
@@ -95,11 +87,11 @@ class ProjectPaths:
             'src_dir': str(self.get_src_dir()),
             'data_dir': str(self.get_data_dir()),
             'results_dir': str(self.get_results_dir()),
-            'config_dir': str(self.get_config_dir()),
+            'configs_dir': str(self.get_configs_dir()),
             'ground_truth_file': str(self.get_ground_truth_file()),
             'predictions_dir': str(self.get_predictions_dir()),
-            'encoder_results_dir': str(self.get_encoder_results_dir()),
-            'encoder_logs_dir': str(self.get_encoder_logs_dir()),
+            'decoder_results_dir': str(self.get_decoder_results_dir()),
+            'decoder_logs_dir': str(self.get_decoder_logs_dir()),
             'individual_results_dir': str(self.get_individual_results_dir()),
             'aggregated_results_dir': str(self.get_aggregated_results_dir())
         }

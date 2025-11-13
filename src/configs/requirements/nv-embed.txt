@@ -28,6 +28,7 @@ PyYAML>=6.0
 tqdm
 pandas
 psutil
+nltk>=3.8.1
 
 # HuggingFace Hub
 huggingface-hub>=0.21.0
