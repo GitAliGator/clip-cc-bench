@@ -1,52 +1,86 @@
-# CLIP-CC-Bench: Video Captioning Benchmark with Encoder Evaluation
+# CLIP-CC-Bench: Text Embedding-Based Evaluation for Video Captioning Models
 
-A comprehensive benchmark for evaluating video language models using multiple text embedding encoders to measure caption quality.
+An evaluation framework that uses state-of-the-art text embedding models to measure the quality of video captions by computing semantic similarity between model predictions and ground truth.
 
 ## Overview
 
-CLIP-CC-Bench is an evaluation framework that:
-- Assesses video captioning models using state-of-the-art text encoders
-- Compares ground truth captions with model predictions via embedding similarity
-- Supports multiple encoder architectures (BGE-ICL, E5-Mistral, Jina-v4, etc.)
-- Provides isolated environments for reproducible evaluation
-- Includes SLURM scripts for HPC cluster deployment
+CLIP-CC-Bench is a text embedding evaluation framework that:
+- Evaluates 17 video language models (VLMs) using 4 state-of-the-art text embedding models
+- Measures caption quality through embedding similarity (cosine similarity, fine-grained metrics)
+- Supports both coarse-grained (full caption) and fine-grained (sentence-level) evaluation
+- Provides isolated implementations for each embedding model for reproducibility
+- Evaluates models on the CLIP-CC dataset with reference captions
+
+**Important**: This is not a video captioning system - it's an evaluation tool that measures how well video captioning models perform by comparing their outputs to ground truth using text embeddings.
 
 ## Project Structure
 
 ```
 clip-cc-bench/
 ├── src/
-│   ├── config/          # Encoder-specific configurations
-│   ├── scripts/         # Evaluation scripts for each encoder
-│   └── utils/           # Shared utilities and encoder modules
+│   ├── configs/              # Embedding model configurations (YAML)
+│   │   ├── nv-embed.yaml     # NV-Embed-v2 configuration
+│   │   ├── nemo.yaml         # Llama-Embed-Nemotron configuration
+│   │   ├── gte.yaml          # GTE-Qwen2-7B configuration
+│   │   ├── qwen.yaml         # Qwen3-Embedding configuration
+│   │   └── requirements/     # Python dependencies per model
+│   ├── scripts/              # Evaluation scripts (one per embedding model)
+│   │   ├── run_nv_embed_evaluation.py
+│   │   ├── run_nemo_evaluation.py
+│   │   ├── run_gte_evaluation.py
+│   │   └── run_qwen_evaluation.py
+│   └── utils/                # Model implementations and utilities
+│       ├── nv_embed_model.py # NV-Embed model wrapper
+│       ├── nemo_model.py     # Nemotron model wrapper
+│       ├── gte_model.py      # GTE model wrapper
+│       ├── qwen_model.py     # Qwen3 model wrapper
+│       ├── base_types.py     # Shared data types
+│       ├── config_loader.py  # Configuration loading
+│       ├── result_manager.py # Results management
+│       └── text_chunking.py  # Sentence chunking for fine-grained eval
 ├── data/
-│   ├── ground_truth/    # Reference captions
-│   └── models/          # Model predictions
-├── results/             # Evaluation outputs
-├── slurm_scripts/       # HPC job submission scripts
-└── WACV/                # Conference paper materials
+│   ├── ground_truth/         # CLIP-CC dataset reference captions
+│   │   └── clip_cc_dataset.json (463KB)
+│   └── models/               # Video model predictions (17 models)
+│       ├── internvl.json, llava_next_video.json, etc.
+│       └── (predictions from 17 VLMs)
+├── results/                  # Evaluation outputs (JSON/CSV)
+└── README.md
 ```
 
-## Supported Encoders
+## Text Embedding Models
 
-| Encoder | Embedding Dim | Context Length | Type |
-|---------|---------------|----------------|------|
-| BGE-EN-ICL | 1024 | 8192 | In-Context Learning |
-| E5-Mistral-7B | Variable | 32768 | Instruction-tuned |
-| Jina-v4 | 2048 | 8192 | Long context |
-| Envision | Variable | 512 | Vision-language |
-| NV-Embed | Variable | 4096 | NVIDIA optimized |
-| Nomic-Embed-v1.5 | 768 | 8192 | Efficient |
-| Stella-EN-1.5B | Variable | 512 | Lightweight |
+The framework evaluates captions using 4 state-of-the-art text embedding models:
+
+| Model | Embedding Dim | Max Length | Implementation | Status |
+|-------|---------------|------------|----------------|---------|
+| **NV-Embed-v2** (NVIDIA) | 4,096 | 32,768 | Custom local model | ✅ Verified |
+| **Llama-Embed-Nemotron-8B** (NVIDIA) | 4,096 | 4,096 | SentenceTransformer | ✅ Verified |
+| **GTE-Qwen2-7B-instruct** (Alibaba) | 3,584 | 8,192 | SentenceTransformer | ✅ Verified |
+| **Qwen3-Embedding-8B** (Qwen) | Variable | 32,768 | SentenceTransformer | ✅ Verified |
+
+**Implementation Verification**: All 4 models use the official/recommended implementations from their respective HuggingFace model cards.
+
+## Video Language Models Evaluated
+
+The framework evaluates predictions from **17 video language models**:
+
+- internvl, llava_next_video, llava_one_vision
+- longva, longvu, minicpm, mplug, oryx
+- Qwen2.5-32B, Qwen2.5-72B
+- sharegpt4, timechat, ts_llava
+- videochatflash, videollama3, video_xl, vilamp
 
 ## Setup
 
 ### Prerequisites
 
-- Python 3.12+
-- CUDA-capable GPU (recommended)
-- 150GB+ disk space for models
-- HPC cluster access (optional, for SLURM)
+- Python 3.9+
+- CUDA-capable GPU (24GB+ VRAM recommended for large models)
+- ~50-60GB disk space for embedding models
+- PyTorch 2.0+
+- transformers>=4.42.0
+- sentence-transformers>=2.7.0
 
 ### Installation
 
@@ -56,212 +90,307 @@ clip-cc-bench/
    cd clip-cc-bench
    ```
 
-2. **Set up centralized directories**
+2. **Install dependencies**
 
-   The project uses centralized storage for large files:
+   Each embedding model has its own requirements file:
    ```bash
-   # Project expects this structure:
-   parent_dir/
-   ├── clip-cc-bench/           # This repo
-   ├── encoder_models/          # 119GB of model weights
-   ├── venv_configs/            # Virtual environment setup
-   └── venv_*/                  # Isolated environments per encoder
+   # For NV-Embed-v2
+   pip install -r src/configs/requirements/nv-embed.txt
+
+   # For Llama-Embed-Nemotron-8B
+   pip install -r src/configs/requirements/nemo.txt
+
+   # For GTE-Qwen2-7B-instruct
+   pip install -r src/configs/requirements/gte.txt
+
+   # For Qwen3-Embedding-8B
+   pip install -r src/configs/requirements/qwen.txt
    ```
 
-3. **Download encoder models**
+3. **Download embedding models**
 
-   Models should be placed in `../encoder_models/` relative to the repo:
+   The models will be automatically downloaded from HuggingFace on first run, or you can pre-download them:
    ```bash
-   mkdir -p ../encoder_models
-   # Download models from HuggingFace or use provided download scripts
+   # Models will be stored in decoder_models/ directory
+   # NV-Embed-v2: nvidia/NV-Embed-v2
+   # Nemotron: nvidia/llama-embed-nemotron-8b
+   # GTE: Alibaba-NLP/gte-Qwen2-7B-instruct
+   # Qwen3: Qwen/Qwen3-Embedding-8B
    ```
 
-4. **Create virtual environments**
+4. **Prepare your data** (Optional - sample data included)
 
-   Each encoder has its own isolated environment:
-   ```bash
-   cd ../venv_configs
-
-   # Setup all environments (1-3 hours)
-   ./setup_all_environments.sh
-
-   # Or setup individual encoder
-   ./setup_bge-icl_env.sh
-   ```
-
-### Quick Start
-
-1. **Prepare your data**
+   The repository includes sample ground truth and model predictions. To use your own:
    ```bash
    # Place ground truth in data/ground_truth/clip_cc_dataset.json
    # Place model predictions in data/models/{model_name}.json
    ```
 
-2. **Run evaluation for a specific encoder**
-   ```bash
-   # Activate encoder environment
-   source ../venv_configs/activate_bge-icl_env.sh
+### Quick Start
 
-   # Run evaluation
-   python src/scripts/bge-icl/run_bge-icl_evaluation.py \
-       --config src/config/bge-icl/encoders_config.yaml
+Run evaluation using any of the 4 embedding models:
 
-   deactivate
-   ```
+```bash
+# 1. NV-Embed-v2
+python src/scripts/run_nv_embed_evaluation.py
 
-3. **Run on SLURM cluster**
-   ```bash
-   # Submit job
-   sbatch slurm_scripts/run_bge_icl_evaluation.sh
+# 2. Llama-Embed-Nemotron-8B
+python src/scripts/run_nemo_evaluation.py
 
-   # Check logs
-   tail -f slurm_logs/bge-icl-*.out
-   ```
+# 3. GTE-Qwen2-7B-instruct
+python src/scripts/run_gte_evaluation.py
+
+# 4. Qwen3-Embedding-8B
+python src/scripts/run_qwen_evaluation.py
+```
+
+Each script will:
+1. Load the embedding model
+2. Load ground truth captions from `data/ground_truth/clip_cc_dataset.json`
+3. Load predictions from all models in `data/models/`
+4. Compute similarity scores (coarse + fine-grained)
+5. Save results to `results/decoders/` directory
 
 ## Configuration
 
-Each encoder has a YAML configuration file in `src/config/{encoder_name}/encoders_config.yaml`:
+Each embedding model has a YAML configuration file in `src/configs/`:
 
+**Example: `src/configs/nv-embed.yaml`**
 ```yaml
-encoder:
-  name: "encoder-name"
-  path: "encoder_models/encoder-dir"  # Relative to parent
-  type: "encoder_type"
-  batch_size: 16
-  max_length: 4096
-  device_map: "auto"
+decoder:
+  name: "nv-embed"
+  path: "decoder_models/nv-embed"
+  type: "nvembed"
+  batch_size: 8
+  max_length: 32768
   trust_remote_code: true
 
+  # Fine-grained evaluation settings
+  fine_grained:
+    enabled: true           # Enable sentence-level similarity
+    chunking_method: "nltk" # NLTK sentence tokenizer
+
 processing:
-  clear_cache_interval: 25
-  progress_interval: 10
+  device: "cuda:0"
+  clear_cache_interval: 25  # Clear GPU cache every N samples
+  progress_interval: 10     # Log progress every N samples
 
 data_paths:
   ground_truth_file: "data/ground_truth/clip_cc_dataset.json"
   predictions_dir: "data/models"
   results_base_dir: "results"
+
+# Specify which models to evaluate
+models_to_evaluate:
+  - "internvl"
+  - "llava_next_video"
+  # ... (17 models total)
+
+logging:
+  level: "INFO"
+  log_dir: "results/decoders/logs/nv-embed"
 ```
+
+You can customize batch size, max length, device, and which models to evaluate by editing these config files.
 
 ## Usage
 
-### Running Individual Encoder Evaluation
+### Basic Usage
+
+Run evaluation with default settings (all 17 models):
 
 ```bash
-# 1. Activate environment
-source ../venv_configs/activate_{encoder}_env.sh
+# Evaluate using NV-Embed-v2
+python src/scripts/run_nv_embed_evaluation.py
 
-# 2. Run evaluation
-python src/scripts/{encoder}/run_{encoder}_evaluation.py \
-    --config src/config/{encoder}/encoders_config.yaml \
-    --models model1 model2 model3
+# Evaluate using Llama-Embed-Nemotron-8B
+python src/scripts/run_nemo_evaluation.py
 
-# 3. View results
-cat results/encoders/individual_results/json/{encoder}_{model}_results.json
+# Evaluate using GTE-Qwen2-7B-instruct
+python src/scripts/run_gte_evaluation.py
+
+# Evaluate using Qwen3-Embedding-8B
+python src/scripts/run_qwen_evaluation.py
 ```
 
-### Running Multiple Encoders
+### Evaluate Specific Models Only
 
 ```bash
-# Use provided batch script
-./run_all_encoders.sh
+# Evaluate only specific video models
+python src/scripts/run_nv_embed_evaluation.py --models internvl llava_next_video longvu
+
+# Use custom base directory
+python src/scripts/run_nemo_evaluation.py --base-dir /path/to/project
 ```
 
-### SLURM Cluster Deployment
+### Command-Line Options
 
-```bash
-# Submit all encoder evaluations
-cd slurm_scripts
-for script in run_*_evaluation.sh; do
-    sbatch $script
-done
+All evaluation scripts support:
+- `--config PATH`: Path to custom config file (optional)
+- `--models MODEL1 MODEL2 ...`: Specific models to evaluate (optional, defaults to all 17)
+- `--base-dir PATH`: Custom base directory (optional, auto-detected by default)
 
-# Monitor jobs
-squeue -u $USER
-```
+## Evaluation Metrics
+
+The framework computes multiple similarity metrics:
+
+### Coarse-Grained Metrics
+- **Cosine Similarity**: Raw cosine similarity between full caption embeddings (range: [-1, 1])
+- **Normalized Cosine**: Same as cosine similarity (for compatibility)
+
+### Fine-Grained Metrics (Sentence-Level)
+- **Precision**: For each prediction sentence, find best matching ground truth sentence
+- **Recall**: For each ground truth sentence, find best matching prediction sentence
+- **F1 Score**: Harmonic mean of precision and recall
+- **HM-CF**: Harmonic mean of coarse similarity and fine-grained F1
+
+### GAS-Style Implementation
+All models use "GAS-style" (raw cosine similarity without [0,1] normalization), matching the original GAS paper implementation.
 
 ## Results
 
-Results are organized by encoder and model:
+Results are saved in JSON and CSV formats:
 
 ```
 results/
-├── encoders/
-│   ├── individual_results/
-│   │   ├── csv/          # Per-model CSV files
-│   │   └── json/         # Per-model JSON files
-│   ├── aggregated_results/
-│   │   └── summary.csv   # Cross-encoder comparison
-│   └── logs/
-│       └── {encoder}/    # Evaluation logs
+└── decoders/
+    ├── individual_results/
+    │   ├── json/
+    │   │   ├── nv-embed_internvl_results.json
+    │   │   ├── nv-embed_llava_next_video_results.json
+    │   │   └── ... (per-model results)
+    │   └── csv/
+    │       └── ... (CSV versions)
+    └── logs/
+        ├── nv-embed/
+        ├── nemo/
+        ├── gte/
+        └── qwen/
+```
+
+### Result Format
+
+Each result file contains:
+```json
+{
+  "video_id": "xyz123",
+  "model_name": "internvl",
+  "ground_truth_text": "A person walks across a bridge...",
+  "prediction_text": "A man walking on a bridge...",
+  "decoder_similarities": {
+    "nv-embed": {
+      "cosine_similarity": 0.85,
+      "fine_grained_precision": 0.82,
+      "fine_grained_recall": 0.88,
+      "fine_grained_f1": 0.85,
+      "hm_cf": 0.85
+    }
+  },
+  "success": true,
+  "timestamp": "2025-11-13T12:34:56"
+}
 ```
 
 ## Data Format
 
-### Ground Truth
+### Ground Truth (`data/ground_truth/clip_cc_dataset.json`)
 ```json
-{
-  "video_id_1": {
-    "summary": "Ground truth caption text..."
+[
+  {
+    "id": "video_001",
+    "summary": "A person walks across a bridge while the sun sets..."
   },
-  "video_id_2": {
-    "summary": "Another caption..."
+  {
+    "id": "video_002",
+    "summary": "A cat jumps onto a table and knocks over a vase..."
   }
-}
+]
 ```
 
-### Model Predictions
+### Model Predictions (`data/models/{model_name}.json`)
 ```json
 {
-  "video_id_1": "Model predicted caption...",
-  "video_id_2": "Another prediction..."
+  "video_001": "A man walking on a bridge during sunset...",
+  "video_002": "Cat jumping on table, vase falls down..."
 }
 ```
 
-## Development
+**Format Notes:**
+- Ground truth is a list of objects with `"id"` and `"summary"` fields
+- Predictions are dictionaries mapping video IDs to predicted captions
+- Video IDs must match between ground truth and predictions
 
-### Adding a New Encoder
+## Implementation Details
 
-1. **Create configuration**
+### Model-Specific Implementation Notes
+
+**1. NV-Embed-v2**
+- Uses custom local model from `modeling_nvembed.py`
+- Loads with `trust_remote_code=True`
+- Max sequence length: 32,768 tokens
+- Implementation: Custom NVEmbedModel class
+
+**2. Llama-Embed-Nemotron-8B**
+- Uses SentenceTransformer library
+- Special methods: `encode_query()` and `encode_document()`
+- Falls back to standard `encode()` if methods unavailable
+- Attention: "eager" or "flash_attention_2"
+- Padding: Left-side padding required
+
+**3. GTE-Qwen2-7B-instruct**
+- Uses SentenceTransformer library
+- Supports prompt_name="query" for query encoding
+- Documents encoded without prompts (query-side instruction tuning)
+- Max sequence length: 8,192 tokens
+
+**4. Qwen3-Embedding-8B**
+- Uses SentenceTransformer library
+- Supports prompt_name="query" for queries
+- Flash attention 2 support for better performance
+- Max sequence length: 32,768 tokens
+
+### Adding a New Embedding Model
+
+1. **Create configuration file**
    ```bash
-   mkdir -p src/config/new-encoder
-   cp src/config/bge-icl/encoders_config.yaml src/config/new-encoder/
-   # Edit configuration
+   # Create src/configs/new_model.yaml
+   # Add requirements to src/configs/requirements/new_model.txt
    ```
 
-2. **Create encoder module**
+2. **Implement model wrapper**
    ```bash
-   mkdir -p src/utils/new-encoder
-   # Implement embedding_models.py
+   # Create src/utils/new_model_model.py
+   # Implement loading, encoding, and similarity computation
    ```
 
 3. **Create evaluation script**
    ```bash
-   mkdir -p src/scripts/new-encoder
-   # Implement run_new-encoder_evaluation.py
+   # Create src/scripts/run_new_model_evaluation.py
+   # Follow pattern from existing scripts
    ```
 
-4. **Add virtual environment setup**
+4. **Test the implementation**
    ```bash
-   # Create requirements.txt in src/config/new-encoder/
-   # Create setup script in ../venv_configs/
+   python src/scripts/run_new_model_evaluation.py --models internvl
    ```
 
-### Code Structure
+## Key Features
 
-- **`src/utils/shared/`**: Common utilities (paths, config loading, result management)
-- **`src/utils/{encoder}/`**: Encoder-specific implementations
-- **`src/config/{encoder}/`**: Encoder configurations and requirements
-- **`src/scripts/{encoder}/`**: Standalone evaluation scripts
+✅ **Verified Implementations**: All 4 embedding models use official/recommended implementations from HuggingFace
+✅ **Fine-Grained Evaluation**: Supports both full-caption and sentence-level similarity metrics
+✅ **Flexible Configuration**: YAML-based configs for easy customization
+✅ **Production Ready**: Includes logging, error handling, GPU memory management
+✅ **Comprehensive Evaluation**: Tests 17 state-of-the-art video language models
 
 ## Citation
 
-If you use this benchmark in your research, please cite:
+If you use this evaluation framework in your research, please cite:
 
 ```bibtex
 @inproceedings{clip-cc-bench-2025,
-  title={CLIP-CC-Bench: Video Captioning Benchmark with Multi-Encoder Evaluation},
+  title={Text Embedding-Based Evaluation Framework for Video Captioning Models},
   author={Your Name},
-  booktitle={Winter Conference on Applications of Computer Vision (WACV)},
+  booktitle={Conference Name},
   year={2025}
 }
 ```
@@ -272,49 +401,78 @@ If you use this benchmark in your research, please cite:
 
 ## Acknowledgments
 
-- HuggingFace for model hosting
-- NVIDIA for GPU support
-- [Other acknowledgments]
-
-## Contact
-
-- **Author**: [Your Name]
-- **Email**: [your.email@domain.com]
-- **Issues**: [GitHub Issues](https://github.com/YOUR_USERNAME/clip-cc-bench/issues)
+- **NVIDIA** for NV-Embed-v2 and Llama-Embed-Nemotron-8B models
+- **Alibaba NLP** for GTE-Qwen2-7B-instruct model
+- **Qwen Team** for Qwen3-Embedding-8B model
+- **HuggingFace** for model hosting and transformers library
+- **Sentence-Transformers** for the excellent embedding library
 
 ## Troubleshooting
 
 ### Common Issues
 
 **1. CUDA out of memory**
-- Reduce `batch_size` in encoder config
-- Use `device_map: "auto"` for automatic device allocation
-- Clear GPU cache: `torch.cuda.empty_cache()`
+```bash
+# Solution 1: Reduce batch size in config
+# Edit src/configs/{model}.yaml and set batch_size: 4 or lower
 
-**2. Encoder model not found**
-- Verify encoder_models/ directory structure
-- Check symlink: `ls -l encoder_models`
-- Download missing models
+# Solution 2: Clear GPU cache manually
+import torch; torch.cuda.empty_cache()
 
-**3. Import errors**
-- Ensure correct virtual environment activated
-- Run setup script: `./setup_{encoder}_env.sh`
-- Check `pip list` for missing dependencies
+# Solution 3: Use smaller models (GTE-Qwen2-7B or Qwen3)
+```
 
-**4. SLURM job failures**
-- Check logs: `slurm_logs/*.out`
-- Verify GPU allocation in SLURM script
-- Ensure sufficient memory requested
+**2. Model download fails**
+```bash
+# Ensure you have HuggingFace access
+huggingface-cli login
 
-## Changelog
+# For NV-Embed-v2, you may need to request access on HuggingFace
+# Visit: https://huggingface.co/nvidia/NV-Embed-v2
+```
 
-### v1.0.0 (2025-11-12)
-- Initial release
-- Support for 7 encoders
-- Centralized model and environment management
-- SLURM integration for HPC clusters
-- Comprehensive evaluation pipeline
+**3. Import errors (missing dependencies)**
+```bash
+# Install requirements for specific model
+pip install -r src/configs/requirements/{model}.txt
+
+# Or install all dependencies
+pip install torch transformers sentence-transformers nltk numpy
+```
+
+**4. Ground truth/prediction file not found**
+```bash
+# Verify files exist
+ls data/ground_truth/clip_cc_dataset.json
+ls data/models/
+
+# Check file paths in config
+cat src/configs/{model}.yaml
+```
+
+**5. Sentence chunking errors**
+```bash
+# Download NLTK punkt tokenizer
+python -c "import nltk; nltk.download('punkt')"
+```
+
+## FAQ
+
+**Q: Can I use my own dataset?**
+A: Yes! Replace `data/ground_truth/clip_cc_dataset.json` and add predictions to `data/models/`. Follow the data format shown in this README.
+
+**Q: Can I evaluate just one video model instead of all 17?**
+A: Yes! Use `--models` flag: `python src/scripts/run_nv_embed_evaluation.py --models internvl`
+
+**Q: Which embedding model should I use?**
+A: It depends on your needs:
+- **Longest context**: NV-Embed-v2 (32K) or Qwen3 (32K)
+- **Fastest**: GTE-Qwen2-7B (smaller 7B model)
+- **Most features**: Llama-Embed-Nemotron-8B (separate query/document encoding)
+
+**Q: How long does evaluation take?**
+A: Depends on dataset size and model. For 17 models with ~1000 videos each, expect 1-4 hours per embedding model on a single GPU.
 
 ---
 
-**Note**: This is a research project under active development. Features and APIs may change.
+**Note**: This is a research evaluation framework. Model implementations follow official HuggingFace recommendations as of November 2025.
