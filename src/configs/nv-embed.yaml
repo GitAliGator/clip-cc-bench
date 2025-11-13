@@ -1,17 +1,23 @@
-# NV-Embed Isolated Encoder Configuration
+# NV-Embed Isolated Decoder Configuration
 
-encoder:
+decoder:
   name: "nv-embed"
-  path: "encoder_models/nv-embed"
+  path: "decoder_models/nv-embed"
   type: "nvembed"
   batch_size: 8             # Default from NV-Embed repo
   max_length: 32768         # Default max context length
   device_map: "auto"
   trust_remote_code: true
   additional_params:
-    instruction_for_retrieval: "Given a ground truth video summary, assess the quality and alignment of predicted summaries with fine-grained discrimination."  # Standard instruction across all encoders
+    instruction_for_retrieval: "Given a ground truth video summary, assess the quality and alignment of predicted summaries with fine-grained discrimination."
+
+  # Fine-grained evaluation settings
+  fine_grained:
+    enabled: true           # Enable fine-grained embedding matching
+    chunking_method: "nltk" # Use NLTK sentence tokenizer for chunking
 
 processing:
+  device: "cuda:0"
   clear_cache_interval: 25
   progress_interval: 10
 
@@ -41,7 +47,5 @@ models_to_evaluate:
 
 logging:
   level: "INFO"
-  log_dir: "results/encoders/logs/nv-embed"
+  log_dir: "results/decoders/logs/nv-embed"
   log_prefix: "nv_embed_evaluation"
-
-
