@@ -1,7 +1,7 @@
 """
 NV-Embed Specific Embedding Model Implementation
 
-Isolated implementation for NV-Embed encoder with optimized settings.
+Isolated implementation for NV-Embed decoder with optimized settings and fine-grained evaluation.
 """
 
 import torch
@@ -13,21 +13,21 @@ from transformers import AutoModel, AutoTokenizer
 import gc
 import time
 
-# Import shared types
+# Import shared types and utilities
 import sys
-sys.path.append(str(Path(__file__).parent.parent / "shared"))
 from base_types import EmbeddingResult, EvaluationResult, SimilarityScore
+from text_chunking import chunk_text_into_sentences
+from paths import get_project_paths
 
 # Add local NV-Embed implementation path dynamically
-from paths import get_project_paths
 _project_paths = get_project_paths()
-_nv_embed_path = str(_project_paths.get_encoder_models_dir() / "nv-embed")
+_nv_embed_path = str(_project_paths.get_decoder_models_dir() / "nv-embed")
 sys.path.append(_nv_embed_path)
 from modeling_nvembed import NVEmbedModel as LocalNVEmbedModel
 
 
 class NVEmbedModel:
-    """NV-Embed model implementation with optimized settings."""
+    """NV-Embed model implementation with fine-grained evaluation support."""
 
     def __init__(self, model_path: str, device: str = "cuda:0", **kwargs):
         self.model_path = model_path
@@ -36,6 +36,9 @@ class NVEmbedModel:
         self.max_length = kwargs.get('max_length', 32768)
         self.instruction_for_retrieval = kwargs.get('instruction_for_retrieval',
             "Given a web search query, retrieve relevant passages that answer the query.")
+
+        # Fine-grained settings
+        self.fine_grained_enabled = kwargs.get('fine_grained_enabled', True)
 
         self.logger = logging.getLogger('nv_embed_model')
         self.model = None
@@ -116,31 +119,118 @@ class NVEmbedModel:
             self.logger.error(f"Error encoding texts: {e}")
             raise
 
-    def compute_similarity(self, ground_truth_text: str, prediction_text: str) -> SimilarityScore:
-        """Compute similarity between ground truth and prediction texts."""
+    def compute_fine_grained_similarity(
+        self,
+        gt_chunks: List[str],
+        pred_chunks: List[str]
+    ) -> Tuple[float, float, float]:
+        """
+        Compute fine-grained precision, recall, and F1 using normalized cosine similarity.
+
+        Args:
+            gt_chunks: Ground truth sentence chunks
+            pred_chunks: Prediction sentence chunks
+
+        Returns:
+            (precision, recall, f1_score) all in 0-1 range (normalized cosine)
+        """
+        if not gt_chunks or not pred_chunks:
+            return 0.0, 0.0, 0.0
+
         try:
-            # Encode both texts
+            # Encode all chunks (batched for efficiency)
+            gt_embeddings = self.encode_texts(gt_chunks, add_instruction=False)
+            pred_embeddings = self.encode_texts(pred_chunks, add_instruction=False)
+
+            # Precision: For each prediction chunk, find best GT match
+            precision_scores = []
+            for pred_emb in pred_embeddings:
+                similarities = []
+                for gt_emb in gt_embeddings:
+                    cosine_sim = float(np.dot(pred_emb, gt_emb))
+                    normalized = (cosine_sim + 1) / 2  # Normalize to [0, 1]
+                    similarities.append(normalized)
+                precision_scores.append(max(similarities))
+
+            precision = np.mean(precision_scores) if precision_scores else 0.0
+
+            # Recall: For each GT chunk, find best prediction match
+            recall_scores = []
+            for gt_emb in gt_embeddings:
+                similarities = []
+                for pred_emb in pred_embeddings:
+                    cosine_sim = float(np.dot(gt_emb, pred_emb))
+                    normalized = (cosine_sim + 1) / 2  # Normalize to [0, 1]
+                    similarities.append(normalized)
+                recall_scores.append(max(similarities))
+
+            recall = np.mean(recall_scores) if recall_scores else 0.0
+
+            # F1 Score (harmonic mean of precision and recall)
+            if precision + recall > 0:
+                f1_score = 2 * (precision * recall) / (precision + recall)
+            else:
+                f1_score = 0.0
+
+            return float(precision), float(recall), float(f1_score)
+
+        except Exception as e:
+            self.logger.error(f"Error computing fine-grained similarity: {e}")
+            return 0.0, 0.0, 0.0
+
+    def compute_similarity(self, ground_truth_text: str, prediction_text: str) -> SimilarityScore:
+        """Compute both coarse and fine-grained similarity between ground truth and prediction texts."""
+        try:
+            start_time = time.time()
+
+            # Coarse-grained: Full text embeddings
             gt_embedding = self.encode_texts([ground_truth_text], add_instruction=False)
             pred_embedding = self.encode_texts([prediction_text], add_instruction=False)
 
-            # Compute cosine similarity
             cosine_sim = float(np.dot(gt_embedding[0], pred_embedding[0]))
-
-            # Normalize to [0, 1] range
             normalized_cosine = (cosine_sim + 1) / 2
 
+            # Fine-grained: Chunk-level embeddings
+            fine_precision, fine_recall, fine_f1 = None, None, None
+            hm_cf = None
+            num_gt_chunks, num_pred_chunks = 0, 0
+
+            if self.fine_grained_enabled:
+                gt_chunks = chunk_text_into_sentences(ground_truth_text)
+                pred_chunks = chunk_text_into_sentences(prediction_text)
+                num_gt_chunks = len(gt_chunks)
+                num_pred_chunks = len(pred_chunks)
+
+                if gt_chunks and pred_chunks:
+                    fine_precision, fine_recall, fine_f1 = self.compute_fine_grained_similarity(
+                        gt_chunks, pred_chunks
+                    )
+
+                    # Compute hm-cf (harmonic mean of coarse and fine F1)
+                    if normalized_cosine > 0 and fine_f1 > 0:
+                        hm_cf = 2 * (normalized_cosine * fine_f1) / (normalized_cosine + fine_f1)
+                    else:
+                        hm_cf = 0.0
+
             # Create metadata
+            computation_time = time.time() - start_time
             metadata = {
-                'encoder_name': 'nv-embed',
+                'decoder_name': 'nv-embed',
                 'ground_truth_length': len(ground_truth_text),
                 'prediction_length': len(prediction_text),
+                'num_gt_chunks': num_gt_chunks,
+                'num_pred_chunks': num_pred_chunks,
                 'embedding_dim': gt_embedding.shape[1] if len(gt_embedding.shape) > 1 else len(gt_embedding),
-                'computation_time': self.embed_times[-1] if self.embed_times else 0.0
+                'computation_time': computation_time
             }
 
             return SimilarityScore(
                 cosine_similarity=cosine_sim,
                 normalized_cosine=normalized_cosine,
+                fine_grained_precision=fine_precision,
+                fine_grained_recall=fine_recall,
+                fine_grained_f1=fine_f1,
+                hm_cf=hm_cf,
                 metadata=metadata
             )
 
@@ -190,7 +280,7 @@ class NVEmbedModel:
 
 
 class NVEmbedEvaluator:
-    """Isolated evaluator for NV-Embed model."""
+    """Isolated evaluator for NV-Embed model with fine-grained support."""
 
     def __init__(self, config: Dict[str, Any]):
         self.config = config
@@ -198,13 +288,16 @@ class NVEmbedEvaluator:
         self.model = None
 
         # Initialize model
-        encoder_config = config['encoder']
+        decoder_config = config['decoder']
+        fine_grained_config = decoder_config.get('fine_grained', {})
+
         self.model = NVEmbedModel(
-            model_path=encoder_config['path'],
+            model_path=decoder_config['path'],
             device=config['processing']['device'],
-            batch_size=encoder_config['batch_size'],
-            max_length=encoder_config['max_length'],
-            instruction_for_retrieval=encoder_config.get('additional_params', {}).get('instruction_for_retrieval', "")
+            batch_size=decoder_config['batch_size'],
+            max_length=decoder_config['max_length'],
+            instruction_for_retrieval=decoder_config.get('additional_params', {}).get('instruction_for_retrieval', ""),
+            fine_grained_enabled=fine_grained_config.get('enabled', True)
         )
 
     def initialize(self) -> bool:

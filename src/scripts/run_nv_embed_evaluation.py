@@ -2,7 +2,7 @@
 """
 NV-Embed Isolated Evaluation Script
 
-Standalone evaluation script for NV-Embed encoder with its own environment.
+Standalone evaluation script for NV-Embed decoder with fine-grained evaluation.
 """
 
 import sys
@@ -13,18 +13,15 @@ from pathlib import Path
 from datetime import datetime
 from typing import List, Dict, Any
 
-# Add paths for imports
+# Add paths for imports (flattened structure)
 script_dir = Path(__file__).parent
-src_dir = script_dir.parent.parent
-sys.path.extend([
-    str(src_dir / "utils" / "nv-embed"),
-    str(src_dir / "utils" / "shared")
-])
+src_dir = script_dir.parent
+sys.path.append(str(src_dir / "utils"))
 
-from embedding_models import NVEmbedEvaluator
-from config_loader import IsolatedEncoderConfigLoader
+from nv_embed_model import NVEmbedEvaluator
+from config_loader import IsolatedDecoderConfigLoader
 from result_manager import SharedResultManager
-from base_types import EncoderEvaluationResult, SimilarityScore
+from base_types import DecoderEvaluationResult, SimilarityScore
 
 
 def setup_logging(config: Dict[str, Any]) -> logging.Logger:
@@ -39,7 +36,7 @@ def setup_logging(config: Dict[str, Any]) -> logging.Logger:
         log_dir = Path(config['paths']['logs_dir'])
     else:
         results_base_dir = Path(config['data_paths']['results_base_dir'])
-        log_dir = results_base_dir / "encoders" / "logs" / "nv-embed"
+        log_dir = results_base_dir / "decoders" / "logs" / "nv-embed"
 
     log_dir.mkdir(parents=True, exist_ok=True)
 
@@ -147,23 +144,23 @@ def run_evaluation(config: Dict[str, Any], target_models: List[str] = None) -> D
                         ground_truth_text, prediction_text, video_id
                     )
 
-                    # Create encoder evaluation result
-                    encoder_result = EncoderEvaluationResult(
+                    # Create decoder evaluation result
+                    decoder_result = DecoderEvaluationResult(
                         video_id=video_id,
                         model_name=model_name,
                         ground_truth_text=ground_truth_text,
                         prediction_text=prediction_text,
-                        encoder_similarities={'nv-embed': embedding_result.similarity_score},
+                        decoder_similarities={'nv-embed': embedding_result.similarity_score},
                         success=embedding_result.success,
                         error_message=embedding_result.error_message,
                         timestamp=datetime.now().isoformat()
                     )
 
                     # Save result
-                    if result_manager.save_individual_result(encoder_result):
-                        all_results.append(encoder_result)
-                        model_results[model_name].append(encoder_result)  # Add to model-specific results
-                        if encoder_result.success:
+                    if result_manager.save_individual_result(decoder_result):
+                        all_results.append(decoder_result)
+                        model_results[model_name].append(decoder_result)  # Add to model-specific results
+                        if decoder_result.success:
                             successful_evaluations += 1
                             model_successful += 1
 
@@ -198,7 +195,7 @@ def run_evaluation(config: Dict[str, Any], target_models: List[str] = None) -> D
 
     # Create overall summary (now just for logging purposes)
     logger.info("Creating evaluation summary...")
-    summary = result_manager.create_encoder_summary(all_results)
+    summary = result_manager.create_decoder_summary(all_results)
 
     # Get performance stats
     performance_stats = evaluator.get_stats()
@@ -209,7 +206,7 @@ def run_evaluation(config: Dict[str, Any], target_models: List[str] = None) -> D
     # Final results
     final_results = {
         'success': True,
-        'encoder_name': 'nv-embed',
+        'decoder_name': 'nv-embed',
         'total_evaluations': total_evaluations,
         'successful_evaluations': successful_evaluations,
         'success_rate': (successful_evaluations / total_evaluations) * 100 if total_evaluations > 0 else 0,
@@ -241,11 +238,11 @@ def main():
         if args.base_dir:
             base_dir = Path(args.base_dir)
         else:
-            # Default to project root (3 levels up from script)
+            # Default to project root (2 levels up from script - flattened structure)
             base_dir = Path(__file__).parent.parent.parent
 
         # Load configuration
-        config_loader = IsolatedEncoderConfigLoader('nv-embed', base_dir)
+        config_loader = IsolatedDecoderConfigLoader('nv-embed', base_dir)
         config = config_loader.load_config()
 
         # Setup logging
@@ -266,6 +263,8 @@ def main():
 
     except Exception as e:
         print(f"Fatal error: {e}")
+        import traceback
+        traceback.print_exc()
         return 1
 
 
