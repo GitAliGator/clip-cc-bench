@@ -39,16 +39,18 @@ def load_evaluation_results(base_dir: str = "results/decoders/aggregated_results
                 # Extract the metrics we need
                 results[embedding_name][vlm_name] = {
                     'coarse': data['coarse_grained_stats']['mean'],
+                    'coarse_std': data['coarse_grained_stats']['std'],
                     'fine': data['fine_grained_stats']['f1']['mean'],
+                    'fine_std': data['fine_grained_stats']['f1']['std'],
                     'hm': data['hybrid_stats']['hm_cf']['mean'],
-                    'std': data['hybrid_stats']['hm_cf']['std'],
+                    'hm_std': data['hybrid_stats']['hm_cf']['std'],
                     'total_evals': data['total_evaluations']
                 }
 
     return results
 
 
-def compute_borda_scores(results: Dict) -> Tuple[Dict[str, int], Dict[str, float]]:
+def compute_borda_scores(results: Dict) -> Tuple[Dict[str, int], Dict[str, float], Dict[str, float]]:
     """
     Compute Borda scores and MeanJudge scores for each VLM.
 
@@ -56,9 +58,10 @@ def compute_borda_scores(results: Dict) -> Tuple[Dict[str, int], Dict[str, float
         results: Dictionary with structure {embedding_model: {vlm_name: stats}}
 
     Returns:
-        Tuple of (borda_scores, mean_judge_scores)
+        Tuple of (borda_scores, mean_judge_scores, mean_judge_std)
         - borda_scores: {vlm_name: total_borda_points}
         - mean_judge_scores: {vlm_name: mean_hm_across_judges}
+        - mean_judge_std: {vlm_name: std_hm_across_judges}
     """
     # Get list of all VLMs (assuming all embedding models evaluated the same VLMs)
     embedding_models = list(results.keys())
@@ -99,30 +102,37 @@ def compute_borda_scores(results: Dict) -> Tuple[Dict[str, int], Dict[str, float
             print(f"  Rank {rank}: {vlm} (HM={score:.6f}) → +{borda_points} Borda points")
         print()
 
-    # Step 4: Compute MeanJudge score per VLM
+    # Step 4: Compute MeanJudge score and std per VLM
     mean_judge_scores = {
         vlm: np.mean(hm_scores[vlm])
         for vlm in vlm_names
     }
 
-    return borda_scores, mean_judge_scores
+    mean_judge_std = {
+        vlm: np.std(hm_scores[vlm], ddof=1)  # Sample standard deviation
+        for vlm in vlm_names
+    }
+
+    return borda_scores, mean_judge_scores, mean_judge_std
 
 
 def generate_table1(borda_scores: Dict[str, int],
-                    mean_judge_scores: Dict[str, float]) -> pd.DataFrame:
+                    mean_judge_scores: Dict[str, float],
+                    mean_judge_std: Dict[str, float]) -> pd.DataFrame:
     """
     Generate Table 1: Overall VLM ranking summary.
 
     Returns:
-        DataFrame with columns: [Rank, VLM, Borda, MeanJudge]
+        DataFrame with columns: [Rank, VLM, Borda, MeanJudge, StdJudge]
     """
-    # Create list of (vlm, borda, mean_judge)
+    # Create list of (vlm, borda, mean_judge, std_judge)
     data = []
     for vlm in borda_scores.keys():
         data.append({
             'VLM': vlm,
             'Borda': borda_scores[vlm],
-            'MeanJudge': mean_judge_scores[vlm]
+            'MeanJudge': round(mean_judge_scores[vlm], 2),
+            'StdJudge': round(mean_judge_std[vlm], 2)
         })
 
     # Sort by Borda (primary), then MeanJudge (secondary)
@@ -139,7 +149,7 @@ def generate_table2(results: Dict) -> pd.DataFrame:
 
     Creates a hierarchical column structure with:
     - Top level: Embedding model names
-    - Second level: Coarse, Fine, HM, Std
+    - Second level: Coarse, Coarse_Std, Fine, Fine_Std, HM, HM_Std
 
     Returns:
         DataFrame with MultiIndex columns
@@ -153,10 +163,12 @@ def generate_table2(results: Dict) -> pd.DataFrame:
         row = {'VLM': vlm}
         for embed in embedding_models:
             stats = results[embed][vlm]
-            row[f'{embed}_Coarse'] = stats['coarse']
-            row[f'{embed}_Fine'] = stats['fine']
-            row[f'{embed}_HM'] = stats['hm']
-            row[f'{embed}_Std'] = stats['std']
+            row[f'{embed}_Coarse'] = round(stats['coarse'], 2)
+            row[f'{embed}_Coarse_Std'] = round(stats['coarse_std'], 2)
+            row[f'{embed}_Fine'] = round(stats['fine'], 2)
+            row[f'{embed}_Fine_Std'] = round(stats['fine_std'], 2)
+            row[f'{embed}_HM'] = round(stats['hm'], 2)
+            row[f'{embed}_HM_Std'] = round(stats['hm_std'], 2)
         data.append(row)
 
     df = pd.DataFrame(data)
@@ -166,18 +178,22 @@ def generate_table2(results: Dict) -> pd.DataFrame:
     for embed in embedding_models:
         columns.extend([
             (embed, 'Coarse'),
+            (embed, 'Coarse_Std'),
             (embed, 'Fine'),
+            (embed, 'Fine_Std'),
             (embed, 'HM'),
-            (embed, 'Std')
+            (embed, 'HM_Std')
         ])
 
     # Reorder dataframe columns to match the MultiIndex structure
     ordered_data = {'VLM': df['VLM']}
     for embed in embedding_models:
         ordered_data[f'{embed}_Coarse'] = df[f'{embed}_Coarse']
+        ordered_data[f'{embed}_Coarse_Std'] = df[f'{embed}_Coarse_Std']
         ordered_data[f'{embed}_Fine'] = df[f'{embed}_Fine']
+        ordered_data[f'{embed}_Fine_Std'] = df[f'{embed}_Fine_Std']
         ordered_data[f'{embed}_HM'] = df[f'{embed}_HM']
-        ordered_data[f'{embed}_Std'] = df[f'{embed}_Std']
+        ordered_data[f'{embed}_HM_Std'] = df[f'{embed}_HM_Std']
 
     df_ordered = pd.DataFrame(ordered_data)
     df_ordered.columns = pd.MultiIndex.from_tuples(columns)
@@ -192,14 +208,14 @@ def save_results(table1: pd.DataFrame, table2: pd.DataFrame, output_dir: str = "
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
 
-    # Save Table 1
+    # Save Table 1 (no float_format needed since we already rounded to 2 decimals)
     table1_file = output_path / "table1_vlm_ranking.csv"
-    table1.to_csv(table1_file, index=False, float_format='%.6f')
+    table1.to_csv(table1_file, index=False)
     print(f"Table 1 saved to: {table1_file}")
 
-    # Save Table 2
+    # Save Table 2 (no float_format needed since we already rounded to 2 decimals)
     table2_file = output_path / "table2_detailed_stats.csv"
-    table2.to_csv(table2_file, float_format='%.6f')
+    table2.to_csv(table2_file)
     print(f"Table 2 saved to: {table2_file}")
 
     # Also save a formatted version for LaTeX (if jinja2 is available)
@@ -219,7 +235,7 @@ def print_summary(table1: pd.DataFrame):
     print("=" * 80)
     print("TABLE 1: VLM RANKING SUMMARY")
     print("=" * 80)
-    print(table1.to_string(index=False, float_format=lambda x: f'{x:.6f}'))
+    print(table1.to_string(index=False))
     print()
 
     print("=" * 80)
@@ -229,7 +245,7 @@ def print_summary(table1: pd.DataFrame):
     for idx, row in top5.iterrows():
         print(f"{row['Rank']}. {row['VLM']}")
         print(f"   Borda Score: {row['Borda']}")
-        print(f"   MeanJudge: {row['MeanJudge']:.6f}")
+        print(f"   MeanJudge: {row['MeanJudge']:.2f} (±{row['StdJudge']:.2f})")
         print()
 
 
@@ -251,7 +267,7 @@ def main():
 
     # Step 2-4: Compute Borda scores and MeanJudge
     print("Step 2-4: Computing Borda scores and MeanJudge scores...")
-    borda_scores, mean_judge_scores = compute_borda_scores(results)
+    borda_scores, mean_judge_scores, mean_judge_std = compute_borda_scores(results)
     print()
 
     # Print Borda scores summary
@@ -259,12 +275,12 @@ def main():
     print("BORDA SCORES SUMMARY")
     print("=" * 80)
     for vlm in sorted(borda_scores.keys(), key=lambda x: borda_scores[x], reverse=True):
-        print(f"{vlm}: {borda_scores[vlm]} (MeanJudge: {mean_judge_scores[vlm]:.6f})")
+        print(f"{vlm}: {borda_scores[vlm]} (MeanJudge: {mean_judge_scores[vlm]:.2f} ±{mean_judge_std[vlm]:.2f})")
     print()
 
     # Step 5: Generate tables
     print("Step 5: Generating ranking tables...")
-    table1 = generate_table1(borda_scores, mean_judge_scores)
+    table1 = generate_table1(borda_scores, mean_judge_scores, mean_judge_std)
     table2 = generate_table2(results)
     print()
 
