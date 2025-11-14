@@ -950,5 +950,817 @@
         "is_fallback_score": false
       }
     }
+  },
+  "035": {
+    "reference": "The video begins with a red sports car driving through a large, luxurious house filled with ornate sofas and many gold-colored items. The camera follows the car as it moves, smashing into the sofas and breaking mirrors. The camera then shifts to show a man with a bald head, dressed in a suit, driving the car. Inside the car, another man is also present. The camera switches to a man in a black suit holding a large black gun, firing at the red car. The camera returns to show the interior of the car, where the front-seat passenger adjusts his seat while the car speeds forward.The camera focuses on a close-up of the driver, then cuts to the man in the black suit firing at the car. The scene transitions to slow-motion, showing the car speeding by with flames visible on the wall. The atmosphere is tense as the car continues at high speed. The camera shows the driver gripping the steering wheel with determination and then cuts to a close-up of the man in the black suit aiming his gun. The camera follows the man in the black suit jogging alongside the car.The camera then shows the driver pressing the accelerator and brake pedals. It switches to the glass windows of the house, followed by the passenger in the front seat, who is watching the scene with an open mouth. The scene changes to an aerial view of a tall building, showing the car dropping from it and breaking through glass windows. The camera then cuts to a view from the bottom of the building, capturing the car suspended between two tall buildings.The camera switches to close-ups of the men inside the car and then to the man in the black suit still firing at the vehicle. It shows a large fire behind the car, with the backdrop of two buildings at sunset. The camera changes to display both men inside the car, then transitions to show three tall buildings. The car is shown mid-air, and the reflection of the vehicle appears in the windows of another building. The camera follows as the car crashes through the glass of the other building, with the passenger in the front seat touching his head.The scene continues with the car landing inside the building, where it causes significant damage. The camera cuts to the man in the black suit still shooting. It then shows the red car crashing through various objects in another tall building. The camera shifts between shots of the men inside the car and the driver trying to press the brake, which fails to work. The car passes through a room where a person is working with a machine.The scene cuts to the driver attempting to stop the car while talking to the passenger in the front seat, who is also speaking. The camera shows the passenger looking at the car's dashboard screen and trying to break it. The car continues moving rapidly, smashing through objects inside the building. The camera shows the passenger breaking the screen and then shifts to the driver, who is focused on the road ahead, shifting the gear with his right hand.The car exits the second building and flies toward a third. The scene changes to the interior of a large, decorated room filled with temples, monuments, and people. Frames are hung on the walls, and lights illuminate the space. The camera switches to a man in a white suit making a phone call while looking out the window. The camera cuts back to the car as it nears the third building. The man in the white suit reacts with shock, opening his eyes wide and stepping back before running away.",
+    "candidate": "In the video, we see a group of men, possibly the main characters of a movie, driving to a high-security building. They are outside of a car, and one of them is holding a gun. Inside the building, a shooting is happening. It is shown in slow motion, with the camera panning around the room. The people inside the building are ducking, trying to hide from the gunfire. The video also shows the exterior of the building, with the camera moving to different spots and capturing various scenes. The shooting continues inside the building, with the men running and dodging to avoid getting hit. The scene is intense and action-packed, with the use of fast-paced music and gunfire sounds to create a thrilling atmosphere.",
+    "reference_length": 3455,
+    "candidate_length": 715,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.596418559551239,
+        "normalized_cosine": 0.596418559551239
+      },
+      "fine_grained": {
+        "precision": 0.6324789971113205,
+        "recall": 0.597583546720702,
+        "f1_score": 0.6145363001505225,
+        "num_gt_chunks": 29,
+        "num_pred_chunks": 8
+      },
+      "hybrid": {
+        "hm_cf": 0.6053418952676579
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.118622064590454,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "036": {
+    "reference": "The video begins with a man holding a guitar, seen from behind, in an outdoor setting near a large, old building. Three soldiers in full metallic uniforms stand in front of him, lined up to his right. The camera changes to show four soldiers approaching the man from both the left and right, with a large open door behind the man holding the guitar. People are moving in the background, visible only by their legs. The camera shifts to show the man from behind, along with two of the soldiers: a girl with braided hair extending out of her hat and a Black man. The scene switches to show the man from the front as he plays the guitar, then switches again to show three soldiers with people in the background.The camera cuts to a young man wearing a vest and yellow shirt, engaged in an activity, while another man in black boots speaks to him. The scene changes to show the young man’s feet partially stuck in the ground as the man with black boots helps him pull them out. The camera transitions to a close-up of the man with the guitar, showing his green eyes and widening mouth. The camera cuts to the Black soldier speaking, then shifts to show the man with the guitar singing, his facial features becoming exaggerated as his neck starts to lower.The scene shifts to a woman with long hair wearing a short-sleeved jacket. The camera pans to show all the soldiers and the man with the guitar. The camera then switches to a view from behind the man with the guitar as he turns his head to the left. The Black soldier begins to touch him, and a flame-like effect emerges from the man as he disappears. The camera shows the young man in a yellow shirt, the man with black boots, and the woman with the short-sleeved jacket, who has a weapon on her back. The young man struggles to free his foot from the ground, eventually succeeding on his own.The camera shifts to show the soldiers from behind as they start to chase the three individuals. The scene changes to show the man with black boots, the young man in the yellow shirt, and the woman in the short-sleeved jacket running and hiding. A door with many square holes drops down, blocking the soldiers from entering. The camera captures the three people running outside into a bright outdoor area near the large, old house. The man with black boots points upward while the young man in the yellow shirt and the woman with the short-sleeved jacket follow him. The man with black boots turns and speaks to them as the soldiers emerge from the door behind them.The man with black boots signals to the others and begins to run, with the young man and the woman following. The soldiers start chasing them. The scene transitions to a dark indoor space with a fire burning. A person wearing a mask is seen holding a large piece of metal and placing it into the fire. The camera switches to the young man in the yellow shirt and the woman in the short-sleeved jacket as the soldiers approach, entering through a door behind them. The two look frightened, and the woman begins to retrieve a weapon from her back—a large axe. She grips the axe with both hands as the fire burns behind them.The camera changes to show the soldiers entering, and the woman engages in combat with them. The fight is depicted from various angles as the woman strikes the soldiers with the axe. A soldier steps forward to fight her, and she continues to fend them off. The scene cuts to an overhead shot, showing yellow fire behind the woman as she fights. The soldiers, wielding large metal weapons, advance. The camera switches to show the woman pushing one of the soldiers into the fire.",
+    "candidate": "In the video, a group of four people wearing armor can be seen. They are engaging in a sword fight in a castle courtyard. One man is using a guitar to fight off the group. The other characters are slicing the man with their swords. The guitarist is skillfully dodging the blows from the other group. At one point, a woman approaches the group, and a male swordsman turns to face her, but does not attack. The scene shows various angles of the sword fight, showcasing the agility and skill of the performers.",
+    "reference_length": 3611,
+    "candidate_length": 507,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.6190571188926697,
+        "normalized_cosine": 0.6190571188926697
+      },
+      "fine_grained": {
+        "precision": 0.6136188762528556,
+        "recall": 0.5653925120830536,
+        "f1_score": 0.5885193668839065,
+        "num_gt_chunks": 30,
+        "num_pred_chunks": 7
+      },
+      "hybrid": {
+        "hm_cf": 0.6034021164984764
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.143958568572998,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "037": {
+    "reference": " The video begins with a close-up of a man lying on his back, bloodied and scarred, yet still conscious and looking around. The scene shifts to an older man in a suit entering a house. The camera cuts to a man wearing a black jacket holding a gun and walking down a corridor. A jacket hangs in the hallway as he moves forward, glancing to his right. The scene switches back to the older man in the suit entering the house. The camera then shows a man wearing an orange and black striped shirt with blood on his abdomen, leaning on the ground with his head supported by the bed. A gun lies on the floor near his right hand.The camera returns to the older man looking over his shoulder and moving. It switches back to the man in the corridor, who walks toward the camera, appearing tense as he points his gun and looks around intently. He enters a room with black horns mounted on the wall. The camera cuts to a close-up of the older man holding a gun and aiming it forward. The camera changes to show the older man looking outside at something burning as he moves out of the house. A car near the fire is visible.The scene shifts to the man in the black jacket inside the house, viewed from outside. The camera changes to show him entering a room. The next shot shows the man in the suit walking toward a car, descending stairs to the ground. The scene transitions to show a large house with a burning fire in front of it. The man approaches the fire and the car nearby. The car explodes in a massive blast, and the man is thrown back by the force, landing on the ground and breaking through a small wooden door. The camera cuts to the large explosion, with the car engulfed in flames and moving downward.The camera returns to the man in the black jacket, who continues searching for someone inside the house. The view changes to show the back of the man in the black jacket as another man in a brown jacket opens a door and points a gun at him before lowering it. The two men communicate using hand signals, pointing their guns to their left. The man in the brown jacket leads, with the man in the black jacket following.The camera cuts to a close-up of the man lying on the ground, bloodied and scarred, and shows his hand with a watch on his left wrist moving slightly. The camera switches back to the two men in the corridor. Suddenly, someone shoots at the man in the black jacket, who looks back before quickly turning his head forward. The camera shows a gun on the floor near the right hand of the man in the brown jacket, who is down on the ground.The scene shifts to the man with scars and blood on his face, leaning against the bed with blood on his right hand. A table with a lamp and book sits to the left of the bed. The camera changes to show the man in the black jacket pointing his head as he speaks. The camera then cuts to someone shooting the man in the black jacket, causing him to fall down in the corridor. The scene changes to show a man in a dark red sweater entering. The camera shows the man in the black jacket still searching behind him, and a hand reaches for the gun on the floor. The man in the brown jacket struggles to get up, holding his belly with his left hand.The camera switches to show the man in the black jacket and the man in the dark red sweater standing in the corridor, with an open door behind them. The scene ends with a close-up of the man in the dark red sweater. ",
+    "candidate": "In the video, a man is seen in a dark room. He hits the wall with his hand and then walks away. Another man enters and starts talking to him. A third man is seen standing by a door. The scene shows a man in a room with a fire in the background, and he walks away. There is also a scene with a man who is beating up a man in a dark room. Two men are talking in a room, and then the scene changes to a room with a man and a woman sitting in a chair. Another scene shows two men sitting in a room, and then the man punches the wall. Finally, a man is seen in a room, and he is talking to someone.",
+    "reference_length": 3413,
+    "candidate_length": 593,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.5885857343673706,
+        "normalized_cosine": 0.5885857343673706
+      },
+      "fine_grained": {
+        "precision": 0.6545071403185526,
+        "recall": 0.6121730669852226,
+        "f1_score": 0.6326326742017951,
+        "num_gt_chunks": 31,
+        "num_pred_chunks": 9
+      },
+      "hybrid": {
+        "hm_cf": 0.6098148611535084
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.1864502429962158,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "038": {
+    "reference": " The video begins with a man wearing a white hat struggling to see inside a compound surrounded by a wooden fence. The camera switches to show another man with a backpack running as he notices the man with the white hat. The camera then shows a man in a blue shirt and eyeglasses looking at a door. It shifts back to the man in the white hat holding the wooden fence behind him while talking and looking into the compound.The camera changes to show the man in the blue shirt walking toward the compound while talking. It then returns to the man in the white hat, who moves his body, touches his hands and head, and kicks the wooden fence, which opens. The scene changes to the man in the blue shirt walking into the compound, with a car on his left and green trees in the background. The camera switches perspectives to show the man with the backpack jumping over the fence, followed by the man in the white hat trying to catch him.The camera shifts to show the man in the blue shirt stepping up to the compound fence, holding it with both hands, and looking over it. The scene transitions to the man with the backpack running quickly past a place where clothes are hung on a rope to dry. The camera focuses on his feet as he runs and jumps over another metal fence. The man in the white hat follows, chasing him at high speed. The camera alternates between shots of the man with the backpack and the man in the white hat running.The camera shifts to show the man with the backpack attempting to jump into another compound, using a garbage can for support. It cuts to the man inside the compound landing on the ground and continuing to run. The camera switches to the man in the blue shirt walking toward a black car and getting inside. The scene changes to a green compound where various people are seated at tables, eating outside. Food is arranged on the tables. The man with the backpack runs past the people, followed by the man in the white hat, who gestures and shouts to alert them.The camera switches to the black car moving along the road, driven by the man in the blue shirt. It then cuts to an interior shot of the car, showing the man with the backpack running and jumping over a compound fence, followed by the man in the white hat, who falls to the ground but continues chasing. The man in the blue shirt watches them from his car. The camera shows the man with the backpack running through a green garden, with the man in the white hat still in pursuit.The scene shifts to the man with the backpack slowing down as he sees something ahead but continues running past a table with chairs. The man in the white hat is still chasing him and shouting while stopping briefly. The camera shows the man with the backpack jumping onto a trampoline. It then cuts to the man in the white hat, who looks frustrated. The scene changes to show the man with the backpack leaping into the air and clearing a fence. He lands on the ground, gets up, and keeps running.The camera switches to show the man in the white hat jumping onto the trampoline and launching into the air to follow. The man with the backpack looks frightened as he watches the man in the white hat in mid-air. The camera captures the man in the white hat moving swiftly through the air and landing on a fence, pushing against it with his whole body, causing dust to rise. The video concludes with the man in the white hat on the ground and the man with the backpack walking before resuming his run. The final shot shows the man in the white hat standing up and starting to run again. ",
+    "candidate": "In the video, a man wearing a white hat runs towards a wooden fence and jumps over it. After the jump, a group of friends are shown dancing in the yard. The man is seen taking out his phone and laughing with his friends. The video ends with a montage of people enjoying themselves in the yard, with the sound of a saxophone playing in the background.",
+    "reference_length": 3553,
+    "candidate_length": 350,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.6327335238456726,
+        "normalized_cosine": 0.6327335238456726
+      },
+      "fine_grained": {
+        "precision": 0.613600343465805,
+        "recall": 0.6351581194571086,
+        "f1_score": 0.6241931515591018,
+        "num_gt_chunks": 28,
+        "num_pred_chunks": 4
+      },
+      "hybrid": {
+        "hm_cf": 0.6284343232975614
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.0497996807098389,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "039": {
+    "reference": " The video begins with a man wearing black eyeglasses talking while looking at the left mirror inside a car. The camera switches to show a black car driving down a road at sunset. The scene shifts back inside the car, where the man with eyeglasses is sitting in the driver's seat, and another man is seated in the front passenger seat. The man in the passenger seat is talking while moving his head. The camera briefly shows fries falling out of a white paper container.The camera then changes to a view through the front windshield, showing the man in the passenger seat looking down while holding something in his hand. The camera returns to the driver, who glances down momentarily before looking back up at the road. The scene shifts to show the man with eyeglasses turning the steering wheel, followed by a view of the car's license plate. The car comes to a stop, with another car stopping behind it.The camera changes to show the two men inside the car talking. The man in the passenger seat is speaking to the driver. The scene switches to show the other car as both of its doors open, and a woman in a white skirt exits and puts on eyeglasses before walking away quickly. The camera shifts back to the two men in the car, who are looking at each other and talking. The camera then shows the woman passing by the car and moving in front of the black car where the two men are seated.The camera changes to the driver, who is looking straight ahead, and then back to the woman as she looks at the car and removes her eyeglasses. The scene changes to show a man wearing a black short-sleeve shirt getting out of the car the woman was in. Another man in a brown T-shirt is shown standing to the left of that car and begins to move. The camera shifts to the woman crossing the road with a confident walk.The man in the brown T-shirt appears beside the black car, holding a gun and pointing it at the driver with the eyeglasses. The camera changes to show the man in the passenger seat speaking as the man in the black T-shirt points a gun at him through the right side mirror. The scene shifts to an exterior shot of the black car, with both armed men pointing their guns at the two men inside. Large trees are visible in the background.The camera switches back to the man in the passenger seat speaking to the man in the black T-shirt. The scene shows a close-up of the man in the black T-shirt, who is large, bald, and wearing earrings. The camera returns to the passenger, who continues talking. The driver is then shown raising both hands as the man with the brown T-shirt continues pointing the gun at him. The camera changes to show the passenger turning his head and angrily speaking to the driver.The scene shifts to show both men opening their car doors and stepping out with their hands raised. The camera focuses on the driver as he speaks. The video ends with a close-up of the man in the brown T-shirt speaking. ",
+    "candidate": "In the video, a group of men in suits are seen cruising around a city in an expensive black car. They are smoking cigarettes and enjoying themselves as they drive. One man gets out of the car and goes to the back seat, while the others stay in the front. They continue driving in the city streets.",
+    "reference_length": 2928,
+    "candidate_length": 297,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.5451810359954834,
+        "normalized_cosine": 0.5451810359954834
+      },
+      "fine_grained": {
+        "precision": 0.659163236618042,
+        "recall": 0.617918481429418,
+        "f1_score": 0.6378748367142216,
+        "num_gt_chunks": 24,
+        "num_pred_chunks": 4
+      },
+      "hybrid": {
+        "hm_cf": 0.5878966029200228
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 0.914886474609375,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "040": {
+    "reference": "The video begins with an aerial view from a helicopter, showing a two-way road with cars moving along it. The camera shifts to the interior of the helicopter, where a man and a female pilot, both wearing headphones with attached microphones, are visible. The scene changes to a military tank on the road, pushing a damaged white car with a broken headlight in front of it. The tank continues to push the car, and the camera cuts to a view of the chaos caused by the collision.The camera then shows a man in a black jacket and gloves driving the white car. He glances at the back seat and sees a coiled rope. The scene shifts to a red and blue sports car speeding down the road. The camera shows a joystick-like device being pressed, firing a projectile that hits a large bridge crossing the road. The camera cuts to show a car brake being operated by foot, then returns to the red sports car moving at high speed, driven by a man in a white T-shirt. The car successfully passes under the falling debris from the bridge without being trapped, and the driver looks pleased.The camera shifts to show two cars drifting and hitting a roadside fence. It then returns to the tank still pushing the white car, followed by a view of the blue car speeding down the opposite side of the road. The man in the black jacket begins to climb out of the window of the white car and stands on top of it, throwing the rope toward the military tank while the car is still moving.The camera switches to the driver of the blue car, wearing a watch on his left wrist, as he watches the man in the black jacket from the opposite side of the road. The camera spins to show bricks and stones ahead of the car as it speeds forward. A close-up shows the driver gripping the steering wheel tightly, shifting gears, and maneuvering to pass over the scattered debris. The car goes airborne due to its speed and lands safely on the other side of the road, where the driver adjusts the steering.The camera shows the front of the car with its right door open, then switches to the man in the black jacket standing on the white car, which is still being pushed by the tank. The scene shifts to the tank crashing into the back of the white car as the man in the black jacket looks back. The camera captures the man standing on the car as the tank continues to push it. The camera then shows the driver of the blue car, followed by a brown car approaching at high speed.The camera returns to the man in the blue car, who shifts gears and accelerates. The scene changes to show the man driving the tank, which crashes into the white car. The man in the black jacket jumps, lands on the blue car, and holds on as it moves. The tank crushes the white car completely. The camera shifts to show the brown car approaching but narrowly avoiding a collision as the driver of the blue car turns in time. The man in the black jacket remains on the blue car, leaning over it.The camera cuts to the wrecked car rolling over. The man in the black jacket climbs through the window of the blue car, expressing his happiness. Both he and the driver smile as they continue driving. The scene shifts to show the military tank moving down the road with the crushed car tied behind it by the rope. The camera then shows the interior of the tank and switches to the man and woman in the helicopter. The camera cuts to the red sports car before showing the man inside it speaking into a radio phone, communicating with the driver of the blue car. The man in the blue car shifts his foot on the pedals.The camera shows the blue car colliding with the crushed white car. The scene cuts to the man in the black jacket talking, followed by the man in the red car looking out the side window. The blue car is shown pushing the crushed white car while the red car drives beside it. The video concludes with an aerial view of the road running between large mountains and a final shot of a man stepping out of a car.",
+    "candidate": "In the video, a car is seen performing various car stunts while on a highway. A man in black leather is driving the car and performing dangerous maneuvers. The car rides on the side of a tank on the road, jumps off the tank, flips, and crashes against a truck. The stunt is performed while a city is in the background. The car eventually lands on the shoulder of the road. The video also includes shots of the driver in the car.",
+    "reference_length": 3949,
+    "candidate_length": 428,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.7067408561706543,
+        "normalized_cosine": 0.7067408561706543
+      },
+      "fine_grained": {
+        "precision": 0.7180667221546173,
+        "recall": 0.6802748999288005,
+        "f1_score": 0.6986601268839207,
+        "num_gt_chunks": 31,
+        "num_pred_chunks": 6
+      },
+      "hybrid": {
+        "hm_cf": 0.702677260368852
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.2423386573791504,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "041": {
+    "reference": "The video begins with a close-up of a man’s face, then zooms out to show that he is wearing a light grey T-shirt, with multiple people in the background observing an event. The camera then shifts to the man in the grey T-shirt as he squeezes the thigh of a woman sitting beside him, who is wearing an orange top and holding a bag of chips. The woman in the orange top reacts with pain and confronts the man in the grey T-shirt seated next to her. Beside her, a woman in a white and pink striped T-shirt and a man in a blue shirt holding binoculars are also seated. As the woman in the orange top speaks to the man in the grey T-shirt, he appears confused and looks around, while she continues to stare at him. The man in the blue shirt extends his arm to offer his binoculars to the man in the grey T-shirt. The woman in the orange top observes this exchange and speaks to the man in the blue shirt in a disgusted manner. The man in the grey T-shirt talks to the man in the blue shirt, who responds by pointing his finger at him and then retracts the binoculars, with the woman in the white and pink striped T-shirt signaling the man in the blue shirt to take the binoculars back. While the man in the grey T-shirt talks to the woman in the orange top, a man wearing a cowboy hat and a red shirt walks in and sits in the front row, and the group begins staring at him as he sips his drink. The man in the grey T-shirt gestures with both hands in a distressed manner, points in a different direction, and the woman in the orange top, the woman in the pink and white striped T-shirt, and the man in the blue shirt all look that way. The camera shifts to show a woman in a black and white striped shirt talking to two boys, who have their fingers in their ears as cars speed by on the racetrack. The scene returns to the woman in the pink and white striped T-shirt, who is talking to the man in the grey T-shirt, joined by the man in the blue shirt, while the woman in the orange top stares at the man in the grey T-shirt. He looks around, appearing confused, as the woman in the orange top continues talking to him. The camera then zooms out, revealing the scene of spectators, including a man in a black jacket with his hand on the shoulder of a woman with earphones, who are seated in front of the man in the cowboy hat. The man in the black jacket shouts something toward the racetrack. The man in the grey T-shirt turns to look back and sees a man in a brown sleeveless jacket sitting next to a woman wearing large earrings. The scene then cuts to a man in a police uniform waving and talking to someone, before shifting back to the man in the grey T-shirt. The video then shows the racetrack, where a silver race car comes to a stop, and people in black gear jump over the side wall to inspect it. The camera shifts again, showing another car in the background, yellow and red, maneuvering slightly to overtake the silver car as it accelerates on the track. The camera returns to the man in the grey T-shirt, who is now speaking to the woman in the orange top while looking at the racetrack, before turning to talk to the woman in the pink and white striped T-shirt. In the final scene, the man in the black jacket and the man in the cowboy hat both turn around to speak to the man in the grey T-shirt.",
+    "candidate": "In the video, a group of people are sitting in the stands at a race track. They are watching a drag race, and one person is filming the race with a camera. The drag race is between a red car and a blue car. The cars are very fast and race down the track, making loud revving noises as they go. The people in the stands watch the race with excitement and applaud as the cars speed past. It seems like a thrilling event.",
+    "reference_length": 3305,
+    "candidate_length": 418,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.5717252492904663,
+        "normalized_cosine": 0.5717252492904663
+      },
+      "fine_grained": {
+        "precision": 0.6332125266393026,
+        "recall": 0.5231662619681585,
+        "f1_score": 0.5729531427884917,
+        "num_gt_chunks": 21,
+        "num_pred_chunks": 6
+      },
+      "hybrid": {
+        "hm_cf": 0.5723385374604174
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.0254361629486084,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "042": {
+    "reference": "The video begins with a light-yellow concrete building with small green plants on the side. Two black cars emerge from this building. The scene transitions to a man in a dark T-shirt driving one of the cars. The two cars then drive side by side, with a large metal container attached to both vehicles by ropes. The container collides with small concrete barriers on the sidewalk, overturning as it drags along. As the metal container crashes through the barriers, a man in a SWAT uniform begins shooting at the cars from the rooftop of a nearby building. The container continues to smash barriers along the road. The camera shifts to show the man in the dark T-shirt driving one of the cars, then back to the two black cars dragging the container down the street while multiple police officers shoot at them from building rooftops. The focus then shifts to a bald man in a white shirt driving one of the cars. He glances back as the rear window shatters, seemingly from a bullet. The scene transitions to yellow and blue police cars speeding down the road, followed by a white and blue police car joining the pursuit. More police vehicles with sirens flashing appear, advancing quickly. The bald man in the white shirt is shown holding a walkie-talkie close to his mouth as he speaks into it. The scene shifts to a dimly lit room where a brunette woman is sitting in front of a laptop, speaking over a radio. The camera returns to the man in the dark T-shirt speaking into his walkie-talkie while driving. In the middle of a busy street, pedestrians cross as the two black cars, still dragging the container, drift from one side of the road to the other. The man in the dark T-shirt is shown shifting gears. As the two cars drift, the metal container attached by ropes swings behind them. The bald man in the white shirt pulls the handbrake, causing the two cars to swerve sharply. The container collides with a tree on the roadside. Meanwhile, multiple police vehicles drift and speed down the street, drawing the attention of onlookers. A child on a bus watches as the two black cars, dragging the container, race past, with police vehicles following closely behind. The scene cuts back to the brunette woman holding a radio in front of her laptop, surrounded by cables and wires, as she communicates with someone. The video then briefly shows a high-rise building overlooking a suburban area with mountains and the sea in the background. The man in the black T-shirt is shown driving and speaking on the walkie-talkie again, followed by a brief return to the brunette woman talking over the radio. The view shifts to a freeway with numerous vehicles, then to the inside of a building with transparent glass windows, where a security guard observes police vehicles passing by outside. The road ahead is blocked by police cars, and one officer places a spike strip on the road. The camera shows the bald man in the white shirt still talking into the walkie-talkie while driving. As the two black cars approach the police blockade with the container in tow, more police vehicles converge from the opposite direction. The camera alternates between the bald man and the man in the dark T-shirt, both speaking on their walkie-talkies. The bald man puts down the walkie-talkie to use both hands for a sharp right turn, with the man in the dark T-shirt also making the turn. The two cars manage to bypass one of the police vehicles blocking the road, causing the police car to get struck by the metal container being dragged behind them. A police officer stands in the street, aiming his gun at the cars, but retreats for safety as the container crushes the police vehicle. A nearby building with transparent glass windows is struck by the container, shattering the windows and sending people inside scrambling to escape. In a close-up shot, one of the black car’s rear wheels is lifted slightly due to the drag force from the container. In the final scene, the two black cars speed away, and the camera shifts to a man in a white shirt running from the damaged building.",
+    "candidate": "In the video, a man is driving a sports car down the street in Rio De Janeiro. He is wearing sunglasses and listening to music while the police car approaches. The police car pulls up next to him and the officers grab his arms. The man struggles and tries to run away, but the officers are able to restrain him. The scene then cuts to a police station, where the man is being questioned by the police. The video then switches to a different scene, where a group of people are gathered around a police car, looking on. Another scene shows a person sitting at a desk, typing on a computer. The video then cuts back to the police station, where the man is being questioned by the police.",
+    "reference_length": 4066,
+    "candidate_length": 684,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.5277979969978333,
+        "normalized_cosine": 0.5277979969978333
+      },
+      "fine_grained": {
+        "precision": 0.6286912858486176,
+        "recall": 0.5680776958664259,
+        "f1_score": 0.5968495215582404,
+        "num_gt_chunks": 36,
+        "num_pred_chunks": 8
+      },
+      "hybrid": {
+        "hm_cf": 0.5602039337480619
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.2538425922393799,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "043": {
+    "reference": "The video opens with a woman wearing a brown checkered top and black shorts, checking her reflection in a mirror in a clothing store. She is blonde. Another woman, visible in the mirror, is wearing a blue dress. The blonde woman turns, adjusts her clothing, and speaks to a dark-haired woman dressed in blue. The camera alternates between their faces as they converse. The blonde woman then puts on sunglasses, and the camera shifts to the woman in blue, who continues to speak while both look down at something. The blonde woman gestures with her hands, grabs a coat on a nearby counter, and notices a man running in the background. She turns to look at him, pauses at a gallery entrance, and sees three other men chasing the man in blue from earlier. Surprised, she grabs a jacket and joins the pursuit. The scene cuts to show the man in blue, now wearing a red tie, sprinting through the store with the three men and the blonde woman in pursuit. The woman briefly stops upon seeing a life-sized toy Formula 1 car, gets in, and starts driving it. The camera cuts to the man in blue and red tie, still running, while she accelerates in the F1 car. As the man runs, he shoves another man in a blue suit out of his way, while the three men following him also push mannequins and a woman aside to clear their path. The blonde woman in the F1 car screams as she speeds through, causing the men to step aside. She catches up to the man in blue, who grabs the wheel and climbs onto the car behind her. They exchange words as the car continues through the store’s corridors. While they speed down the aisles, they narrowly avoid a man in a black suit who leaps over the car, followed by another person who jumps out of the way. The camera cuts to their faces as they talk, showing expressions of panic. Ahead, two security guards stand, blocking their path, while people in the aisle clear the way. Spotting the guards, the woman hits the brakes, skidding to a U-turn. With the man still clinging to the car, they turn and drive back toward the three men who had been chasing them, causing the men to retreat. As they speed back down the aisle, the camera shows another security guard holding something in his hand. The man in blue waves his hand to signal the guard to step aside. In a close-up, the security guard, wearing glasses and holding a spray can, aims it toward them. The woman quickly veers left to avoid him and heads down a staircase. The scene cuts to a close-up of a man in knight's armor who sees them approaching. He lowers his helmet visor and readies a mace. The camera alternates between the faces of the blonde woman, the man in blue and red tie, and the knight. As they ride down the stairs, they knock the armored man aside, causing him to stumble. The scene then shifts to the guard with the spray can, who chases after them down the stairs, joined by the original three men. In the final sequence, the woman in the brown checkered top and the man in blue shirt and red tie continue to ride the F1 car through the store as the chase intensifies.",
+    "candidate": "In the video, a group of people are engaged in a retail center where they are seen running around. An attractive woman in a blue jacket and red blouse sneaks up to a mannequin, grabs its hand, and starts running away. There are other people in the store who are playing and pretending to be in the movies. One man runs in a racer car and passes the others. Another woman walks towards a dressing mirror, and then grabs the hand of another mannequin and runs. The video then cuts to the scene where two men are seen running in the same direction as the attractive woman. Overall, it appears to be a playful and fun environment where people are enjoying themselves.",
+    "reference_length": 3064,
+    "candidate_length": 663,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.525175929069519,
+        "normalized_cosine": 0.525175929069519
+      },
+      "fine_grained": {
+        "precision": 0.658494234085083,
+        "recall": 0.5863823996436212,
+        "f1_score": 0.6203497096378925,
+        "num_gt_chunks": 31,
+        "num_pred_chunks": 7
+      },
+      "hybrid": {
+        "hm_cf": 0.568809154677157
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.0765080451965332,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "044": {
+    "reference": "The video begins with a brunette woman and a man wearing a dark hat and coat, standing together and laughing while looking off to the side. Behind them is another man in a dark suit, standing indoors with green plants visible in the background. The man in the hat, with his fingers on his lips, makes a gesture, and the woman looks at him, smiling, while the man laughs. The scene transitions to a model of a white airplane on a stand on a table. Next, the scene shifts to a man in a dark blue jacket standing beside an elderly woman wearing a shawl, seated in a room with several small screens displaying video feeds on the wall. A table with a water glass and jug sits nearby. The video then cuts to a large hall with black-and-white geometric patterns on the tiled floor, where four people are standing in a circle, facing outward. The camera shifts back to the man in the dark hat standing beside the brunette woman. Beside her are two other men in dark suits, one with short hair; they are all looking down at the tables and examining something. The camera pans to a man in a dark suit, wearing a blue shirt and red tie, looking down as the brunette woman stares at him. She then pats the man in the dark hat while continuing to look at the man with the blue shirt and red tie. The camera shifts to show the man in the blue shirt and red tie holding a teacup and saucer, glancing back at the group. As all four people look at him, he winks at them, takes a sip, and walks away. Next, the camera zooms in on the man in the dark hat as he turns around. The brunette woman places her hands on either side of her head, the man with short hair puts his one hand on back of his head, and the other man in the dark suit looks up, smiling with his mouth open. The scene transitions to a large study room, where a man in a dark blue suit, holding something in his hand, sits on a brown sofa against a background of shelves filled with books and a large clock nearby. An elderly man with gray hair and a blue suit approaches and sits beside him.The elderly man in blue suit talks to the man in dark blue suit sitting beside him. They stare at each other as the older man glances at the item the other man is holding—a photo frame. The man with gray hair hands the photo frame to the man in the dark blue suit and speaks to him while looking down. The man in the dark blue suit wipes a tear from his face, looks up, and smiles. They converse back and forth for a while, after which the man with gray hair smiles, gets up, and walks away, laughing.",
+    "candidate": "In the video, we see a group of people interacting in a busy shop. A man with a fedora and a man with a black t-shirt are standing and talking to a woman. The woman is standing in front of a table with an enclosed photograph on it. The men are discussing something while the woman looks at the photograph. The scene is filled with conversation and movement as the people walk in and out of the shop.",
+    "reference_length": 2541,
+    "candidate_length": 399,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.5595455169677734,
+        "normalized_cosine": 0.5595455169677734
+      },
+      "fine_grained": {
+        "precision": 0.6055052042007446,
+        "recall": 0.5673569284734272,
+        "f1_score": 0.5858106647995031,
+        "num_gt_chunks": 21,
+        "num_pred_chunks": 5
+      },
+      "hybrid": {
+        "hm_cf": 0.5723769365346225
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 0.7952361106872559,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "045": {
+    "reference": "The video opens with a blonde woman in a brown and black striped shirt sitting in a bright room with white-painted walls, suggesting daytime. She is typing on a laptop in front of her. On the table, there is a bottle, a blue coffee mug, and a tissue stand with tissue papers. The woman starts speaking and glances to her left as she talks. The camera shifts to a man in a blue T-shirt standing in a room with a kitchen in the background. Then, it cuts to another blonde woman in a light-colored printed T-shirt sitting on a brown sofa with a brown teddy bear, both facing the back of the sofa. The woman appears stressed. The camera returns to the first blonde woman in the brown and black striped shirt, who touches her face thoughtfully while talking, then resumes typing on her laptop, searching for 'Patrick Meighan' on Google. Meanwhile, the teddy bear jumps backward on the sofa. The scene shifts to the man in the blue T-shirt, who speaks briefly and then turns away.Next, the camera shows the blonde woman in the striped shirt talking on the phone while still seated in the same spot. The view then transitions to the inside of a fridge as the man in the blue T-shirt opens its door. The brown teddy bear is beside him, looking into the fridge, where there is a brown bottle among other items.Both the man and the teddy bear are glancing at the bottle as the teddy bear grabs the bottle and runs off .The camera returns to the blonde woman, now seated at the table talking on the phone. In the background, the teddy bear is seen running, with the man in the blue T-shirt chasing it. As she continues her conversation, the teddy bear briefly pauses, looks around, then runs toward the kitchen while the man calls after it. The teddy bear trips and falls as it exits the kitchen, and the man picks up the brown bottle from the floor. However, the teddy bear grabs the bottle, and the man lifts the teddy bear along with it. This action occurs in the background while the blonde woman remains on the phone.As she continues her call, the man punches the teddy bear a few times, causing it to fall. He attempts to open the bottle, but the teddy bear attacks him, snatching the bottle and running off again. The teddy bear then hides behind the brown sofa, drinking from the bottle. The man approaches and grabs the bottle, but as he opens it, liquid squirts onto the floor. The blonde woman, still on the phone, turns around, smiles, brushes her hair back, laughs, then looks at her phone, stands up, and speaks to others in the room.The camera briefly returns to the other blonde woman on the sofa, who shows a sense of relief as she watches the woman in the striped shirt talking. The man in the blue T-shirt, holding the bottle and standing beside the teddy bear, exchanges looks with the woman in the striped shirt and speaks. The camera then shifts back to the woman in the striped shirt, who smiles and continues speaking.Suddenly, the camera cuts to the teddy bear, who makes a hand gesture toward the man in the blue T-shirt. The man smiles and leans toward the teddy bear. The camera then shows the other blonde woman on the sofa, who also makes a hand gesture and smiles. Finally, the scene shifts to the man in the blue T-shirt and the teddy bear engaging in a friendly conversation.The scene transitions to a dimly lit venue with a crowd seated and watching a stage. On stage are four people: a man in a white T-shirt, a man in a purple shirt, a woman in a green top, and another man in a green T-shirt, who is under a spotlight in front of a red brick wall with a circular sign that reads 'IMPROV COMEDY.' The man in the green T-shirt walks back and forth, making hand gestures as he speaks to the audience, marking the end of the video.",
+    "candidate": "In the video, a woman is sitting at a table looking at her phone. A man wearing a striped shirt is sitting next to her, staring at her phone as well. They are both on a video call. The woman nods her head as the man is talking to her. Suddenly, she jumps and screams, and the screen changes to a different view. The screen now shows an animated character, and the woman continues to react in fear and surprise. The scene then shifts to a table in a different room, where two people are seated at a table. A woman is seen talking on her phone while another person sits across from her, watching the screen. The woman's face changes to one of fear and surprise, and then back to a normal expression. Finally, the video ends with a woman talking to someone on her phone while a man looks on.",
+    "reference_length": 3753,
+    "candidate_length": 788,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.4987252354621887,
+        "normalized_cosine": 0.4987252354621887
+      },
+      "fine_grained": {
+        "precision": 0.6540945947170258,
+        "recall": 0.5633684513824326,
+        "f1_score": 0.6053510372474125,
+        "num_gt_chunks": 28,
+        "num_pred_chunks": 10
+      },
+      "hybrid": {
+        "hm_cf": 0.5468894605398408
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.2225151062011719,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "046": {
+    "reference": "The video opens with a heavily armored truck driving forward along a dusty road, set against a backdrop of desert mountains. The truck, featuring a large metal plow at its front, is designed to push through obstacles and has an industrial, post-apocalyptic appearance, with weathered metal surfaces. In the background, another vehicle follows the truck. The scene shifts to a man driving a vehicle; he has a large injury on his right hand, from which blood is flowing. While driving, the injured man glances to his right, and the camera reveals dynamite inside a brown bag on the seat beside him. The camera then focuses on a close-up of the man's face, capturing his tense expression and sweat as he looks forward. The video transitions to a desolate landscape, where a large group of people is scattered across barren ground, all converging towards a central point in the distance. The setting is dystopian, with visible structures in the background, including an industrial or makeshift building and a water tower. The camera then cuts to a vast crowd of people running across the desert landscape, with two vehicles approaching them in the distance. As the armored truck drives into the crowd, it runs over people in its path. The camera cuts to the man with the injured hand, driving the armored vehicle through the crowd. Another camera angle shows a top-down view of the barren landscape, with hundreds of people spread out and the truck moving through them. As the man hits multiple people, he attempts to turn the truck. The camera follows the vehicle as it turns, then shifts to an interior view, showing the man sliding inside the cab as the truck begins to flip over. The camera then captures the truck, flipped over and sliding across the barren ground through the crowd of people. The scene changes to show the man lying down, looking around the truck’s interior, where he finds a cigarette. He puts the cigarette in his mouth and searches his pocket for a lighter. The view transitions to show the crowd covered in dust, gathered around the overturned truck. The camera cuts to multiple hands pressing against the truck’s metal-grate window. The injured man watches the hands attempting to break in. He then ducks down, cigarette in his mouth, and lights a match to ignite the dynamite. In the final scene, the man lights his cigarette with a smile, looking up at the crowd of people staring down at him through the window. As they struggle to get inside, the man, smoking his cigarette, has set off the dynamite.",
+    "candidate": "In the video, a man is shown riding in a large vehicle in a desert-like environment. The man is approached by a group of zombies, who break the windows of the vehicle and attack the man. The man is smoking a cigarette before the attack. As the zombies swarm the vehicle, the man gets stabbed and falls to the ground. The scene then transitions to a close-up shot of the zombies' claws and ends with the man's body on the ground.",
+    "reference_length": 2528,
+    "candidate_length": 428,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.5654594898223877,
+        "normalized_cosine": 0.5654594898223877
+      },
+      "fine_grained": {
+        "precision": 0.6692191600799561,
+        "recall": 0.6165609567061715,
+        "f1_score": 0.641811768899256,
+        "num_gt_chunks": 23,
+        "num_pred_chunks": 5
+      },
+      "hybrid": {
+        "hm_cf": 0.6012212297475962
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 0.8090436458587646,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "047": {
+    "reference": "The video opens with a man in a white shirt and sunglasses sitting outdoors, talking on the phone and looking to his left, with a background of greenery and plants. The camera shifts to a bald man in white clothing and sunglasses, holding a red-covered book while seated with greenery behind him and several books in front. The bald man starts speaking, looking to his right, seemingly talking to the man in the white shirt. As he speaks, he flips through the red-covered book and glances at it. The scene transitions to a man in a white and blue shirt, holding a green phone in a room with brown, patterned walls. He is walking and talking on the phone. The scene then shifts to a man in a light blue shirt with a red tie, holding a phone between his shoulder and ear, talking while looking to the side. This man briefly adjusts the phone with his hand and shifts in his chair while conversing. The video returns to the man in the white and blue shirt holding a green phone. He looks down, then forward, and sets the phone on a table with many books beside it. He looks around, then down again as the camera shifts to the table, focusing on a book titled The House We Built, and then another book filled with text. The camera captures the man contemplating as he looks at the books on the table. He then picks up one book, examines several others one by one, and returns them to their original places. He finally picks up a black-covered book labeled “ARGO.” The scene transitions to the two men—one in the white shirt holding a phone and the bald man with the red-covered book—sitting side by side. Behind them are lush green plants, and in front, a table piled with books. The man in the white shirt continues talking on the phone while the bald man flips through his book. The video then shows the man in the white and blue shirt walking while reading the book in his hand. The scene shifts as the man in the white and blue shirt walks outdoors to where the two men are seated. He approaches them, starts reading from his book, and looks at them. The man in the white shirt glances at the bald man, who responds to the man standing across the table as he sets his book down. The camera shows a close-up of the man in the white shirt turning to his left, talking to the bald man, who briefly glances at him before looking back at the man standing. The camera then shows a close-up of a ballpoint pen as the man in the white and blue shirt continues to speak. The scene transitions to a tower with a white base and a rotating blue sphere on top, marked with a red cross. The camera zooms out to reveal a flagpole at the tower's base, along with a large red crossroad structure, a yellow building, and a few surrounding trees. As the camera pans out, cars are seen driving on the road in front of the tower. The scene shifts back to the man in the white and blue shirt, now wearing a blue jacket, walking alongside the bald man, who is now in a brown jacket. They walk down a street lined with flower plants, and the man in the blue jacket looks at the bald man as they walk. The camera returns to the revolving sphere on the tower, then transitions to an office-like space. A man wearing glasses and a dark suit sits at a table covered with stacks of books and other objects, facing a person who is likely the man in the white and blue shirt. In the final scene, the man in glasses is seen conversing with the bald man and the man in the white and blue shirt, now wearing a blue jacket.",
+    "candidate": "In the video, a group of men are sitting at a table outside, engaging in a heated discussion. One of the men is seen reading a newspaper while the others are talking animatedly. One of the men gets up to get a drink, while another man picks up his phone. The scene then transitions to a close-up shot of the newspaper, revealing news about a robbery in Las Vegas. The video ends with the men continuing their discussion at the table.",
+    "reference_length": 3488,
+    "candidate_length": 433,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.47989824414253235,
+        "normalized_cosine": 0.47989824414253235
+      },
+      "fine_grained": {
+        "precision": 0.6166085958480835,
+        "recall": 0.5616476645072301,
+        "f1_score": 0.5878462766134148,
+        "num_gt_chunks": 30,
+        "num_pred_chunks": 5
+      },
+      "hybrid": {
+        "hm_cf": 0.5284155347812528
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.0657517910003662,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "048": {
+    "reference": "The video begins with a woman in a black dress walking slowly in an enclosed space, against a backdrop of blue and white panels. She is moving forward and appears to be talking to someone. The camera then shifts to reveal the interior of the space, where she walks slowly toward an older man in a white shirt, who is seated and looking at her. This enclosed area contains numerous metal pipes and objects, and the camera gradually pans across these metal elements, eventually framing the conversation between the woman and the older man. The scene then transitions to focus on the older man as he looks up at the woman, who is gazing down at him. While still seated, he raises his left hand to his cheek and pulls his skin down, revealing the face of a young man beneath an artificial mask of an older man's face. The woman appears shocked at this reveal. The camera captures a close-up of her face, reflecting her disbelief, before transitioning back to the young man who is now looking at her. The young man stands up, speaking to the woman as he removes a light-colored jacket, revealing a dark suit over his white shirt. The camera again shows the woman’s stunned expression in a close-up. The shot then shifts to the young man, who turns around to see a door marked with a hazard sign, now open, through which a man dressed in dark tactical gear is aiming a gun at him. The young man raises his arms and steps back as the armed man signals for him to move backward. The next shots focus on the armed man pointing his gun alternately at the young man and between him and the woman in the black dress, who is watching the situation intently. The camera captures a close-up of the armed man as he speaks to the young man, who responds. The woman in the black dress is also shown in a close-up, watching the exchange. The young man looks downward briefly, while the armed man keeps his gun trained on him, and the woman continues to watch them both intently.",
+    "candidate": "In the video, there are several scenes showing different characters interacting with each other. One scene takes place inside a large metal vessel or ship, where a young woman is being watched over by a man with a stern expression. The woman seems worried and hesitant as she talks to the man. There are also several other men in the background who are watching the scene unfold. In another scene, a man in a suit and sunglasses is shown in a different environment, possibly in a building. Another scene involves a woman and two men, where one of the men is checking on the woman's condition. There are also scenes of a woman talking to a man in a warehouse, where she seems concerned about her safety. Additionally, there are scenes of a man staring at the woman, where he seems to be assessing her situation. Another scene shows a man watching a woman from a distance while he is in an office. There are also scenes of a woman being checked up on by a man and another woman, and a scene where a woman is being followed by a man while she is walking. Overall, the video depicts various characters interacting with each other in different settings.",
+    "reference_length": 1959,
+    "candidate_length": 1148,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.548019528388977,
+        "normalized_cosine": 0.548019528388977
+      },
+      "fine_grained": {
+        "precision": 0.6459879929369147,
+        "recall": 0.6265529058873653,
+        "f1_score": 0.6361220366542583,
+        "num_gt_chunks": 16,
+        "num_pred_chunks": 11
+      },
+      "hybrid": {
+        "hm_cf": 0.5887932808310363
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 0.8751325607299805,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "049": {
+    "reference": "The video begins with a man dressed in black driving a car at night, holding a gun in his right hand while steering. The scene transitions to show the roads illuminated by streetlights as a white limousine speeds down the street, taking a turn. Inside the limousine, a man in a black suit with a bleeding nose is crying, seated beside a woman in a green dress in the back seat. The man, visibly upset, is seated sideways, while the woman in green, also unsteady, trips on the seat and then sits upright as the limousine takes sharp turns. The camera shifts to show the man in black still holding the gun over the steering wheel and driving the white limousine while yelling. It then transitions to a busy road at night with streetlights on, showing a white limousine speeding behind a black limousine. Another scene depicts a man in a white and black jacket driving alongside a man in a white suit, who is holding a gun out the window, aiming and shouting. Next, a woman in a black dress adorned with jewelry is seen lying on a seat, holding a black bottle. The man in the white suit glances back to observe the woman, who appears drunk, leaning forward and speaking while still holding the bottle. The camera then focuses back on the man in black, who looks out the window and aims his gun backward as he drives. A shot is fired from the white limousine, and the man in black smiles while looking forward to continue driving. Inside the limousine, the woman in green, looking intoxicated, falls over to the other side of the seat, lifting her leg upward, while the crying man in the black suit leans to the opposite side. The man in black yells something toward the back of the limousine as he holds his gun. Another interior shot of the limousine shows the man in black raising his hand, while the woman in green falls from one seat to another. The camera transitions to the roof of the white limousine, where the man in the black suit emerges, holding a gun and looking scared, glancing back at a man in a sleeveless black jacket who is coming out of the sunroof of the limousine behind him, armed with a semi-automatic weapon. The man in the sleeveless jacket opens fire at the limousine in front of him, prompting the man in the black suit to duck back inside. Inside the white limousine, the man in the black suit, holding a gun, makes frantic gestures while looking scared, as the woman in green is tossed around the car during sharp turns. The scene returns to the man in the black jacket driving, and then to a close-up of the crying man in the black suit speaking. Another shot shows bullets fired from the window of the white limousine, which is being pursued by the black limousine, where a man in a sleeveless jacket is shooting from the sunroof. The scene then cuts to a woman in a black dress, visibly intoxicated, trying to stand up through the sunroof. Observing this, the man in the white suit peers through the internal window of the limousine, watching her as she raises a bottle and yells, smiling with both hands up. The scene then transitions to the man in the sleeveless jacket firing his weapon at the white limousine, where the woman in black yells through the sunroof. As the man in the sleeveless jacket aims at her, he shoots and breaks the bottle in her hand, shocking her. The man in the white suit notices this and, now out of the sunroof, points his gun toward the man in the sleeveless jacket, firing back. The man in the sleeveless jacket returns fire, looking alternately to the front and back. In the final scenes, the woman in black attempts to unbutton the shirt of the man in the white suit while he stands and shoots from the sunroof. The man in the white suit slaps her hand away while continuing to fire in front. The camera then shows the man in the white and black jacket driving the limousine to the side of the road as the man in the white suit continues aiming forward through the sunroof. As the chase intensifies, the man in the white suit is seen firing toward the man in the sleeveless jacket, yelling at the woman in black, who stares back at him. The man in the white suit then takes a final shot at his target as the man in the sleeveless black jacket retreats inside the limousine as the black limousine veers onto a different path. The final scene shows the man in black speeding away in his limousine, making a sharp turn.",
+    "candidate": "In the video, a group of people are having fun in a convertible car. The man in the front seat is swinging a golf club around, hitting a woman in the back seat. The woman is seen screaming and being hit with the club multiple times. The man also throws a golf ball out the window. At some point, someone is throwing a ball back in. The video ends with the car driving away.",
+    "reference_length": 4380,
+    "candidate_length": 373,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.5187297463417053,
+        "normalized_cosine": 0.5187297463417053
+      },
+      "fine_grained": {
+        "precision": 0.5960192581017812,
+        "recall": 0.566413434282426,
+        "f1_score": 0.5808393330498524,
+        "num_gt_chunks": 31,
+        "num_pred_chunks": 6
+      },
+      "hybrid": {
+        "hm_cf": 0.5480303976262367
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.400613784790039,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "050": {
+    "reference": "The video begins with a gymnastics training scene where a woman wearing a red top and black shorts is positioned on a red springboard, preparing for a beam routine, while other athletes practice in the background. She performs a handstand on the springboard, then flips over to mount the long wooden beam. The camera shows her seated on the beam, raising one hand to the side as part of her routine, while a man in a light-colored T-shirt lifts the red springboard off the floor. The woman, still seated on the beam with her legs on either side, holds one arm confidently upright while the other rests on the beam. In the background, empty blue seats inside the gymnasium are visible. She then rises onto the beam, using one hand for support, kneeling on one knee while extending her other leg in front and lifting both arms into the air. She balances on the beam, raising one leg behind her and positioning her arms—one in front, one behind. The scene shifts to a metal pipe in the ceiling, dripping water that splashes onto a wire below. The camera then transitions to two large industrial ventilation fans mounted on the ceiling. A close-up of one fan shows it running at high speed, wobbling as a loose screw begins to detach. The camera zooms in on the screw, which eventually falls onto the beam, landing upside down as the woman continues her routine. A close-up shot captures the woman's leg as she practices on the beam, with a woman in a white T-shirt watching her in the background, while a man in a white T-shirt faces the other direction, observing other athletes. The woman shifts her foot back and forth to balance, unaware of the screw on the beam near her foot, adding suspense and a sense of danger. The camera then shifts to the wet wire on the floor, with water splashing around it and droplets still falling. The scene transitions to a man in a black shirt sitting alone in a blue seat, watching the woman perform. She executes a spin on the beam, followed by a flip, and the camera focuses on the man, who sighs in relief. She completes a side flip, then performs a front flip, landing on the floor as the screw remains on the beam. She raises her arms in celebration, and the man in the black shirt stands up to applaud her performance. Smiling, the woman looks toward him and then turns to walk away. The camera returns to the metal pipe on the ceiling, still dripping water directly onto a white line on the floor. As a water droplet hits an exposed section of the wire, sparks are generated, creating a sense of imminent danger as the woman’s foot moves toward the live wire. Another athlete approaches, offering her a white towel as he nearly steps on the wet wire. She pauses, takes the towel, and uses it to wipe her face. She then glances to the side and drops the towel near the wire, stepping on it before the camera transitions to a woman in a white T-shirt speaking. The scene shifts to an athlete performing on the uneven bars while other athletes and a woman in a white T-shirt observe. The athlete does a split on one bar, completes a full flip, stands on the bar, and jumps to another bar to continue her routine.",
+    "candidate": "In the video, a group of women are practicing gymnastics on a gym floor. They can be seen stretching, flipping, and doing handstands. At one point, a young girl jumps on a gymnastics beam and lands it. In another scene, a woman walks out of the beam, while another person steps off the beam. They are all performing various gymnastics routines and exercises.",
+    "reference_length": 3151,
+    "candidate_length": 358,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.6430222392082214,
+        "normalized_cosine": 0.6430222392082214
+      },
+      "fine_grained": {
+        "precision": 0.7112166404724121,
+        "recall": 0.6006094469473913,
+        "f1_score": 0.6512500966253746,
+        "num_gt_chunks": 26,
+        "num_pred_chunks": 5
+      },
+      "hybrid": {
+        "hm_cf": 0.647110015137432
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 0.9949266910552979,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "051": {
+    "reference": "The video begins with a woman dressed in a dark outfit holding a chain in one hand and a gun in the other, running through a futuristic corridor with bright white walls and floors illuminated by grid lines. The corridor features evenly spaced rectangular columns on each side. The woman frequently looks back as she runs. The camera pans out to reveal a second woman, dressed in blue with blood on her mouth, chasing the woman in black. The woman in blue catches up and tries to grab her arm from behind. The woman in black flips the woman in blue over, causing her to fall forward. The woman in blue stands up, faces the woman in black, and yells at her. Meanwhile, the woman in black ascends the stairs, while the woman in blue, bloodied, prepares to attack. The woman in black strikes the woman in blue with the chain, causing more blood to spill from her mouth. The camera then shifts to show two men, who appear zombie-like, running through the corridor. The woman in black turns back, fear evident in her eyes. The scene continues as the woman in black strikes the woman in blue on the head, flipping her over. She then turns and hits a man in a gray jacket with the chain as he attempts to attack her, causing him to fall. She wraps the chain around her neck, turns, and hits another man in a dark jacket rushing towards her. She shoots the man in the gray jacket as he tries to stand, following up with a round kick that knocks him down. She also wraps the chain around the neck of the man in the dark jacket and shoots the woman in blue twice. In the background, a guard and a woman with pink hair rush toward her. As the guard approaches from behind, the woman in black performs a backflip, kicking him in the head and flipping the man in the dark jacket wrapped in her chain. The woman with pink hair attempts an attack, but the woman in black ducks and shoots the man in the gray jacket in the head. She then strikes the woman with pink hair with the chain, trips her, and knocks her down by grabbing her leg. The woman in black kneels, shooting at an approaching man in a dark suit. She then turns and shoots the woman with pink hair in the head. Standing up, she sees the man in the dark suit sprinting toward her. As he jumps, she lies down, shooting him twice in the stomach while he's airborne. She rolls over, picks up her chain, wraps it around an approaching security guard, pulls him to his knees, hits him in the face, and observes others sprinting toward her. She flips the security guard and tries to shoot a man in a gray and black jacket running at her. Grabbing a gun magazine from her leg gear, she is interrupted as the man in gray and black jacket knocks it out of her hand, causing it to fly through the air. The camera focuses on the magazine in mid-air as the woman in black appears to break the man’s hand, causing him to cry out. The magazine flies toward another man in a blue shirt sprinting toward her. She subdues the man in gray and black, pinning him to the ground, then retrieves and reloads the magazine. Twisting his head, she turns to shoot the man in the blue shirt while performing a backflip to kick another man in a black jacket approaching her. Looking down the corridor, she spots a security guard lying on the floor, staring at her, while one or two other men sprint toward her in the background. She steps on the back of the guard lying on the floor, kicking his head, then picks up her chain and swings it, striking a man in a suit who is running toward her. She strikes another man in a dark shirt with the chain, turns back, and swings the chain again, hitting a man in a blue shirt. In the final scene, she wraps the chain around her waist, turns, and shoots a man wearing a red tie in the forehead, causing blood to splatter from the back of his head. As he falls, another man in a suit appears behind him",
+    "candidate": "In the video, we see a series of scenes with different characters or entities. In the first scene, a woman in black leather is doing various martial arts moves, including jumping and kicking. Next, we see a group of people in black leather running around an industrial room. In another scene, a man is doing a backflip on a chain-link floor. Then, we see a woman and two men in black leather running across a white floor. In another scene, a man is doing a backflip onto a table with a white surface. After that, we see a woman in black leather swinging and kicking her legs in a white room. In the final scene, a group of people in black leather are running around in an open space, jumping and spinning around. Throughout the video, we also see characters doing flips, somersaults, and other acrobatic moves in an industrial environment. The scene is well-lit and the characters are dressed in black leather.",
+    "reference_length": 3863,
+    "candidate_length": 910,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.5004196166992188,
+        "normalized_cosine": 0.5004196166992188
+      },
+      "fine_grained": {
+        "precision": 0.6162527561187744,
+        "recall": 0.5903475913736556,
+        "f1_score": 0.6030220876500746,
+        "num_gt_chunks": 36,
+        "num_pred_chunks": 10
+      },
+      "hybrid": {
+        "hm_cf": 0.5469506558861943
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.2748134136199951,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "052": {
+    "reference": "The video begins with a man in a light brown jacket grabbing the arm of a man wearing a yellow jacket and red turtleneck in a crowded toy store to speak with him. The camera briefly shifts to a man in a blue jacket, who addresses them, and then returns to the man in the light brown jacket, who continues talking to the man in the yellow jacket with the red turtleneck. The man in the red turtleneck smiles awkwardly. The camera shifts back to the man in the light brown jacket, who is now looking at the man in the blue jacket as he speaks, before turning back to the man in the red turtleneck. In the background, a crowd stands in the toy store. The man in the red turtleneck then grabs the arm of another man wearing a similar yellow jacket and a red checkered shirt, still with an awkward smile. The man in the red checkered shirt turns around holding a white teddy bear. The camera zooms in on the man in the red checkered shirt laughing with his mouth wide open. The man in the light brown jacket, watching the man in the red checkered shirt laugh awkwardly, appears confused. Meanwhile, the man in the red checkered shirt turns, along with the man in the red turtleneck, to talk to a woman in a red hat who is holding a carton and pointing at the man in the light brown jacket. Both the man in the red turtleneck and the man in the red checkered shirt laugh with the woman in the red hat, while the man in the light brown jacket makes a hand gesture and turns away, looking annoyed. The camera then focuses on the man in the blue jacket, who appears irritated, and then shifts back to the woman in the red hat as she speaks with the man in the red turtleneck and the man in the red checkered shirt. The entire crowd starts pointing and laughing at the man in the light brown jacket and the man in the blue jacket. The man in the light brown jacket turns around, looking confused. The man in the red turtleneck makes a face and says something to the man in the light brown jacket as the whole crowd laughs. The man in the red turtleneck then sticks out his tongue and speaks to the man in the light brown jacket. The camera shifts to the man in the blue jacket, who nods as he observes. The man in the red turtleneck holds the carton that was previously with the woman in the red hat and shows it to the man in the light brown jacket while everyone in the background continues laughing. The man in the red checkered shirt, laughing with his mouth wide open, collapses to the ground while the crowd keeps laughing. The focus shifts back to the man in the light brown jacket, who is now visibly angry. He grabs the man in the red checkered shirt and the man in the red turtleneck, holding them by their clothes and lifting them off the ground. Both men, now looking scared, make nervous faces while staring at the man in the light brown jacket. Seeing their fear, the man in the light brown jacket smiles, places them back on the ground, and the two men, looking confused and scared, glance at each other before the man in the red turtleneck starts talking to the man in the light brown jacket. The man in the blue jacket watches their conversation while the man in the light brown jacket continues speaking to the man in the red turtleneck, who makes a hand gesture while nervously talking. The man in the light brown jacket then turns to his side and starts running. As he does, the man in the blue jacket hits him with a brown duffel bag he was carrying, causing the man in the light brown jacket to fly into a stack of toys, which fall to the ground along with him. As the man in the light brown jacket falls, a man in a red jacket can be seen sitting on the ground, playing with a toy. The scene transitions to the man in the blue jacket, wearing brown boots, running down an aisle in the toy store with a toy car racing alongside him. The camera shows the man in the blue jacket running around the store, while the man in the light brown jacket, confused, gets up, grabs a controller from the man sitting on the ground in the red jacket, and starts playing with it, making exaggerated faces. The scene then shows a yellow toy car speeding through the store and then returning. The camera shifts back to the man in the light brown jacket still playing with the controller, then back to the yellow toy car as it collides with the foot of the man in the blue jacket.",
+    "candidate": "In the video, there are multiple scenes of Arnold Schwarzenegger in different situations. In the first scene, Arnold is laughing with his friends at the toy store. In the second scene, Arnold is in a supermarket, interacting with his friends and a child. The third scene takes place at a store where Arnold is wearing a red hat, and he is surrounded by his friends. The fourth scene shows Arnold at the store again, and he is holding a stuffed animal. The fifth scene takes place in a store where Arnold is shown in a commercial, and he is holding a stuffed animal. The sixth scene takes place in a store, and Arnold is talking to his friends while holding a stuffed animal. The seventh scene takes place in a store, and Arnold is sitting on a cart and looking at the camera. In the eighth scene, Arnold is laughing with his friends and a child. In the ninth scene, Arnold is in a store, holding a stuffed animal and talking to his friends. The tenth scene shows Arnold at the store again, holding a stuffed animal and looking at the camera. The eleventh scene takes place in a store, and Arnold is shown sitting on a cart. In the twelfth scene, Arnold is at the store, holding a stuffed animal and talking to his friends. The thirteenth scene takes place in a store, and Arnold is standing, talking to his friends. The fourteenth scene shows Arnold at the store again, holding a stuffed animal and looking at the camera. In the fifteenth scene, Arnold is laughing and holding a stuffed animal while surrounded by his friends. Finally, the sixteenth scene shows Arnold standing in the store, holding a stuffed animal and talking to his friends.",
+    "reference_length": 4373,
+    "candidate_length": 1644,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.5524917244911194,
+        "normalized_cosine": 0.5524917244911194
+      },
+      "fine_grained": {
+        "precision": 0.5713478502105264,
+        "recall": 0.5317539688079588,
+        "f1_score": 0.5508403334692559,
+        "num_gt_chunks": 31,
+        "num_pred_chunks": 17
+      },
+      "hybrid": {
+        "hm_cf": 0.5516647931363239
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.5695693492889404,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "053": {
+    "reference": "The video begins with a man in a black suit and blue shirt looking to his side as he unbuttons his jacket. A guard observes him in a well-lit setting, with white panels in the background. As the camera shifts, it focuses on another man wearing a black jacket and gray shirt, who removes his glasses and hands them to a guard while looking in another direction. The scene returns to the man in the blue shirt, who receives instructions from a guard to raise his hand. He looks at his hand, pressing his palm inward, where he holds a green card. Following the guard’s directions, he turns his wrist to reveal his palm, flipping the card to the back of his hand and holding it with his fingers. In the background, the man in the black jacket and gray shirt is inspected by a second guard. The guard instructs the man in the blue shirt to turn around and place his hands behind his head. The man complies, and while doing so, the green card becomes hidden. The camera then transitions to a woman in a black dress, raising her hand as a guard inspects her. The camera cuts back to the man in the blue shirt, who is extending his arms with an ace of spades card visible in his palm. As the guard inspects him, the man flips the card to the back of his hand. While the guard examines his legs, the man discreetly flips the card again, catching it between his mouth and hand before moving it through his arm. The guard asks the man to turn around, and as he does so, he tosses the card behind him. The camera follows the card as it drifts to the man in the black jacket and gray shirt, who catches it from his right side, concealing it in his palm while being inspected from behind. The man slides the card into his sleeve, and as the guard inspects his arms, the camera captures the card hidden within his sleeve. The camera then shifts to a man in a gray suit with a red tie, standing in front of a display panel and looking in another direction. Behind him, a woman in a white apron and green gloves touches the panel. As the man in the black jacket and gray shirt raises his arm, the card slides further down his sleeve, and the camera reveals it gradually moving downward. In the background, a woman in a black dress watches him intently. The camera returns to the woman in the black dress as she converses with a guard, keeping her hand raised and then walking away. The camera follows the card as it slips out of the man’s pant leg and lands near the woman’s shoe as she walks past him. She notices the card, smiles subtly, and continues walking. A bald man then passes her, exchanging a glance. The woman approaches another guard, subtly retrieves the card, and shows it to both the bald man and the man in the black jacket. Following the guard’s instructions, she places her hands around her neck, tucking the card into her hair. She then lifts her hands and turns around, slipping the card into her blouse discreetly as the guard inspects her. She turns back, showing her palms to the guard as instructed. In the final scene, the guard asks her to raise her arms. As he inspects her, she suddenly pushes him back by his waist, placing her hands behind her back and continuing to conceal the card within her dress.",
+    "candidate": "In the video, a man is seen throwing playing cards while a woman is standing in front of him. The man and the woman are both wearing suits, and they are in a futuristic-looking room with a computer screen in front of them. The woman is calm and collected throughout the video.",
+    "reference_length": 3215,
+    "candidate_length": 276,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.5853271484375,
+        "normalized_cosine": 0.5853271484375
+      },
+      "fine_grained": {
+        "precision": 0.6193124651908875,
+        "recall": 0.5632628222306569,
+        "f1_score": 0.5899593720525595,
+        "num_gt_chunks": 30,
+        "num_pred_chunks": 3
+      },
+      "hybrid": {
+        "hm_cf": 0.5876341316218193
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 0.973517656326294,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "054": {
+    "reference": "The video opens with a man in a brown jacket standing in the middle of a crowded street. He looks away, and the scene transitions to a balcony adorned with a banner in Chinese characters hanging on the railing, with a red cloth draped above it. The camera then shifts to a group of martial arts students practicing forms, observed by a man in a red robe who appears to be their master, moving alongside them. Next, the scene transitions back to the man in the brown jacket, now accompanied by four other people, approaching the man in the red robe, as the students watch their interaction. As they converse, the man in the red robe gestures with his hand, inviting them inside, before briefly turning back to his students. He pauses, turns back with a smile, and exchanges respectful greetings with the man in the brown jacket, each folding their hands in a gesture of respect. The man in the brown jacket asks the man in the red robe something, to which he responds, and the brown-jacketed man folds his hands again in acknowledgment. The man in the red robe then instructs his students to step aside, creating an open space. The scene transitions to show several students in martial arts attire pointing toward their master, who stands in black clothing. The man in the red robe signals to a student standing nearby while the man in the brown jacket observes the red-robed master intently. The two men then prepare to spar. The man in the red robe assumes a fighting stance, adjusting his arms and legs, followed by the man in the brown jacket, who clenches his fists and readies himself. The camera captures the red-robed master attacking first, initiating a fight with the man in the brown jacket. They engage in combat, taking turns attacking and defending. During the fight, the man in the brown jacket counters an attack by turning and kicking the man in the red robe, pushing him back. The brown-jacketed man then re-establishes his stance while the red-robed master regains his balance and attacks again. The man in the brown jacket repeatedly strikes the man in the red robe, eventually knocking him to the ground. In the final moments, as the man in the red robe attempts to stand, he is kicked in the head by the man in the brown jacket, dropping to the ground again. The scene closes with the man in the red robe on the ground, defeated.",
+    "candidate": "In the video, we see a group of martial arts practitioners practicing various techniques in a courtyard. A man throws a kick at a bag, which another man then punches with a flying kick. The man who threw the kick looks angry while the other man who punched with a flying kick smiles. The scene then transitions to a group of people walking through a street while a man in a blue uniform stands on guard. The video ends with a group of people walking down a street and then a man walking away from the camera.",
+    "reference_length": 2350,
+    "candidate_length": 508,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.63161301612854,
+        "normalized_cosine": 0.63161301612854
+      },
+      "fine_grained": {
+        "precision": 0.6819918155670166,
+        "recall": 0.6021011597231815,
+        "f1_score": 0.6395612638279857,
+        "num_gt_chunks": 19,
+        "num_pred_chunks": 5
+      },
+      "hybrid": {
+        "hm_cf": 0.6355622910482271
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 0.7217953205108643,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "055": {
+    "reference": "The video begins with a silver car driving through a neighborhood with a fenced parking lot. The camera then shifts to the silver car entering a building complex's parking area. Inside the parking area, a crowd is visible, moving around. Two men exit the silver car: one wearing a checkered shirt and the other in a dark hooded outfit. Each man carries a bag, which they place on their shoulders. The camera then shows a group of people milling about, among whom the man in the dark hooded outfit and the man in the checkered shirt appear. The two men seem confused as they exchange a few words. The man in the checkered shirt struggles to adjust his bag's strap on his shoulder, while the man in the dark hooded outfit looks at him, with the crowd in the background. The camera next focuses on a group of people, all dressed in black, talking amongst themselves. One man in black makes a noticeable facial expression. The man in the hooded outfit glances at this group, then shifts his gaze to another nearby group. As the man in the hooded outfit and the man in the checkered shirt walk forward, the man in the checkered shirt notices a woman in a red dress with blonde hair, laughing as she rides a bicycle. He smiles while watching her. The woman on the bicycle stops beside a red car, where she meets a man in a gray shirt, and they share a kiss. The man in the gray shirt then turns and walks toward the man in the hooded outfit and the man in the checkered shirt, who are approaching him. The man in the gray shirt speaks to the man in the hooded outfit, who looks back at him and replies. Finally, the man in the checkered shirt speaks to the man in the gray shirt, who glances at him, smiles, and then resumes his conversation with the man in the hooded outfit.",
+    "candidate": "In the video, a group of teenagers is having a conversation outside of a high school. One of the boys is wearing a backpack and gets into a car. They start walking into the school. As they walk, they have a conversation about their social status. Meanwhile, a boy is seen getting out of a car with a backpack. He walks towards the group and joins them. Another boy is seen talking to his friend while walking with a backpack. The group of boys is walking into the high school, and the boy in the backpack joins them. There is also a person carrying a backpack walking into the school. Throughout the video, the camera shows different angles of the scene, including close-ups of the faces of the characters. The video concludes with the group of boys walking into the school.",
+    "reference_length": 1770,
+    "candidate_length": 774,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.5001206398010254,
+        "normalized_cosine": 0.5001206398010254
+      },
+      "fine_grained": {
+        "precision": 0.6066129045052961,
+        "recall": 0.5814316868782043,
+        "f1_score": 0.5937554312466857,
+        "num_gt_chunks": 17,
+        "num_pred_chunks": 11
+      },
+      "hybrid": {
+        "hm_cf": 0.5429305092596258
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 0.7900233268737793,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "056": {
+    "reference": "The video opens with a man wearing a varsity jacket standing on top of a red-and-white Ferris wheel cage against a blue sky in broad daylight. The man jumps toward a white metal beam that is holding another red-and-white Ferris wheel cage. He hangs onto the beam, eventually sitting on top of it and wrapping his legs around it. Next, he pulls out a black rope that is draped around his neck. The camera then shifts to a group of children looking up at the Ferris wheel, followed by a view of people seated inside one of the red-and-white cages, also gazing upward. The scene returns to the man in the varsity jacket, who has tied the black rope around the white metal beam he is sitting on, looking down as he prepares to descend. He slides a bit, then hangs from the metal beam supporting the cage. The camera pans to the crowd below, where two men in black suits and red ties stand among the onlookers, also watching the man above. The man in the varsity jacket is now hanging from the rope, peering through the cage bars. The scene then cuts to a boy in a blue denim jacket and a girl in a white sweater, both lying on the floor of the cage, holding onto a black pole and looking back. As he hangs on the rope, the man in the varsity jacket speaks, looking both up and down. The boy in the denim jacket and the girl in the white sweater respond, still lying on the cage floor and gripping the pole. The camera shifts back to the crowd, which is intently watching; among them is a green stuffed animal held by one of the spectators. The scene returns to the man in the varsity jacket, who extends his hand toward the boy in the denim jacket and the girl in the white sweater. The girl grabs his hand and climbs onto his back. Meanwhile, the boy in the denim jacket sits up, holding onto the black pole. As the man steadies himself on the rope with the girl clinging to his back, a bolt securing the cage to the white beam loosens and breaks off. The man and the girl plummet from the cage, causing the crowd below to scream in fear. The man in the varsity jacket, with the girl still holding onto his back, swings through the air and tries to grab onto the cage. The camera shifts to a woman in the crowd wearing a green dress who covers her mouth, screaming. The boy in the denim jacket inside the cage clings to the black pole, visibly frightened. The man in the varsity jacket reaches out to the boy, urging him to jump. Hesitantly, the boy reaches out, eventually leaping toward the man. As he falls, he attempts to grab onto the man's leg. In the final scene, the camera captures the crowd on the ground, with the woman in the green dress screaming and covering her mouth. Meanwhile, the man in the varsity jacket swings with the girl in the white sweater on his back, holding onto the boy in the denim jacket’s hand, suspended in the air.",
+    "candidate": "In the video, a group of people can be seen at a carnival. One boy is seen climbing up a metal pole and grabbing onto a bar for support while another person encourages him. The carnival attendant can be seen talking to the boys, as well as other children who are riding the ride. The people in the crowd are seen looking on, and the carnival owner is seen talking to them. The scene is filled with a lively and energetic atmosphere.",
+    "reference_length": 2847,
+    "candidate_length": 432,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.5823874473571777,
+        "normalized_cosine": 0.5823874473571777
+      },
+      "fine_grained": {
+        "precision": 0.6225907564163208,
+        "recall": 0.566429649408047,
+        "f1_score": 0.593183871620919,
+        "num_gt_chunks": 26,
+        "num_pred_chunks": 5
+      },
+      "hybrid": {
+        "hm_cf": 0.5877360824132041
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 0.9124619960784912,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "057": {
+    "reference": "The video begins with a man wearing an off-white suit and a black T-shirt standing and smiling against a backdrop of illuminated high-rise buildings at night. He gives a surprised reaction by extending his arms. The scene then transitions to the interior of a large elevator, where a man in a black suit and black hat stands beside a woman in a black leather jacket. Behind her is a man in a black leather jacket, and behind the man in the black hat is another man with short hair, also dressed in a black suit with a white shirt.The camera then shifts back to the man in the off-white suit, who is now in a lavish apartment standing in front of a large window with a view of the high-rise buildings, all lit up. The man in the off-white suit gestures with his hand while moving forward, and the camera cuts back to the elevator, where a bald man and another man in a leather jacket grab the man in the black hat, the woman in the black leather jacket, and the two men behind them (one in a leather jacket and another in a black suit) and push them out of the elevator.The scene shifts again to the man in the off-white suit, now sitting on a brown sofa as he puts on a shoe. A man in a black suit speaks to him while he is trying to wear the shoe. The man in the off-white suit then gets up from the sofa and walks toward four people: the man in the black hat, the man in the black suit, the woman in the black leather jacket, and another man in a black leather jacket. The man in the off-white suit walks on a transparent glass floor with visible blue lights.As he approaches the group, they all stare at him. The man in the off-white suit gestures toward them, smiling as he talks. The woman in the black leather jacket steps back while he converses with the man in the black suit. The man in the off-white suit places a finger to his upper lip momentarily during the conversation. The man in the black suit responds, and the man in the off-white suit smiles before replying.The man in the off-white suit then turns to his left and starts walking, followed by the four people he was speaking with. The woman in the leather jacket turns around briefly to look at the bald man. The camera then shifts back to the man in the off-white suit, who raises a finger and points it toward the group, as the woman in the black leather jacket nods and speaks to him. As he continues walking, the man in the off-white suit grabs something from a side table, turns back, and eats it while talking.The man in the black suit begins speaking, and the man in the black hat smiles as he watches him. The woman in the black leather jacket tilts her head and looks at the man in the black suit as he talks. In the final scene, the man in the off-white suit is speaking, while the woman in the black leather jacket stares at him suspiciously. Meanwhile, as the man in the black suit looks down, the man in the black hat points a finger toward him.",
+    "candidate": "In the video, a group of people, including two men and two women, are standing by a glass table in an office. The man in the center is taking bites of a sandwich and talking. They are surrounded by a cityscape. Two other men stand next to the group, while a woman walks past the glass table. There is also a man standing on the other side of the glass table. The video fades into black, and then we see the same scene, with the camera moving around the room.",
+    "reference_length": 2928,
+    "candidate_length": 458,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.6201598048210144,
+        "normalized_cosine": 0.6201598048210144
+      },
+      "fine_grained": {
+        "precision": 0.624275783697764,
+        "recall": 0.5747598508993784,
+        "f1_score": 0.598495400812293,
+        "num_gt_chunks": 18,
+        "num_pred_chunks": 6
+      },
+      "hybrid": {
+        "hm_cf": 0.609135035469104
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.0522449016571045,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "058": {
+    "reference": "The video opens with a man in a black suit and a woman in a green gown examining a body lying on a table before them. The body’s face is partially open, facing the camera. Despite lying on its back, the face reveals a metallic cavity in the brain area, inside which a small, alien-like creature resides. The creature is seen moving, its eye rolling up and looking to the side. The camera shifts to the man in the black suit and the woman in the green gown, who are observing the open metallic cavity containing the small alien creature. A close-up reveals the creature moving its head and attempting to speak. The man in the black suit appears to engage in conversation with it, while the woman responds to the creature’s attempts to communicate. The man in the black suit nods as he watches the creature inside the metallic shell in the brain of the body lying on the table. The alien creature raises its arm and tries to speak, showing signs of pain. The camera then focuses on the creature as it tilts its head, closes its eye, and seemingly dies. The woman in the green gown looks on with an expression of pity. The scene transitions to an orange cat perched atop a metallic cabinet, looking down. The cat meows, and the focus shifts back to the man in the black suit, who appears saddened and speaks. He turns away, then turns back, raising his arms. The camera then shows the woman in the green gown, who gestures and speaks to him, pointing around the room. Finally, an older man in a black suit steps in front of the younger man, who watches the older man intently from behind.",
+    "candidate": "In the video, a person in a spacesuit and two people in white lab coats are in a laboratory. They are observing a strange being, which appears to be some sort of alien or robot. The being has a futuristic look and seems to be connected to some machinery. One of the people in white lab coats is conducting tests on the being, while the other two people observe and talk. The strange being seems to be responding to the test by moving its head and arms, indicating that it is functioning. The laboratory is filled with various medical instruments and technology, suggesting that the tests are related to medical research. The person in the spacesuit appears to be a technician, while the two people in white lab coats are likely scientists or researchers. The scene is lit with bright, artificial light, giving it a futuristic and high-tech feel. Overall, the video shows a fascinating and intriguing scene of a unique being being tested in a laboratory setting.",
+    "reference_length": 1585,
+    "candidate_length": 961,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.5629382133483887,
+        "normalized_cosine": 0.5629382133483887
+      },
+      "fine_grained": {
+        "precision": 0.6564616229799058,
+        "recall": 0.6063488572835922,
+        "f1_score": 0.6304109146470533,
+        "num_gt_chunks": 16,
+        "num_pred_chunks": 9
+      },
+      "hybrid": {
+        "hm_cf": 0.5947670897666943
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 0.6784472465515137,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "059": {
+    "reference": "The video opens with an aerial view from an aircraft, flying over a large body of water and mountainous terrain while taking a sharp turn. The camera captures the underside of the plane, showing part of its structure with the vast expanse of water below. The scene transitions to a close-up of a man in a black T-shirt, sweating and moving his hand, possibly to steer the aircraft. He is seated inside the cockpit, with the blue water visible in the background. The view then shifts to an exterior shot of a small aircraft with white wings and a black body flying over the water, also taking a sharp turn. The camera cuts to a bald man in a brown T-shirt, looking to his side and speaking to someone beside him, with the interior of the aircraft and the blue sea visible in the background. A back-and-forth exchange occurs between the man in the black T-shirt and the man in the brown T-shirt. At one point, the man in the brown T-shirt opens a compartment in front of him and retrieves a flare gun. The scene transitions again to show the aircraft flying over a green forest and mountainous terrain. Inside the cockpit, the man in the brown T-shirt puts on sunglasses. Meanwhile, the man in the black T-shirt switches seats with him. The camera then shows the front part of the aircraft opening as the bald man emerges, partially standing out from the cockpit while the plane flies over the forest below. He then clicks a mechanical switch, glances back at the cockpit, and signals to the man in the black T-shirt, who is now wearing headphones. In response, the man in the black T-shirt gives a thumbs-up. An interior shot captures the bald man in the brown T-shirt, half out of the cockpit, looking forward toward the landscape, which includes green forests and the sea. The camera then shows the aircraft beginning to descend, with the bald man still in the open front position. Next, the scene shifts to a small settlement on a hill covered in forest, with the aircraft flying low over the area. Houses are visible near the water as the aircraft descends further. The bald man in the brown T-shirt appears to be struggling with a button, and the camera cuts to show the aircraft firing bullets at the port area by the water, where numerous military-clad figures attempt to retaliate. Several people on the port are seen falling as bullets from the aircraft hit them. A close-up shows ammunition firing from the aircraft and its impact on the individuals at the port. The man in the black T-shirt is shown intensely focused as he flips a mechanical switch on the aircraft’s dashboard. The view shifts to the back of the plane, where it releases white smoke, trailing as it flies over the port. The camera captures liquid raining down on the port as the aircraft passes. In the next scene, a bald man in a black T-shirt, armed with a gun, is shown taking cover with another man in a black suit behind a vehicle. The bald man in a white shirt (likely a continuity error from an editing perspective) glances at his wrist as liquid continues to rain down from the aircraft above. Nearby, a group of people with guns is also seen taking cover while the liquid falls. The scene then shifts to show the bald man in the brown T-shirt leaning out from the front of the aircraft, drawing his gun, and firing at the port below. This action is followed by a flare erupting from the aircraft, hitting the port and causing a massive explosion that engulfs the area in flames.",
+    "candidate": "In the video, a group of men, including Dwayne Johnson, are gathered at a dock. One man jumps off the plane onto the dock, while the others watch. The scene shifts to a plane on the runway, with a man shooting a gun out of the plane. The video then transitions to a close-up of the man holding a gun, before showing a group of people standing near the plane, watching as another person shoots a gun out of it. The video ends with the plane flying in the sky.",
+    "reference_length": 3465,
+    "candidate_length": 458,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.5732074975967407,
+        "normalized_cosine": 0.5732074975967407
+      },
+      "fine_grained": {
+        "precision": 0.6690459370613098,
+        "recall": 0.6135483271089094,
+        "f1_score": 0.6400964465696394,
+        "num_gt_chunks": 29,
+        "num_pred_chunks": 5
+      },
+      "hybrid": {
+        "hm_cf": 0.604808191917383
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.1202127933502197,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "060": {
+    "reference": "The video begins with a man wearing a black T-shirt, glasses, and headphones, hanging upside down in an enclosed space with white walls. A CD disk is held in his mouth as he faces a high-tech computer. Using a rope secured around his waist, he removes the CD disk from his mouth and inserts it into the computer. The camera cuts to a close-up of the computer screen, displaying a stick figure and a decibel meter. The scene transitions to a bald man in black clothing, wearing headphones with a microphone extended toward his mouth, in an enclosed space with red metal pipes in the background. Next, the scene shifts to a man lying on the floor, looking up as a mouse approaches him, with a ventilation fan visible in the background. The video returns to the man in the black T-shirt, still hanging upside down, watching the computer screen as processing takes place. The camera then returns to the mouse moving forward, while the man lying down in black clothing observes it. The scene shifts to a gloved hand pulling a black rope through a pulley. The computer screen appears again, showing the message 'Download Successfully Completed.' The man hanging upside down moves his right hand while looking in the same direction.Next, the video transitions to the man in black clothing, lying down and watching the mouse approaching him. Struggling, he loses grip on the rope, and the camera focuses on the pulley flipping. The scene cuts to the man in the black T-shirt, who, still hanging, begins to fall to the ground. The camera shifts to the man in black lying on the floor, who grabs the rope and pulls, leading to a scene where the man in the black T-shirt hovers just above the ground, extending his arms and legs in an attempt to avoid touching it.The camera shows the interior of the enclosed space, with the man in the black T-shirt now hanging close to the floor, arms extended, over a white panel resembling a spider web. He struggles to keep from touching the ground. Another camera angle shows a small display screen, along with the man in black clothing and gray gloves lying down, trying to pull the rope.The camera cuts to the bald man, who appears frightened. It then returns to the man in the black T-shirt, still struggling to stay off the floor. The next scene displays a digital meter showing a temperature reading. The video then cuts to a hallway with white walls, where one man in a black suit is exiting, and another is entering. The man in the black suit who enters is holding a metal bin and, after briefly facing the wall, turns and walks into the room he came from, passing another man in a black suit carrying a briefcase.In the final scenes, the camera shows an overhead view of the man in the black T-shirt, suspended by the rope with arms and legs extended. The video closes with a close-up of his face as he looks intently at something.",
+    "candidate": "The video is set in a high-tech computer room. A group of men are attempting to hack into a computer system. They are dressed in black outfits and use various hacking techniques, such as typing on a keyboard, moving large boxes, and jumping around to get to the computer. One man is seen laying on a desk, using his feet to press the keys on the keyboard. Another man is seen using a dolly to move a large box into position. There is also a scene where two men are seen jumping around the room, trying to outmaneuver each other. The video ends with the men successfully hacking into the computer system. Overall, the video showcases the excitement and urgency of the hacking process.",
+    "reference_length": 2868,
+    "candidate_length": 683,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.5240297317504883,
+        "normalized_cosine": 0.5240297317504883
+      },
+      "fine_grained": {
+        "precision": 0.5809089839458466,
+        "recall": 0.5690631256217048,
+        "f1_score": 0.5749250427130184,
+        "num_gt_chunks": 21,
+        "num_pred_chunks": 8
+      },
+      "hybrid": {
+        "hm_cf": 0.5482988434289672
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.1796863079071045,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "061": {
+    "reference": "The video begins with a man in a brown suit sitting on a chair, with a table in front of him. On the table, there are various types of cups. Across from him, another man is partially visible, seated. The man in the brown suit is speaking. The camera shifts to show another angle, revealing a man in a dark gray suit eating with a fork. The man in the brown suit is now visible only from the back. In the background, there is a vase.The man in the dark gray suit gestures forward with his hand, and then both men stand up. The scene transitions to show a door and some greenery outside, possibly leaves. The camera then cuts to a man in a brown coat holding a stick and walking through the foliage. This man looks inside the doorway. The focus shifts back to the man in the dark gray suit and the man in the brown suit, who are now walking into what appears to be a large room. They stop and stand across from each other, locking eyes.The man in the dark gray suit clasps his hands together, making a double-fist gesture. The man in the brown suit mirrors the gesture while saying something. The camera zooms out as the man in the dark gray suit raises his arms, appearing ready to fight. The man in the brown suit does the same, preparing for confrontation. The camera captures him raising his left hand, taking a defensive stance. The man in the dark gray suit steps forward and attempts a move resembling karate. The two engage in combat, with the man in the dark gray suit advancing aggressively while the man in the brown suit steps back, defending himself. The man in the brown suit counters with strikes and blocks. An aerial view reveals their fight in progress, followed by close-ups of the man in the dark gray suit executing various moves with his hands and feet. At one point, he lifts his leg to kick, but the man in the brown suit grabs it. They continue exchanging blows.A wide shot shows the man in the brown suit flipping the man in the dark gray suit into the air and throwing him backward. The camera transitions to an external view through a window, where the man in the brown suit is seen lying on the ground, possibly in pain. The man outside in the brown coat smiles and says something approvingly. The scene cuts back to the man in the dark gray suit standing and preparing to fight again.The focus briefly shifts to the man outside before returning to the room, now empty except for the patterned floor and scattered items. The man in the dark gray suit is shown retreating, apparently after being struck. The man in the brown suit pursues him toward the window. The scene transitions back inside, where the man in the dark gray suit leans against a wall for support as the man in the brown suit approaches, possibly questioning him.The man in the dark gray suit responds, steps forward, and gestures with his right hand, saying something. The man in the brown suit follows, also speaking. This interaction is visible from an external view. The camera switches to a wide-angle shot of the two men. The man in the dark gray suit spins and attacks, but the man in the brown suit remains stationary, skillfully defending himself. The scuffle continues, with punches and strikes exchanged in rapid succession.Close-up shots alternate between the two men as the intensity of the fight increases. The man in the dark gray suit attempts an eye-poke gesture, which is briefly shown in detail, while the man in the brown suit holds his ground. The fight escalates, with both men landing heavy blows and retreating to regain composure before resuming their attacks.The man in the brown suit eventually grabs the arm of the man in the dark gray suit and delivers a kick to his midsection. A top-down shot captures the man in the dark gray suit being struck. Another angle shows the man in the brown suit grabbing his opponent by his clothing and face, throwing him to the ground. He follows this with a series of punches while standing over him. The man in the brown suit places his foot on the back of the man in the dark gray suit, asserting dominance.Finally, the man in the brown suit lifts the man in the dark gray suit by his arms, straightening his clothing as the scene concludes.",
+    "candidate": "In the video, a man in a room breaks a board with his elbow. Another man is sitting at a table, holding his arm as if he is in pain. There is a man outside the window who is standing. The first man comes back to his seat, and then a woman comes in, grabs something, and leaves. Another man comes and stands at the table where the first man was sitting. Two men are in the room having a conversation. Then, the second man comes over and joins the other two men. Another man gets up from the table and begins to punch someone in the head. A woman comes in, takes something, and leaves. Finally, a man in the room starts hitting someone's head with his fist, while another man watches from the other side of the table.",
+    "reference_length": 4201,
+    "candidate_length": 715,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.6699867248535156,
+        "normalized_cosine": 0.6699867248535156
+      },
+      "fine_grained": {
+        "precision": 0.6575719177722931,
+        "recall": 0.6095794928379548,
+        "f1_score": 0.6326668664592717,
+        "num_gt_chunks": 39,
+        "num_pred_chunks": 10
+      },
+      "hybrid": {
+        "hm_cf": 0.6507922054016034
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.3010809421539307,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "062": {
+    "reference": "The video begins with a man in a dark suit opening a green door using his right hand. A woman in a red dress is also present. The scene appears to be set inside a house or building with narrow corridors. The man in the dark suit proceeds to open another door-like structure, seemingly made of metal bars. The camera then switches to a close-up view, revealing what looks like an elevator. The man in the suit closes the elevator’s metal bar door and then closes an additional door. As the scene progresses, the camera briefly shows a hand placed between the doors. The perspective shifts again, showing someone outside the elevator opening the metal door. This individual, a man wearing a red dress and sporting long hair with a serious expression, enters the elevator, closing the door behind him. He then removes his slippers, which the camera focuses on briefly. The camera cuts to show all three individuals in the elevator. The man in the dark suit is seen standing while the woman in the red dress appears worried, positioned behind him. The camera captures the man in the red dress moving his head from side to side in a deliberate manner. Meanwhile, the man in the dark suit hands something to the woman, and a close-up shows the exchange.Tension escalates as the man in the red dress suddenly kicks the man in the dark suit. The latter defends himself using what appears to be a karate move. The two engage in a fight, with the man in the red dress performing various kicks and punches, while the man in the dark suit counters with defensive moves and occasional blows. The woman, visibly distressed, remains pressed against the elevator wall. During the fight, the man in the dark suit protects the woman from potential attacks. The camera alternates between close-ups of punches and wide shots of the struggle, highlighting the intense hand-to-hand combat. At one point, the woman drops something, which the camera reveals to be a stack of three packages. The battle intensifies, with the man in the dark suit attempting to subdue the man in the red dress, who retaliates with aggressive kicks and punches. The elevator's external indicators are briefly shown, with the floor numbers changing. Inside the elevator, the man in the dark suit manages to land significant blows, forcing the man in the red dress to retreat momentarily. However, the latter quickly resumes his attack, this time targeting the woman. The man in the dark suit intervenes, grabbing the assailant’s tattooed arm and countering with a series of punches.The fight spills out of the elevator when the man in the red dress strikes the man in the dark suit, causing him to stumble back into the woman. She appears shaken but uninjured. The man in the dark suit regains his composure, blocks further attacks, and resumes his defense. The altercation culminates with the man in the red dress spinning and attempting another attack, but he is ultimately struck by the man in the dark suit, forcing him to retreat to the side of the elevator. A third individual in a light gray sweater briefly enters the scene and is hit by the man in the red dress. The background briefly shows a sign that reads -Shan Pharmacy-, along with text in a foreign language.The video concludes with the man in the dark suit exiting the elevator. The woman remains inside, leaning against the wall with a worried expression as she watches him leave. The man in the dark suit closes both elevator doors behind him, bringing the scene to a close.",
+    "candidate": "In the video, a man is seen being attacked by another man in a hallway. The attacker repeatedly throws quick punches at the man's face and head. The man defends himself by ducking and avoiding the punches. After a few seconds, the attacker stops. The video then cuts to a different scene, where a different man is seen standing in a hallway and being hit by another man. The same man in the first scene is seen again, this time being attacked by a woman. The man is seen trying to duck and avoid the punches. The video then cuts to a scene where a person is seen entering a room and getting into a physical fight with another person.",
+    "reference_length": 3498,
+    "candidate_length": 633,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.5679945945739746,
+        "normalized_cosine": 0.5679945945739746
+      },
+      "fine_grained": {
+        "precision": 0.6946907937526703,
+        "recall": 0.57040711119771,
+        "f1_score": 0.6264441151780215,
+        "num_gt_chunks": 32,
+        "num_pred_chunks": 8
+      },
+      "hybrid": {
+        "hm_cf": 0.5957892494922098
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.1563317775726318,
+        "is_fallback_score": false
+      }
+    }
+  },
+  "063": {
+    "reference": "The video begins with a close-up of a woman in a purple dress shaking her head and speaking. The camera switches to another woman in a red-and-black dress who is listening attentively. The setting appears to be a theater or an auditorium, as rows of chairs are visible in the background. The camera returns to the woman in the purple dress, who gestures emphatically with her hands while speaking in a stressed manner, possibly complaining. She raises her hand and points to the side. The frame then shows both women, with the woman in the red-and-black dress looking upward as the woman in the purple dress walks past her. Next, the camera focuses on another woman in a dark gray shirt, who is walking and speaking as she passes the woman in the red-and-black dress. The camera then cuts to a woman wearing something resembling a ribbon-like thing in her hair, who is speaking to the woman in the red-and-black dress before walking past her. Another woman with red hair enters the scene, passing by the woman in the red-and-black dress. The camera shows the three women standing together in front of the rows of chairs. The woman with red hair is speaking while another woman in the group in the purple dress, picks up a bag. The woman in the dark gray shirt is holding something as the camera shifts to the woman in the red-and-black dress, who is speaking and pointing at herself. The frame shows all the women together, with the woman with red hair placing her hands on her waist while speaking animatedly, raising her hand as if angry or complaining. The background remains consistent, with chairs visible. The camera shows the woman in the red-and-black dress becoming visibly upset and speaking while walking toward the camera. The women in the dark gray shirt and purple dress appear anxious. The scene shifts to show the woman with red hair, along with the woman wearing the ribbon-like thing in her hair. In the background, another woman in a pink dress enters the scene. The camera then pans to a group consisting of the woman in the pink dress on the left, another woman in the center wearing a green dress, and a third woman on the right wearing a white-and-gray dress. The woman in the red-and-black dress is now shown in a slightly crouched position, as the camera captures a wide angle from behind her. Other women are visible in front of her. Another woman in a blue dress enters from the left, holding something in her hand. The wide angle reveals the woman in the crouched position  throwing up. The camera captures reactions from others in the group, who appear startled, making various facial expressions and covering their noses. The woman with red hair is then seen screaming, which draws applause from the woman with the red hair. Behind her, the woman with the ribbon-like thing in her hair strikes an expressive pose, seemingly shocked. The camera stays on the woman with red hair, who continues speaking, then switches to show other women moving around near the chairs. The woman in the purple dress is seen screaming, while the camera pulls back to reveal the woman in the red-and-black dress from behind, still hunched over. The woman in the blue dress is shown making peculiar facial expressions. The camera captures a wider shot of all the women seated or standing around the chairs, with the woman with red hair continuing to scream. She stands at the front, while the woman with the ribbon-like thing in her hair is seen in the background holding something to her nose. The woman with red hair starts running away, and the camera follows the woman in the red-and-black dress as she runs away too. The camera cuts to the woman in the purple dress chasing after the woman in the red-and-black dress. The woman in red hair intervenes, and the three women engage in a scuffle. The camera briefly focuses on the woman with the ribbon-like thing in her hair awkwardly entering the frame, while the woman in the blue dress descends a staircase in the background. The scene shifts back to the woman in the purple dress holding onto the woman in the red-and-black dress, while the woman with red hair stands behind them. The fight intensifies as more women join in. The woman in the purple dress pushes the woman with the ribbon-like thing in her hair, causing her to fall to the floor. The camera briefly cuts to the woman in the blue dress and another woman in gray attire before returning to the woman on the floor, who lies in a puddle of vomit, moving her eyes side to side. The woman in the purple dress and the woman with red hair are then shown fighting, and a small blue button with the letter -B- engraved on it falls to the ground.The camera zooms in on two hands near the button before cutting to the woman in the purple dress, who is screaming and jumping up and down. The video concludes with a shot of the woman in the green dress and the woman in the white-and-gray dress seated on the chairs in the background.",
+    "candidate": "In the video, a group of girls are sitting in a room. Suddenly, a woman rushes in, knocks one of the girls to the ground, and starts yelling at her. The other girls in the room also start yelling at the girl who was knocked down. The woman continues yelling and pointing at the girl, while the other girls follow her lead and join in. The video ends with the group of girls yelling at the girl who was knocked down.",
+    "reference_length": 4951,
+    "candidate_length": 415,
+    "similarity_data": {
+      "coarse_grained": {
+        "cosine_similarity": 0.5943830013275146,
+        "normalized_cosine": 0.5943830013275146
+      },
+      "fine_grained": {
+        "precision": 0.6532511949539185,
+        "recall": 0.5654415895299214,
+        "f1_score": 0.6061829506826989,
+        "num_gt_chunks": 41,
+        "num_pred_chunks": 5
+      },
+      "hybrid": {
+        "hm_cf": 0.6002249871855206
+      },
+      "metadata": {
+        "success": true,
+        "error_message": "",
+        "computation_time": 1.4726519584655762,
+        "is_fallback_score": false
+      }
+    }
   }
 }
