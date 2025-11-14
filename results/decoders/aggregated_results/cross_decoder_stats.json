@@ -144,30 +144,68 @@
             "max": 0.758958
           }
         }
+      },
+      "kalm": {
+        "coarse_grained": {
+          "mean": 0.735152,
+          "std": 0.071817,
+          "min": 0.29328,
+          "max": 0.889259
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.706269,
+            "std": 0.037471,
+            "min": 0.54258,
+            "max": 0.817212
+          },
+          "recall": {
+            "mean": 0.706118,
+            "std": 0.042045,
+            "min": 0.444748,
+            "max": 0.805657
+          },
+          "f1": {
+            "mean": 0.705849,
+            "std": 0.037002,
+            "min": 0.488817,
+            "max": 0.790433
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.719341,
+            "std": 0.052229,
+            "min": 0.366605,
+            "max": 0.836939
+          }
+        }
       }
     },
     "timestamp": "2025-11-13T18:46:10.893769",
-    "best_decoder": "qwen3-8b",
+    "best_decoder": "kalm",
     "ranking": [
+      "kalm",
       "qwen3-8b",
       "gte-qwen2-7b",
       "nemo",
       "nv-embed"
     ],
-    "performance_gap": 0.164926
+    "performance_gap": 0.26785
   },
   "summary": {
     "total_models": 17,
-    "total_decoders": 4,
-    "overall_best_decoder": "qwen3-8b",
-    "avg_performance_gap": 0.159083,
+    "total_decoders": 5,
+    "overall_best_decoder": "kalm",
+    "avg_performance_gap": 0.2622,
     "decoder_averages": {
       "nv-embed": 0.464031,
       "gte-qwen2-7b": 0.600323,
       "nemo": 0.529475,
-      "qwen3-8b": 0.630778
+      "qwen3-8b": 0.635046,
+      "kalm": 0.72623
     },
-    "timestamp": "2025-11-13T21:51:00.136623"
+    "timestamp": "2025-11-13T22:44:51.806886"
   },
   "llava_next_video": {
     "decoder_comparisons": {
@@ -314,17 +352,54 @@
             "max": 0.766558
           }
         }
+      },
+      "kalm": {
+        "coarse_grained": {
+          "mean": 0.690007,
+          "std": 0.069609,
+          "min": 0.510252,
+          "max": 0.874923
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.715162,
+            "std": 0.034341,
+            "min": 0.642128,
+            "max": 0.804641
+          },
+          "recall": {
+            "mean": 0.698862,
+            "std": 0.037296,
+            "min": 0.610715,
+            "max": 0.798984
+          },
+          "f1": {
+            "mean": 0.706571,
+            "std": 0.032233,
+            "min": 0.630788,
+            "max": 0.797953
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.697263,
+            "std": 0.049164,
+            "min": 0.568282,
+            "max": 0.831183
+          }
+        }
       }
     },
     "timestamp": "2025-11-13T18:46:59.513001",
-    "best_decoder": "qwen3-8b",
+    "best_decoder": "kalm",
     "ranking": [
+      "kalm",
       "qwen3-8b",
       "gte-qwen2-7b",
       "nemo",
       "nv-embed"
     ],
-    "performance_gap": 0.173681
+    "performance_gap": 0.27792
   },
   "llava_one_vision": {
     "decoder_comparisons": {
@@ -471,17 +546,54 @@
             "max": 0.793036
           }
         }
+      },
+      "kalm": {
+        "coarse_grained": {
+          "mean": 0.790689,
+          "std": 0.049475,
+          "min": 0.66569,
+          "max": 0.897831
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.751575,
+            "std": 0.034797,
+            "min": 0.668515,
+            "max": 0.850703
+          },
+          "recall": {
+            "mean": 0.725243,
+            "std": 0.035269,
+            "min": 0.644832,
+            "max": 0.838124
+          },
+          "f1": {
+            "mean": 0.737819,
+            "std": 0.031008,
+            "min": 0.659096,
+            "max": 0.827427
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.762927,
+            "std": 0.036495,
+            "min": 0.66814,
+            "max": 0.851009
+          }
+        }
       }
     },
     "timestamp": "2025-11-13T18:47:41.017731",
-    "best_decoder": "qwen3-8b",
+    "best_decoder": "kalm",
     "ranking": [
+      "kalm",
       "qwen3-8b",
       "gte-qwen2-7b",
       "nemo",
       "nv-embed"
     ],
-    "performance_gap": 0.148201
+    "performance_gap": 0.239007
   },
   "longva": {
     "decoder_comparisons": {
@@ -628,17 +740,54 @@
             "max": 0.715958
           }
         }
+      },
+      "kalm": {
+        "coarse_grained": {
+          "mean": 0.617066,
+          "std": 0.080691,
+          "min": 0.420024,
+          "max": 0.811365
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.664939,
+            "std": 0.043336,
+            "min": 0.539259,
+            "max": 0.774785
+          },
+          "recall": {
+            "mean": 0.657998,
+            "std": 0.042049,
+            "min": 0.55924,
+            "max": 0.758314
+          },
+          "f1": {
+            "mean": 0.660999,
+            "std": 0.039019,
+            "min": 0.567678,
+            "max": 0.754532
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.636557,
+            "std": 0.057035,
+            "min": 0.492401,
+            "max": 0.781917
+          }
+        }
       }
     },
     "timestamp": "2025-11-13T18:48:49.630568",
-    "best_decoder": "qwen3-8b",
+    "best_decoder": "kalm",
     "ranking": [
+      "kalm",
       "qwen3-8b",
       "gte-qwen2-7b",
       "nemo",
       "nv-embed"
     ],
-    "performance_gap": 0.180136
+    "performance_gap": 0.290882
   },
   "longvu": {
     "decoder_comparisons": {
@@ -785,17 +934,54 @@
             "max": 0.767728
           }
         }
+      },
+      "kalm": {
+        "coarse_grained": {
+          "mean": 0.77662,
+          "std": 0.060097,
+          "min": 0.519855,
+          "max": 0.890623
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.741532,
+            "std": 0.0387,
+            "min": 0.634667,
+            "max": 0.830035
+          },
+          "recall": {
+            "mean": 0.719066,
+            "std": 0.035028,
+            "min": 0.611411,
+            "max": 0.812794
+          },
+          "f1": {
+            "mean": 0.729589,
+            "std": 0.031052,
+            "min": 0.636155,
+            "max": 0.810724
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.751605,
+            "std": 0.041004,
+            "min": 0.586003,
+            "max": 0.848797
+          }
+        }
       }
     },
     "timestamp": "2025-11-13T18:49:43.987013",
-    "best_decoder": "qwen3-8b",
+    "best_decoder": "kalm",
     "ranking": [
+      "kalm",
       "qwen3-8b",
       "gte-qwen2-7b",
       "nemo",
       "nv-embed"
     ],
-    "performance_gap": 0.157301
+    "performance_gap": 0.241418
   },
   "minicpm": {
     "decoder_comparisons": {
@@ -942,17 +1128,54 @@
             "max": 0.744935
           }
         }
+      },
+      "kalm": {
+        "coarse_grained": {
+          "mean": 0.776146,
+          "std": 0.04836,
+          "min": 0.580869,
+          "max": 0.884496
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.706284,
+            "std": 0.029659,
+            "min": 0.612433,
+            "max": 0.770494
+          },
+          "recall": {
+            "mean": 0.702788,
+            "std": 0.030858,
+            "min": 0.619548,
+            "max": 0.796433
+          },
+          "f1": {
+            "mean": 0.704234,
+            "std": 0.026552,
+            "min": 0.61789,
+            "max": 0.770201
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.737949,
+            "std": 0.032717,
+            "min": 0.607607,
+            "max": 0.815862
+          }
+        }
       }
     },
     "timestamp": "2025-11-13T18:50:31.934672",
-    "best_decoder": "qwen3-8b",
+    "best_decoder": "kalm",
     "ranking": [
+      "kalm",
       "qwen3-8b",
       "gte-qwen2-7b",
       "nemo",
       "nv-embed"
     ],
-    "performance_gap": 0.170498
+    "performance_gap": 0.258994
   },
   "mplug": {
     "decoder_comparisons": {
@@ -1099,17 +1322,54 @@
             "max": 0.789106
           }
         }
+      },
+      "kalm": {
+        "coarse_grained": {
+          "mean": 0.789523,
+          "std": 0.072517,
+          "min": 0.61878,
+          "max": 0.931976
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.762443,
+            "std": 0.037106,
+            "min": 0.648515,
+            "max": 0.876675
+          },
+          "recall": {
+            "mean": 0.739478,
+            "std": 0.034012,
+            "min": 0.647913,
+            "max": 0.82328
+          },
+          "f1": {
+            "mean": 0.750473,
+            "std": 0.031991,
+            "min": 0.659917,
+            "max": 0.819909
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.768328,
+            "std": 0.04665,
+            "min": 0.647653,
+            "max": 0.860674
+          }
+        }
       }
     },
     "timestamp": "2025-11-13T18:51:35.088466",
-    "best_decoder": "qwen3-8b",
+    "best_decoder": "kalm",
     "ranking": [
+      "kalm",
       "qwen3-8b",
       "gte-qwen2-7b",
       "nemo",
       "nv-embed"
     ],
-    "performance_gap": 0.163045
+    "performance_gap": 0.239245
   },
   "oryx": {
     "decoder_comparisons": {
@@ -1256,17 +1516,54 @@
             "max": 0.752879
           }
         }
+      },
+      "kalm": {
+        "coarse_grained": {
+          "mean": 0.666485,
+          "std": 0.074114,
+          "min": 0.433702,
+          "max": 0.838072
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.711341,
+            "std": 0.043143,
+            "min": 0.526734,
+            "max": 0.814834
+          },
+          "recall": {
+            "mean": 0.654571,
+            "std": 0.04333,
+            "min": 0.544177,
+            "max": 0.770787
+          },
+          "f1": {
+            "mean": 0.681201,
+            "std": 0.038553,
+            "min": 0.535313,
+            "max": 0.79044
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.672716,
+            "std": 0.054084,
+            "min": 0.496796,
+            "max": 0.813559
+          }
+        }
       }
     },
     "timestamp": "2025-11-13T18:52:13.406093",
-    "best_decoder": "qwen3-8b",
+    "best_decoder": "kalm",
     "ranking": [
+      "kalm",
       "qwen3-8b",
       "gte-qwen2-7b",
       "nemo",
       "nv-embed"
     ],
-    "performance_gap": 0.181982
+    "performance_gap": 0.274967
   },
   "Qwen2.5-32B": {
     "decoder_comparisons": {
@@ -1413,17 +1710,54 @@
             "max": 0.74765
           }
         }
+      },
+      "kalm": {
+        "coarse_grained": {
+          "mean": 0.769423,
+          "std": 0.048328,
+          "min": 0.633278,
+          "max": 0.904417
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.721563,
+            "std": 0.030993,
+            "min": 0.600881,
+            "max": 0.80457
+          },
+          "recall": {
+            "mean": 0.71552,
+            "std": 0.032641,
+            "min": 0.619919,
+            "max": 0.823375
+          },
+          "f1": {
+            "mean": 0.718176,
+            "std": 0.027532,
+            "min": 0.628836,
+            "max": 0.785052
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.742434,
+            "std": 0.033615,
+            "min": 0.634157,
+            "max": 0.840518
+          }
+        }
       }
     },
     "timestamp": "2025-11-13T18:52:58.589632",
-    "best_decoder": "qwen3-8b",
+    "best_decoder": "kalm",
     "ranking": [
+      "kalm",
       "qwen3-8b",
       "gte-qwen2-7b",
       "nemo",
       "nv-embed"
     ],
-    "performance_gap": 0.166506
+    "performance_gap": 0.254365
   },
   "Qwen2.5-72B": {
     "decoder_comparisons": {
@@ -1570,17 +1904,54 @@
             "max": 0.764742
           }
         }
+      },
+      "kalm": {
+        "coarse_grained": {
+          "mean": 0.772391,
+          "std": 0.055787,
+          "min": 0.621542,
+          "max": 0.869721
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.73765,
+            "std": 0.034948,
+            "min": 0.640375,
+            "max": 0.825863
+          },
+          "recall": {
+            "mean": 0.710028,
+            "std": 0.034431,
+            "min": 0.611099,
+            "max": 0.844963
+          },
+          "f1": {
+            "mean": 0.723261,
+            "std": 0.031218,
+            "min": 0.625395,
+            "max": 0.807331
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.746442,
+            "std": 0.039477,
+            "min": 0.651321,
+            "max": 0.822975
+          }
+        }
       }
     },
     "timestamp": "2025-11-13T18:53:39.123789",
-    "best_decoder": "qwen3-8b",
+    "best_decoder": "kalm",
     "ranking": [
+      "kalm",
       "qwen3-8b",
       "gte-qwen2-7b",
       "nemo",
       "nv-embed"
     ],
-    "performance_gap": 0.167334
+    "performance_gap": 0.249004
   },
   "sharegpt4": {
     "decoder_comparisons": {
@@ -1727,17 +2098,54 @@
             "max": 0.747961
           }
         }
+      },
+      "kalm": {
+        "coarse_grained": {
+          "mean": 0.716993,
+          "std": 0.07264,
+          "min": 0.502763,
+          "max": 0.909145
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.713151,
+            "std": 0.036059,
+            "min": 0.60237,
+            "max": 0.795896
+          },
+          "recall": {
+            "mean": 0.697799,
+            "std": 0.041305,
+            "min": 0.582351,
+            "max": 0.811677
+          },
+          "f1": {
+            "mean": 0.704944,
+            "std": 0.034462,
+            "min": 0.592192,
+            "max": 0.792625
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.709799,
+            "std": 0.04999,
+            "min": 0.55256,
+            "max": 0.839752
+          }
+        }
       }
     },
     "timestamp": "2025-11-13T18:54:44.669513",
-    "best_decoder": "qwen3-8b",
+    "best_decoder": "kalm",
     "ranking": [
+      "kalm",
       "qwen3-8b",
       "gte-qwen2-7b",
       "nemo",
       "nv-embed"
     ],
-    "performance_gap": 0.161945
+    "performance_gap": 0.248708
   },
   "timechat": {
     "decoder_comparisons": {
@@ -1848,16 +2256,90 @@
             "max": 0.648791
           }
         }
+      },
+      "qwen3-8b": {
+        "coarse_grained": {
+          "mean": 0.59257,
+          "std": 0.07395,
+          "min": 0.337541,
+          "max": 0.801831
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.642599,
+            "std": 0.043881,
+            "min": 0.535716,
+            "max": 0.755365
+          },
+          "recall": {
+            "mean": 0.600624,
+            "std": 0.04149,
+            "min": 0.495654,
+            "max": 0.72238
+          },
+          "f1": {
+            "mean": 0.620342,
+            "std": 0.038285,
+            "min": 0.523376,
+            "max": 0.727001
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.604714,
+            "std": 0.053716,
+            "min": 0.410402,
+            "max": 0.745854
+          }
+        }
+      },
+      "kalm": {
+        "coarse_grained": {
+          "mean": 0.716037,
+          "std": 0.061085,
+          "min": 0.481609,
+          "max": 0.861454
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.723486,
+            "std": 0.036609,
+            "min": 0.600692,
+            "max": 0.805579
+          },
+          "recall": {
+            "mean": 0.693482,
+            "std": 0.034955,
+            "min": 0.575656,
+            "max": 0.788653
+          },
+          "f1": {
+            "mean": 0.707848,
+            "std": 0.032478,
+            "min": 0.587908,
+            "max": 0.786532
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.711318,
+            "std": 0.044517,
+            "min": 0.529476,
+            "max": 0.819334
+          }
+        }
       }
     },
     "timestamp": "2025-11-13T18:55:23.220332",
-    "best_decoder": "gte-qwen2-7b",
+    "best_decoder": "kalm",
     "ranking": [
+      "kalm",
+      "qwen3-8b",
       "gte-qwen2-7b",
       "nemo",
       "nv-embed"
     ],
-    "performance_gap": 0.149685
+    "performance_gap": 0.295491
   },
   "ts_llava": {
     "decoder_comparisons": {
@@ -1968,16 +2450,90 @@
             "max": 0.640447
           }
         }
+      },
+      "qwen3-8b": {
+        "coarse_grained": {
+          "mean": 0.558649,
+          "std": 0.093799,
+          "min": 0.318714,
+          "max": 0.763024
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.630272,
+            "std": 0.053942,
+            "min": 0.482892,
+            "max": 0.76272
+          },
+          "recall": {
+            "mean": 0.604585,
+            "std": 0.055808,
+            "min": 0.455154,
+            "max": 0.735509
+          },
+          "f1": {
+            "mean": 0.616662,
+            "std": 0.051986,
+            "min": 0.476448,
+            "max": 0.731553
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.58428,
+            "std": 0.072148,
+            "min": 0.401216,
+            "max": 0.729494
+          }
+        }
+      },
+      "kalm": {
+        "coarse_grained": {
+          "mean": 0.679752,
+          "std": 0.077757,
+          "min": 0.431066,
+          "max": 0.846813
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.701056,
+            "std": 0.043376,
+            "min": 0.58002,
+            "max": 0.802854
+          },
+          "recall": {
+            "mean": 0.680787,
+            "std": 0.042576,
+            "min": 0.559188,
+            "max": 0.781764
+          },
+          "f1": {
+            "mean": 0.690483,
+            "std": 0.040532,
+            "min": 0.57781,
+            "max": 0.787834
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.684046,
+            "std": 0.057228,
+            "min": 0.501746,
+            "max": 0.807456
+          }
+        }
       }
     },
     "timestamp": "2025-11-13T18:56:07.125334",
-    "best_decoder": "gte-qwen2-7b",
+    "best_decoder": "kalm",
     "ranking": [
+      "kalm",
+      "qwen3-8b",
       "gte-qwen2-7b",
       "nemo",
       "nv-embed"
     ],
-    "performance_gap": 0.127416
+    "performance_gap": 0.284284
   },
   "videochatflash": {
     "decoder_comparisons": {
@@ -2088,16 +2644,90 @@
             "max": 0.700334
           }
         }
+      },
+      "qwen3-8b": {
+        "coarse_grained": {
+          "mean": 0.671677,
+          "std": 0.064337,
+          "min": 0.453614,
+          "max": 0.791727
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.680965,
+            "std": 0.04418,
+            "min": 0.553133,
+            "max": 0.826798
+          },
+          "recall": {
+            "mean": 0.612911,
+            "std": 0.041189,
+            "min": 0.480429,
+            "max": 0.751167
+          },
+          "f1": {
+            "mean": 0.644591,
+            "std": 0.038178,
+            "min": 0.526853,
+            "max": 0.771314
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.656756,
+            "std": 0.04541,
+            "min": 0.52052,
+            "max": 0.76903
+          }
+        }
+      },
+      "kalm": {
+        "coarse_grained": {
+          "mean": 0.73565,
+          "std": 0.063075,
+          "min": 0.538718,
+          "max": 0.849294
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.744059,
+            "std": 0.036264,
+            "min": 0.62773,
+            "max": 0.861491
+          },
+          "recall": {
+            "mean": 0.696885,
+            "std": 0.035128,
+            "min": 0.590629,
+            "max": 0.782459
+          },
+          "f1": {
+            "mean": 0.719379,
+            "std": 0.032307,
+            "min": 0.616231,
+            "max": 0.804165
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.726659,
+            "std": 0.044309,
+            "min": 0.606,
+            "max": 0.817631
+          }
+        }
       }
     },
     "timestamp": "2025-11-13T18:56:52.224244",
-    "best_decoder": "gte-qwen2-7b",
+    "best_decoder": "kalm",
     "ranking": [
+      "kalm",
+      "qwen3-8b",
       "gte-qwen2-7b",
       "nemo",
       "nv-embed"
     ],
-    "performance_gap": 0.152063
+    "performance_gap": 0.271727
   },
   "videollama3": {
     "decoder_comparisons": {
@@ -2208,16 +2838,90 @@
             "max": 0.735911
           }
         }
+      },
+      "qwen3-8b": {
+        "coarse_grained": {
+          "mean": 0.718419,
+          "std": 0.058989,
+          "min": 0.51179,
+          "max": 0.848
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.693314,
+            "std": 0.035544,
+            "min": 0.587558,
+            "max": 0.794281
+          },
+          "recall": {
+            "mean": 0.689285,
+            "std": 0.038598,
+            "min": 0.581615,
+            "max": 0.817637
+          },
+          "f1": {
+            "mean": 0.690794,
+            "std": 0.032102,
+            "min": 0.60645,
+            "max": 0.7862
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.703534,
+            "std": 0.040817,
+            "min": 0.583134,
+            "max": 0.811254
+          }
+        }
+      },
+      "kalm": {
+        "coarse_grained": {
+          "mean": 0.819059,
+          "std": 0.051433,
+          "min": 0.659872,
+          "max": 0.931957
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.765617,
+            "std": 0.029371,
+            "min": 0.68906,
+            "max": 0.84813
+          },
+          "recall": {
+            "mean": 0.762655,
+            "std": 0.030621,
+            "min": 0.673382,
+            "max": 0.862531
+          },
+          "f1": {
+            "mean": 0.763846,
+            "std": 0.026081,
+            "min": 0.690935,
+            "max": 0.854671
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.789881,
+            "std": 0.033368,
+            "min": 0.69746,
+            "max": 0.854754
+          }
+        }
       }
     },
     "timestamp": "2025-11-13T18:57:52.396434",
-    "best_decoder": "gte-qwen2-7b",
+    "best_decoder": "kalm",
     "ranking": [
+      "kalm",
+      "qwen3-8b",
       "gte-qwen2-7b",
       "nemo",
       "nv-embed"
     ],
-    "performance_gap": 0.144832
+    "performance_gap": 0.240994
   },
   "video_xl": {
     "decoder_comparisons": {
@@ -2328,16 +3032,90 @@
             "max": 0.65083
           }
         }
+      },
+      "qwen3-8b": {
+        "coarse_grained": {
+          "mean": 0.618971,
+          "std": 0.076348,
+          "min": 0.252791,
+          "max": 0.797475
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.654698,
+            "std": 0.035549,
+            "min": 0.42272,
+            "max": 0.727546
+          },
+          "recall": {
+            "mean": 0.645167,
+            "std": 0.040657,
+            "min": 0.391376,
+            "max": 0.726752
+          },
+          "f1": {
+            "mean": 0.649573,
+            "std": 0.035426,
+            "min": 0.406445,
+            "max": 0.718181
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.632414,
+            "std": 0.053877,
+            "min": 0.311711,
+            "max": 0.755754
+          }
+        }
+      },
+      "kalm": {
+        "coarse_grained": {
+          "mean": 0.740525,
+          "std": 0.06104,
+          "min": 0.371067,
+          "max": 0.874715
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.719161,
+            "std": 0.032383,
+            "min": 0.50496,
+            "max": 0.786491
+          },
+          "recall": {
+            "mean": 0.711688,
+            "std": 0.037871,
+            "min": 0.457914,
+            "max": 0.789817
+          },
+          "f1": {
+            "mean": 0.715172,
+            "std": 0.032913,
+            "min": 0.480288,
+            "max": 0.782539
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.726873,
+            "std": 0.043114,
+            "min": 0.418671,
+            "max": 0.812311
+          }
+        }
       }
     },
     "timestamp": "2025-11-13T18:58:38.150613",
-    "best_decoder": "gte-qwen2-7b",
+    "best_decoder": "kalm",
     "ranking": [
+      "kalm",
+      "qwen3-8b",
       "gte-qwen2-7b",
       "nemo",
       "nv-embed"
     ],
-    "performance_gap": 0.133273
+    "performance_gap": 0.260863
   },
   "vilamp": {
     "decoder_comparisons": {
@@ -2448,15 +3226,89 @@
             "max": 0.737923
           }
         }
+      },
+      "qwen3-8b": {
+        "coarse_grained": {
+          "mean": 0.688872,
+          "std": 0.065279,
+          "min": 0.502926,
+          "max": 0.867595
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.675786,
+            "std": 0.043238,
+            "min": 0.539214,
+            "max": 0.794819
+          },
+          "recall": {
+            "mean": 0.654444,
+            "std": 0.044457,
+            "min": 0.465234,
+            "max": 0.802351
+          },
+          "f1": {
+            "mean": 0.66433,
+            "std": 0.039057,
+            "min": 0.504683,
+            "max": 0.772513
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.675534,
+            "std": 0.047626,
+            "min": 0.505752,
+            "max": 0.803073
+          }
+        }
+      },
+      "kalm": {
+        "coarse_grained": {
+          "mean": 0.77993,
+          "std": 0.067531,
+          "min": 0.615935,
+          "max": 0.903494
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.75465,
+            "std": 0.037197,
+            "min": 0.636773,
+            "max": 0.864903
+          },
+          "recall": {
+            "mean": 0.739375,
+            "std": 0.037811,
+            "min": 0.607325,
+            "max": 0.868085
+          },
+          "f1": {
+            "mean": 0.746612,
+            "std": 0.0341,
+            "min": 0.621701,
+            "max": 0.838239
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.761775,
+            "std": 0.044125,
+            "min": 0.629907,
+            "max": 0.846868
+          }
+        }
       }
     },
     "timestamp": "2025-11-13T18:59:53.193716",
-    "best_decoder": "gte-qwen2-7b",
+    "best_decoder": "kalm",
     "ranking": [
+      "kalm",
+      "qwen3-8b",
       "gte-qwen2-7b",
       "nemo",
       "nv-embed"
     ],
-    "performance_gap": 0.16159
+    "performance_gap": 0.261674
   }
 }
