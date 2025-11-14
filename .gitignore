@@ -197,6 +197,9 @@ old/
 *.backup
 *.bak
 
+# Preprocessing backups (keep local, don't commit)
+data/models_backup/
+
 # ============================================================================
 # Specific Large Files to Ignore
 # ============================================================================
