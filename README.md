@@ -5,7 +5,7 @@ An evaluation framework that uses state-of-the-art text embedding models to meas
 ## Overview
 
 CLIP-CC-Bench is a text embedding evaluation framework that:
-- Evaluates 17 video language models (VLMs) using 4 state-of-the-art text embedding models
+- Evaluates 17 video language models (VLMs) using 5 state-of-the-art text embedding models
 - Measures caption quality through embedding similarity (cosine similarity, fine-grained metrics)
 - Supports both coarse-grained (full caption) and fine-grained (sentence-level) evaluation
 - Provides isolated implementations for each embedding model for reproducibility
@@ -23,17 +23,20 @@ clip-cc-bench/
 │   │   ├── nemo.yaml         # Llama-Embed-Nemotron configuration
 │   │   ├── gte.yaml          # GTE-Qwen2-7B configuration
 │   │   ├── qwen.yaml         # Qwen3-Embedding configuration
+│   │   ├── kalm.yaml         # KaLM-Embedding configuration
 │   │   └── requirements/     # Python dependencies per model
 │   ├── scripts/              # Evaluation scripts (one per embedding model)
 │   │   ├── run_nv_embed_evaluation.py
 │   │   ├── run_nemo_evaluation.py
 │   │   ├── run_gte_evaluation.py
-│   │   └── run_qwen_evaluation.py
+│   │   ├── run_qwen_evaluation.py
+│   │   └── run_kalm_evaluation.py
 │   └── utils/                # Model implementations and utilities
 │       ├── nv_embed_model.py # NV-Embed model wrapper
 │       ├── nemo_model.py     # Nemotron model wrapper
 │       ├── gte_model.py      # GTE model wrapper
 │       ├── qwen_model.py     # Qwen3 model wrapper
+│       ├── kalm_model.py     # KaLM model wrapper
 │       ├── base_types.py     # Shared data types
 │       ├── config_loader.py  # Configuration loading
 │       ├── result_manager.py # Results management
@@ -50,7 +53,7 @@ clip-cc-bench/
 
 ## Text Embedding Models
 
-The framework evaluates captions using 4 state-of-the-art text embedding models:
+The framework evaluates captions using 5 state-of-the-art text embedding models:
 
 | Model | Embedding Dim | Max Length | Implementation | Status |
 |-------|---------------|------------|----------------|---------|
@@ -58,8 +61,11 @@ The framework evaluates captions using 4 state-of-the-art text embedding models:
 | **Llama-Embed-Nemotron-8B** (NVIDIA) | 4,096 | 4,096 | SentenceTransformer | ✅ Verified |
 | **GTE-Qwen2-7B-instruct** (Alibaba) | 3,584 | 8,192 | SentenceTransformer | ✅ Verified |
 | **Qwen3-Embedding-8B** (Qwen) | Variable | 32,768 | SentenceTransformer | ✅ Verified |
+| **KaLM-Embedding-Gemma3-12B** (Tencent) | 3,840 | 32,768* | SentenceTransformer | ✅ Verified |
 
-**Implementation Verification**: All 4 models use the official/recommended implementations from their respective HuggingFace model cards.
+*32k max supported, 512 recommended for optimal performance
+
+**Implementation Verification**: All 5 models use the official/recommended implementations from their respective HuggingFace model cards.
 
 ## Video Language Models Evaluated
 
@@ -105,6 +111,9 @@ The framework evaluates predictions from **17 video language models**:
 
    # For Qwen3-Embedding-8B
    pip install -r src/configs/requirements/qwen.txt
+
+   # For KaLM-Embedding-Gemma3-12B
+   pip install -r src/configs/requirements/kalm.txt
    ```
 
 3. **Download embedding models**
@@ -116,6 +125,7 @@ The framework evaluates predictions from **17 video language models**:
    # Nemotron: nvidia/llama-embed-nemotron-8b
    # GTE: Alibaba-NLP/gte-Qwen2-7B-instruct
    # Qwen3: Qwen/Qwen3-Embedding-8B
+   # KaLM: tencent/KaLM-Embedding-Gemma3-12B-2511
    ```
 
 4. **Prepare your data** (Optional - sample data included)
@@ -128,7 +138,7 @@ The framework evaluates predictions from **17 video language models**:
 
 ### Quick Start
 
-Run evaluation using any of the 4 embedding models:
+Run evaluation using any of the 5 embedding models:
 
 ```bash
 # 1. NV-Embed-v2
@@ -142,6 +152,9 @@ python src/scripts/run_gte_evaluation.py
 
 # 4. Qwen3-Embedding-8B
 python src/scripts/run_qwen_evaluation.py
+
+# 5. KaLM-Embedding-Gemma3-12B (12B model, requires more VRAM)
+python src/scripts/run_kalm_evaluation.py
 ```
 
 Each script will:
@@ -349,6 +362,15 @@ Each result file contains:
 - Flash attention 2 support for better performance
 - Max sequence length: 32,768 tokens
 
+**5. KaLM-Embedding-Gemma3-12B**
+- Uses SentenceTransformer library
+- Special methods: `encode_query()` and `encode_document()`
+- Data type: bfloat16 (official recommendation)
+- Attention: "flash_attention_2" recommended
+- Max sequence length: 32,768 tokens (512 recommended for optimal performance)
+- Embedding dimension: 3,840 (largest among all models)
+- MRL support: 256, 512, 1024, 2048, 3840 dimensions
+
 ### Adding a New Embedding Model
 
 1. **Create configuration file**
@@ -376,7 +398,7 @@ Each result file contains:
 
 ## Key Features
 
-✅ **Verified Implementations**: All 4 embedding models use official/recommended implementations from HuggingFace
+✅ **Verified Implementations**: All 5 embedding models use official/recommended implementations from HuggingFace
 ✅ **Fine-Grained Evaluation**: Supports both full-caption and sentence-level similarity metrics
 ✅ **Flexible Configuration**: YAML-based configs for easy customization
 ✅ **Production Ready**: Includes logging, error handling, GPU memory management
