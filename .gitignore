@@ -67,12 +67,16 @@ data/cache/
 # ============================================================================
 # Results & Outputs
 # ============================================================================
-# Ignore all results but keep directory structure
-results/*
+# Allow CSV and JSON result files to be uploaded
+# Ignore other file types in results directory
+!results/
+!results/**/*.csv
+!results/**/*.json
 !results/.gitkeep
 !results/encoders/
-results/encoders/*
 !results/encoders/.gitkeep
+!results/decoders/
+!results/decoders/**
 
 outputs/
 logs/

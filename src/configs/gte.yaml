@@ -21,7 +21,6 @@ processing:
 
 data_paths:
   # Use relative paths - will be resolved from base directory
-  # ground_truth_file: "data/ground_truth/clip_cc_dataset.json"
   ground_truth_file: "data/ground_truth/clip_cc_dataset.json"
   predictions_dir: "data/models"
   results_base_dir: "results"

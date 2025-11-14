@@ -1,0 +1,101 @@
+#!/bin/bash
+
+# CLIP-CC-Bench: Run All Decoder Evaluations
+# This script runs all 5 decoder model evaluations sequentially
+
+set -e  # Exit on error
+
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+VENV_CONFIGS_DIR="$(dirname "$SCRIPT_DIR")/venv_configs"
+
+# Color output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+echo "========================================"
+echo "CLIP-CC-Bench: All Decoder Evaluations"
+echo "========================================"
+echo ""
+
+# Function to run evaluation
+run_evaluation() {
+    local model_name=$1
+    local activate_script=$2
+    local eval_script=$3
+    local config_file=$4
+
+    echo -e "${YELLOW}[$(date '+%Y-%m-%d %H:%M:%S')] Starting ${model_name} evaluation...${NC}"
+    echo "----------------------------------------"
+
+    # Source the activation script
+    source "${activate_script}"
+
+    # Run the evaluation
+    python "${eval_script}" --config "${config_file}"
+
+    # Deactivate the environment
+    deactivate
+
+    echo -e "${GREEN}[$(date '+%Y-%m-%d %H:%M:%S')] ${model_name} evaluation completed!${NC}"
+    echo ""
+}
+
+# Track start time
+START_TIME=$(date +%s)
+
+# 1. NV-Embed Evaluation
+run_evaluation \
+    "NV-Embed" \
+    "${VENV_CONFIGS_DIR}/activate_nv-embed_env.sh" \
+    "${SCRIPT_DIR}/src/scripts/run_nv_embed_evaluation.py" \
+    "${SCRIPT_DIR}/src/configs/nv-embed.yaml"
+
+# 2. GTE Evaluation
+run_evaluation \
+    "GTE-Qwen2-7B" \
+    "${VENV_CONFIGS_DIR}/activate_gte_env.sh" \
+    "${SCRIPT_DIR}/src/scripts/run_gte_evaluation.py" \
+    "${SCRIPT_DIR}/src/configs/gte.yaml"
+
+# 3. Nemo Evaluation
+run_evaluation \
+    "NVIDIA Nemotron" \
+    "${VENV_CONFIGS_DIR}/activate_nemo_env.sh" \
+    "${SCRIPT_DIR}/src/scripts/run_nemo_evaluation.py" \
+    "${SCRIPT_DIR}/src/configs/nemo.yaml"
+
+# 4. Qwen Evaluation
+run_evaluation \
+    "Qwen3-8B" \
+    "${VENV_CONFIGS_DIR}/activate_qwen_env.sh" \
+    "${SCRIPT_DIR}/src/scripts/run_qwen_evaluation.py" \
+    "${SCRIPT_DIR}/src/configs/qwen.yaml"
+
+# 5. KaLM Evaluation
+run_evaluation \
+    "KaLM-Gemma3-12B" \
+    "${VENV_CONFIGS_DIR}/activate_kalm_env.sh" \
+    "${SCRIPT_DIR}/src/scripts/run_kalm_evaluation.py" \
+    "${SCRIPT_DIR}/src/configs/kalm.yaml"
+
+# Calculate total time
+END_TIME=$(date +%s)
+TOTAL_TIME=$((END_TIME - START_TIME))
+HOURS=$((TOTAL_TIME / 3600))
+MINUTES=$(((TOTAL_TIME % 3600) / 60))
+SECONDS=$((TOTAL_TIME % 60))
+
+echo "========================================"
+echo -e "${GREEN}All evaluations completed successfully!${NC}"
+echo "Total time: ${HOURS}h ${MINUTES}m ${SECONDS}s"
+echo "========================================"
+echo ""
+echo "Results are stored in:"
+echo "  - results/decoders/logs/nv-embed/"
+echo "  - results/decoders/logs/gte/"
+echo "  - results/decoders/logs/nemo/"
+echo "  - results/decoders/logs/qwen/"
+echo "  - results/decoders/logs/kalm/"

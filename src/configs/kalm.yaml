@@ -9,7 +9,7 @@ decoder:
   trust_remote_code: true
   additional_params:
     torch_dtype: "bfloat16"            # BF16 as per official recommendation
-    attn_implementation: "flash_attention_2"  # Use "eager" as fallback if flash_attn not available
+    attn_implementation: "eager"  # Use "eager" (flash_attention_2 not available)
 
   # Fine-grained evaluation settings
   fine_grained:
