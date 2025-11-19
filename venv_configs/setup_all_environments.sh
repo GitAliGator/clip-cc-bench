@@ -9,11 +9,12 @@ echo "=========================================="
 echo "Virtual Environment Setup"
 echo "=========================================="
 echo ""
-echo "This script will create 4 virtual environments:"
-echo "  1. NV-Embed (~7.3 GB) - CLIP-CC-Bench encoder"
-echo "  2. Qwen - CLIP-CC-Bench with Qwen"
-echo "  3. Nemo - CLIP-CC-Bench with Nemotron"
-echo "  4. GTE - CLIP-CC-Bench with GTE"
+echo "This script will create 5 virtual environments:"
+echo "  1. NV-Embed (~7 GB) - CLIP-CC-Bench encoder"
+echo "  2. Qwen (~7 GB) - CLIP-CC-Bench with Qwen"
+echo "  3. Nemo (~7 GB) - CLIP-CC-Bench with Nemotron"
+echo "  4. GTE (~7 GB) - CLIP-CC-Bench with GTE"
+echo "  5. KaLM (~7 GB) - CLIP-CC-Bench with KaLM"
 echo ""
 echo "Estimated time: 1-3 hours"
 echo ""
@@ -22,6 +23,7 @@ echo "  <project_root>/venv_nv-embed"
 echo "  <project_root>/venv_qwen"
 echo "  <project_root>/venv_nemo"
 echo "  <project_root>/venv_gte"
+echo "  <project_root>/venv_kalm"
 echo ""
 
 # Ask for confirmation
@@ -36,7 +38,7 @@ fi
 START_TIME=$(date +%s)
 
 # Setup each environment
-MODELS=("nv-embed" "qwen" "nemo" "gte")
+MODELS=("nv-embed" "qwen" "nemo" "gte" "kalm")
 TOTAL=${#MODELS[@]}
 CURRENT=0
 FAILED=()
@@ -90,4 +92,5 @@ echo "  NV-Embed: source venv_configs/activate_nv-embed_env.sh"
 echo "  Qwen:     source venv_configs/activate_qwen_env.sh"
 echo "  Nemo:     source venv_configs/activate_nemo_env.sh"
 echo "  GTE:      source venv_configs/activate_gte_env.sh"
+echo "  KaLM:     source venv_configs/activate_kalm_env.sh"
 echo ""
