@@ -1,5 +1,5 @@
 {
-  "decoder_name": "gte-qwen2-7b",
+  "embedding_model_name": "gte-qwen2-7b",
   "model_name": "video_xl",
   "total_evaluations": 199,
   "successful_evaluations": 199,

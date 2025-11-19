@@ -1,5 +1,5 @@
 {
-  "decoder_name": "qwen3-8b",
+  "embedding_model_name": "qwen3-8b",
   "model_name": "ts_llava",
   "total_evaluations": 199,
   "successful_evaluations": 199,

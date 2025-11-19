@@ -1,5 +1,5 @@
 {
-  "decoder_name": "gte-qwen2-7b",
+  "embedding_model_name": "gte-qwen2-7b",
   "model_name": "videollama3",
   "total_evaluations": 199,
   "successful_evaluations": 199,

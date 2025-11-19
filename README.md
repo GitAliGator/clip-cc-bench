@@ -70,4 +70,4 @@ Total: ~70 GB
 - The `--local-dir-use-symlinks False` flag ensures files are copied, not symlinked
 - Make sure you have sufficient disk space before downloading
 - Downloaded models will be automatically detected by the evaluation scripts
-- These are MTEB embedding models used as ensemble judges for evaluation, not video decoders
+- These are MTEB embedding models used as ensemble judges for evaluation

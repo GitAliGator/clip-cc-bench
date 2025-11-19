@@ -1,5 +1,5 @@
 {
-  "decoder_name": "nemo",
+  "embedding_model_name": "nemo",
   "model_name": "longvu",
   "total_evaluations": 199,
   "successful_evaluations": 199,

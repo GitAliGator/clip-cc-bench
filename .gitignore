@@ -35,7 +35,7 @@ env/
 ENV/
 
 # ============================================================================
-# Encoder/Decoder Models (LARGE - 119GB)
+# Encoder/Embedding Models (LARGE - 119GB)
 # ============================================================================
 # Models are now centralized outside repo, but ignore symlink and any copies
 encoder_models/
@@ -97,8 +97,8 @@ data/cache/
 !results/.gitkeep
 !results/encoders/
 !results/encoders/.gitkeep
-!results/decoders/
-!results/decoders/**
+!results/embedding_models/
+!results/embedding_models/**
 
 outputs/
 logs/

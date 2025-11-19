@@ -1,5 +1,5 @@
 {
-  "decoder_name": "kalm",
+  "embedding_model_name": "kalm",
   "model_name": "Qwen2.5-32B",
   "total_evaluations": 199,
   "successful_evaluations": 199,

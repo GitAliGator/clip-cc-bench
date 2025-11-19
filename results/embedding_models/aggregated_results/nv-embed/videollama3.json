@@ -1,5 +1,5 @@
 {
-  "decoder_name": "nv-embed",
+  "embedding_model_name": "nv-embed",
   "model_name": "videollama3",
   "total_evaluations": 199,
   "successful_evaluations": 199,
