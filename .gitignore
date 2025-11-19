@@ -44,8 +44,28 @@ encoder_models/
 # If someone creates actual directory instead of symlink, ignore its contents
 encoder_models/*
 
-# Ignore decoder models symlink
-decoder_models/
+# Decoder models - track directory structure but ignore model weights
+# Track: decoder_models/ directory, subdirectories, and .gitkeep/README.md files
+# Ignore: all downloaded model files (.bin, .safetensors, config.json, etc.)
+!decoder_models/
+!decoder_models/*/
+!decoder_models/*/.gitkeep
+!decoder_models/README.md
+# Ignore all model files inside subdirectories
+decoder_models/*/*.bin
+decoder_models/*/*.safetensors
+decoder_models/*/*.pt
+decoder_models/*/*.pth
+decoder_models/*/*.ckpt
+decoder_models/*/*.h5
+decoder_models/*/*.msgpack
+decoder_models/*/*.onnx
+decoder_models/*/*.json
+decoder_models/*/*.txt
+decoder_models/*/*.model
+decoder_models/*/*.py
+decoder_models/*/*.md
+decoder_models/*/*/
 
 # ============================================================================
 # Data Files
