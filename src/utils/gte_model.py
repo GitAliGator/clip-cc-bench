@@ -1,7 +1,7 @@
 """
 GTE-Qwen2-7B-Instruct Embedding Model Implementation
 
-Implementation for GTE-Qwen2-7B-instruct decoder with fine-grained evaluation.
+Implementation for GTE-Qwen2-7B-instruct embedding_model with fine-grained evaluation.
 Uses sentence-transformers with GAS-style cosine similarity.
 """
 
@@ -205,7 +205,7 @@ class GTEModel:
             # Create metadata
             computation_time = time.time() - start_time
             metadata = {
-                'decoder_name': 'gte-qwen2-7b',
+                'embedding_model_name': 'gte-qwen2-7b',
                 'ground_truth_length': len(ground_truth_text),
                 'prediction_length': len(prediction_text),
                 'num_gt_chunks': num_gt_chunks,
@@ -279,14 +279,14 @@ class GTEEvaluator:
         self.model = None
 
         # Initialize model
-        decoder_config = config['decoder']
-        fine_grained_config = decoder_config.get('fine_grained', {})
+        embedding_model_config = config['embedding_model']
+        fine_grained_config = embedding_model_config.get('fine_grained', {})
 
         self.model = GTEModel(
-            model_path=decoder_config['path'],
+            model_path=embedding_model_config['path'],
             device=config['processing']['device'],
-            batch_size=decoder_config['batch_size'],
-            max_length=decoder_config['max_length'],
+            batch_size=embedding_model_config['batch_size'],
+            max_length=embedding_model_config['max_length'],
             fine_grained_enabled=fine_grained_config.get('enabled', True)
         )
 

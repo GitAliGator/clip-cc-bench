@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# CLIP-CC-Bench: Run All Decoder Evaluations
-# This script runs all 5 decoder model evaluations sequentially
+# CLIP-CC-Bench: Run All Embedding Model Evaluations
+# This script runs all 5 embedding model evaluations sequentially
 
 set -e  # Exit on error
 
@@ -16,7 +16,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 echo "========================================"
-echo "CLIP-CC-Bench: All Decoder Evaluations"
+echo "CLIP-CC-Bench: All Embedding Model Evaluations"
 echo "========================================"
 echo ""
 
@@ -94,8 +94,8 @@ echo "Total time: ${HOURS}h ${MINUTES}m ${SECONDS}s"
 echo "========================================"
 echo ""
 echo "Results are stored in:"
-echo "  - results/decoders/logs/nv-embed/"
-echo "  - results/decoders/logs/gte/"
-echo "  - results/decoders/logs/nemo/"
-echo "  - results/decoders/logs/qwen/"
-echo "  - results/decoders/logs/kalm/"
+echo "  - results/embedding_models/logs/nv-embed/"
+echo "  - results/embedding_models/logs/gte/"
+echo "  - results/embedding_models/logs/nemo/"
+echo "  - results/embedding_models/logs/qwen/"
+echo "  - results/embedding_models/logs/kalm/"

@@ -1,7 +1,7 @@
 """
 NV-Embed Specific Embedding Model Implementation
 
-Isolated implementation for NV-Embed decoder with optimized settings and fine-grained evaluation.
+Isolated implementation for NV-Embed embedding_model with optimized settings and fine-grained evaluation.
 """
 
 import torch
@@ -21,7 +21,7 @@ from paths import get_project_paths
 
 # Add local NV-Embed implementation path dynamically
 _project_paths = get_project_paths()
-_nv_embed_path = str(_project_paths.get_decoder_models_dir() / "nv-embed")
+_nv_embed_path = str(_project_paths.get_embedding_models_dir() / "nv-embed")
 sys.path.append(_nv_embed_path)
 from modeling_nvembed import NVEmbedModel as LocalNVEmbedModel
 
@@ -222,7 +222,7 @@ class NVEmbedModel:
             # Create metadata
             computation_time = time.time() - start_time
             metadata = {
-                'decoder_name': 'nv-embed',
+                'embedding_model_name': 'nv-embed',
                 'ground_truth_length': len(ground_truth_text),
                 'prediction_length': len(prediction_text),
                 'num_gt_chunks': num_gt_chunks,
@@ -296,15 +296,15 @@ class NVEmbedEvaluator:
         self.model = None
 
         # Initialize model
-        decoder_config = config['decoder']
-        fine_grained_config = decoder_config.get('fine_grained', {})
+        embedding_model_config = config['embedding_model']
+        fine_grained_config = embedding_model_config.get('fine_grained', {})
 
         self.model = NVEmbedModel(
-            model_path=decoder_config['path'],
+            model_path=embedding_model_config['path'],
             device=config['processing']['device'],
-            batch_size=decoder_config['batch_size'],
-            max_length=decoder_config['max_length'],
-            instruction_for_retrieval=decoder_config.get('additional_params', {}).get('instruction_for_retrieval', ""),
+            batch_size=embedding_model_config['batch_size'],
+            max_length=embedding_model_config['max_length'],
+            instruction_for_retrieval=embedding_model_config.get('additional_params', {}).get('instruction_for_retrieval', ""),
             fine_grained_enabled=fine_grained_config.get('enabled', True)
         )
 

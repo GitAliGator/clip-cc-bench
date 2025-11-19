@@ -54,7 +54,7 @@ huggingface-cli download pgfoundation/KaLM-Embedding-Gemma3-12B-2511 \
 
 ## Storage Requirements
 
-Each model requires approximately 7-15 GB of disk space:
+Each model requires approximately 3-24 GB of disk space:
 - GTE-Qwen2-7B: ~14 GB
 - Qwen3-1.5B: ~3 GB
 - Nemotron-Embed (NV-Embed-v2): ~14 GB

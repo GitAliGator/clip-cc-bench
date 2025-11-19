@@ -1,7 +1,7 @@
 """
-Shared Base Types for Isolated Decoder System
+Shared Base Types for Isolated EmbeddingModel System
 
-Common data structures and types used across all decoder modules.
+Common data structures and types used across all embedding_model modules.
 """
 
 import torch
@@ -52,13 +52,13 @@ class EvaluationResult:
 
 
 @dataclass
-class DecoderEvaluationResult:
-    """Result container for decoder evaluation of a single video."""
+class EmbeddingEvaluationResult:
+    """Result container for embedding_model evaluation of a single video."""
     video_id: str
     model_name: str
     ground_truth_text: str
     prediction_text: str
-    decoder_similarities: Dict[str, SimilarityScore]
+    embedding_model_scores: Dict[str, SimilarityScore]
     timestamp: str
     success: bool = True
     error_message: Optional[str] = None
@@ -66,7 +66,7 @@ class DecoderEvaluationResult:
 
 @dataclass
 class ModelConfig:
-    """Configuration for an individual decoder model."""
+    """Configuration for an individual embedding_model model."""
     name: str
     path: str
     type: str
@@ -77,12 +77,12 @@ class ModelConfig:
     additional_params: Optional[Dict[str, Any]] = None
 
 
-class DecoderPaths:
-    """Standardized path management for decoder modules."""
+class EmbeddingModelPaths:
+    """Standardized path management for embedding_model modules."""
 
-    def __init__(self, base_dir: Path, decoder_name: str):
+    def __init__(self, base_dir: Path, embedding_model_name: str):
         self.base_dir = Path(base_dir)
-        self.decoder_name = decoder_name
+        self.embedding_model_name = embedding_model_name
 
         # Module-specific directories (flattened structure)
         self.configs_dir = self.base_dir / "configs"
@@ -91,12 +91,12 @@ class DecoderPaths:
 
         self.results_base_dir = self.base_dir / "results"
 
-        # Result directories (shared across all decoders)
-        self.individual_csv_dir = self.results_base_dir / "decoders" / "individual_results" / "csv"
-        self.individual_json_dir = self.results_base_dir / "decoders" / "individual_results" / "json"
-        self.aggregated_results_dir = self.results_base_dir / "decoders" / "aggregated_results"
-        self.logs_dir = self.results_base_dir / "decoders" / "logs"
-        self.cache_dir = self.results_base_dir / "decoders" / "cache"
+        # Result directories (shared across all embedding_models)
+        self.individual_csv_dir = self.results_base_dir / "embedding_models" / "individual_results" / "csv"
+        self.individual_json_dir = self.results_base_dir / "embedding_models" / "individual_results" / "json"
+        self.aggregated_results_dir = self.results_base_dir / "embedding_models" / "aggregated_results"
+        self.logs_dir = self.results_base_dir / "embedding_models" / "logs"
+        self.cache_dir = self.results_base_dir / "embedding_models" / "cache"
 
         # Data directories
         self.data_dir = self.base_dir / "data"
@@ -113,13 +113,13 @@ class DecoderPaths:
             dir_path.mkdir(parents=True, exist_ok=True)
 
     def get_config_file(self) -> Path:
-        """Get the decoder-specific config file path."""
-        return self.configs_dir / f"{self.decoder_name}.yaml"
+        """Get the embedding_model-specific config file path."""
+        return self.configs_dir / f"{self.embedding_model_name}.yaml"
 
     def get_requirements_file(self) -> Path:
-        """Get the decoder-specific requirements file path."""
-        return self.configs_dir / "requirements" / f"{self.decoder_name}.txt"
+        """Get the embedding_model-specific requirements file path."""
+        return self.configs_dir / "requirements" / f"{self.embedding_model_name}.txt"
 
     def get_run_script(self) -> Path:
-        """Get the decoder-specific run script path."""
-        return self.scripts_dir / f"run_{self.decoder_name}_evaluation.py"
+        """Get the embedding_model-specific run script path."""
+        return self.scripts_dir / f"run_{self.embedding_model_name}_evaluation.py"

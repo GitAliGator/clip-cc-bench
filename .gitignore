@@ -44,28 +44,28 @@ encoder_models/
 # If someone creates actual directory instead of symlink, ignore its contents
 encoder_models/*
 
-# Decoder models - track directory structure but ignore model weights
-# Track: decoder_models/ directory, subdirectories, and .gitkeep/README.md files
+# Embedding models - track directory structure but ignore model weights
+# Track: embedding_models/ directory, subdirectories, and .gitkeep/README.md files
 # Ignore: all downloaded model files (.bin, .safetensors, config.json, etc.)
-!decoder_models/
-!decoder_models/*/
-!decoder_models/*/.gitkeep
-!decoder_models/README.md
+!embedding_models/
+!embedding_models/*/
+!embedding_models/*/.gitkeep
+!embedding_models/README.md
 # Ignore all model files inside subdirectories
-decoder_models/*/*.bin
-decoder_models/*/*.safetensors
-decoder_models/*/*.pt
-decoder_models/*/*.pth
-decoder_models/*/*.ckpt
-decoder_models/*/*.h5
-decoder_models/*/*.msgpack
-decoder_models/*/*.onnx
-decoder_models/*/*.json
-decoder_models/*/*.txt
-decoder_models/*/*.model
-decoder_models/*/*.py
-decoder_models/*/*.md
-decoder_models/*/*/
+embedding_models/*/*.bin
+embedding_models/*/*.safetensors
+embedding_models/*/*.pt
+embedding_models/*/*.pth
+embedding_models/*/*.ckpt
+embedding_models/*/*.h5
+embedding_models/*/*.msgpack
+embedding_models/*/*.onnx
+embedding_models/*/*.json
+embedding_models/*/*.txt
+embedding_models/*/*.model
+embedding_models/*/*.py
+embedding_models/*/*.md
+embedding_models/*/*/
 
 # ============================================================================
 # Data Files

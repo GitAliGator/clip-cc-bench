@@ -1,7 +1,7 @@
 """
 NVIDIA Llama-Embed-Nemotron-8B Embedding Model Implementation
 
-Implementation for nvidia-llama-embed-nemotron-8b decoder with fine-grained evaluation.
+Implementation for nvidia-llama-embed-nemotron-8b embedding_model with fine-grained evaluation.
 Uses sentence-transformers with GAS-style cosine similarity.
 """
 
@@ -222,7 +222,7 @@ class NemoModel:
             # Create metadata
             computation_time = time.time() - start_time
             metadata = {
-                'decoder_name': 'nemo',
+                'embedding_model_name': 'nemo',
                 'ground_truth_length': len(ground_truth_text),
                 'prediction_length': len(prediction_text),
                 'num_gt_chunks': num_gt_chunks,
@@ -296,15 +296,15 @@ class NemoEvaluator:
         self.model = None
 
         # Initialize model
-        decoder_config = config['decoder']
-        fine_grained_config = decoder_config.get('fine_grained', {})
-        additional_params = decoder_config.get('additional_params', {})
+        embedding_model_config = config['embedding_model']
+        fine_grained_config = embedding_model_config.get('fine_grained', {})
+        additional_params = embedding_model_config.get('additional_params', {})
 
         self.model = NemoModel(
-            model_path=decoder_config['path'],
+            model_path=embedding_model_config['path'],
             device=config['processing']['device'],
-            batch_size=decoder_config['batch_size'],
-            max_length=decoder_config['max_length'],
+            batch_size=embedding_model_config['batch_size'],
+            max_length=embedding_model_config['max_length'],
             torch_dtype=additional_params.get('torch_dtype', 'float32'),
             attn_implementation=additional_params.get('attn_implementation', 'eager'),
             fine_grained_enabled=fine_grained_config.get('enabled', True)

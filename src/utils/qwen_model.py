@@ -1,7 +1,7 @@
 """
 Qwen3-Embedding-8B Model Implementation
 
-Implementation for Qwen3-Embedding-8B decoder with fine-grained evaluation.
+Implementation for Qwen3-Embedding-8B embedding_model with fine-grained evaluation.
 Uses sentence-transformers with GAS-style cosine similarity.
 """
 
@@ -212,7 +212,7 @@ class QwenModel:
             # Create metadata
             computation_time = time.time() - start_time
             metadata = {
-                'decoder_name': 'qwen3-8b',
+                'embedding_model_name': 'qwen3-8b',
                 'ground_truth_length': len(ground_truth_text),
                 'prediction_length': len(prediction_text),
                 'num_gt_chunks': num_gt_chunks,
@@ -286,15 +286,15 @@ class QwenEvaluator:
         self.model = None
 
         # Initialize model
-        decoder_config = config['decoder']
-        fine_grained_config = decoder_config.get('fine_grained', {})
-        additional_params = decoder_config.get('additional_params', {})
+        embedding_model_config = config['embedding_model']
+        fine_grained_config = embedding_model_config.get('fine_grained', {})
+        additional_params = embedding_model_config.get('additional_params', {})
 
         self.model = QwenModel(
-            model_path=decoder_config['path'],
+            model_path=embedding_model_config['path'],
             device=config['processing']['device'],
-            batch_size=decoder_config['batch_size'],
-            max_length=decoder_config['max_length'],
+            batch_size=embedding_model_config['batch_size'],
+            max_length=embedding_model_config['max_length'],
             attn_implementation=additional_params.get('attn_implementation', 'eager'),
             fine_grained_enabled=fine_grained_config.get('enabled', True)
         )

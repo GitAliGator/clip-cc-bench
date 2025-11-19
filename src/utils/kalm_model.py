@@ -1,7 +1,7 @@
 """
 KaLM-Embedding-Gemma3-12B-2511 Model Implementation
 
-Implementation for KaLM-Embedding decoder with fine-grained evaluation.
+Implementation for KaLM-Embedding embedding_model with fine-grained evaluation.
 Uses sentence-transformers with encode_query/encode_document methods.
 """
 
@@ -239,7 +239,7 @@ class KaLMModel:
             # Create metadata
             computation_time = time.time() - start_time
             metadata = {
-                'decoder_name': 'kalm',
+                'embedding_model_name': 'kalm',
                 'ground_truth_length': len(ground_truth_text),
                 'prediction_length': len(prediction_text),
                 'num_gt_chunks': num_gt_chunks,
@@ -313,15 +313,15 @@ class KaLMEvaluator:
         self.model = None
 
         # Initialize model
-        decoder_config = config['decoder']
-        fine_grained_config = decoder_config.get('fine_grained', {})
-        additional_params = decoder_config.get('additional_params', {})
+        embedding_model_config = config['embedding_model']
+        fine_grained_config = embedding_model_config.get('fine_grained', {})
+        additional_params = embedding_model_config.get('additional_params', {})
 
         self.model = KaLMModel(
-            model_path=decoder_config['path'],
+            model_path=embedding_model_config['path'],
             device=config['processing']['device'],
-            batch_size=decoder_config['batch_size'],
-            max_length=decoder_config['max_length'],
+            batch_size=embedding_model_config['batch_size'],
+            max_length=embedding_model_config['max_length'],
             torch_dtype=additional_params.get('torch_dtype', 'bfloat16'),
             attn_implementation=additional_params.get('attn_implementation', 'flash_attention_2'),
             fine_grained_enabled=fine_grained_config.get('enabled', True)

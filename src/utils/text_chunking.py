@@ -1,5 +1,5 @@
 """
-Shared text chunking utility for all decoder models.
+Shared text chunking utility for all embedding_model models.
 
 Uses NLTK for sentence-level tokenization to support fine-grained embedding matching.
 """

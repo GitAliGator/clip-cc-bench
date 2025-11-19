@@ -12,7 +12,7 @@ import pandas as pd
 import numpy as np
 
 
-def load_evaluation_results(base_dir: str = "results/decoders/aggregated_results") -> Dict:
+def load_evaluation_results(base_dir: str = "results/embedding_models/aggregated_results") -> Dict:
     """
     Load all evaluation results from the aggregated results directory.
 

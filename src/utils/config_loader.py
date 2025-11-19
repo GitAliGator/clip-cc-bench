@@ -1,7 +1,7 @@
 """
-Shared Configuration Loader for Isolated Decoder System
+Shared Configuration Loader for Isolated EmbeddingModel System
 
-Handles loading and validation of decoder-specific configurations.
+Handles loading and validation of embedding_model-specific configurations.
 """
 
 import yaml
@@ -10,29 +10,29 @@ from pathlib import Path
 from typing import Dict, Any, List
 import torch
 
-from base_types import ModelConfig, DecoderPaths
+from base_types import ModelConfig, EmbeddingModelPaths
 from paths import get_project_paths
 
 
-class IsolatedDecoderConfigLoader:
-    """Configuration loader for individual isolated decoders."""
+class EmbeddingModelConfigLoader:
+    """Configuration loader for individual isolated embedding_models."""
 
-    def __init__(self, decoder_name: str, base_dir: Path = None):
-        self.decoder_name = decoder_name
+    def __init__(self, embedding_model_name: str, base_dir: Path = None):
+        self.embedding_model_name = embedding_model_name
         self.project_paths = get_project_paths()
 
         # If base_dir is provided, use it; otherwise use centralized path system
         if base_dir:
             self.base_dir = Path(base_dir)
-            self.paths = DecoderPaths(base_dir / "src", decoder_name)
+            self.paths = EmbeddingModelPaths(base_dir / "src", embedding_model_name)
         else:
             self.base_dir = self.project_paths.get_base_dir()
-            self.paths = DecoderPaths(self.base_dir / "src", decoder_name)
+            self.paths = EmbeddingModelPaths(self.base_dir / "src", embedding_model_name)
 
-        self.logger = logging.getLogger(f'config_loader.{decoder_name}')
+        self.logger = logging.getLogger(f'config_loader.{embedding_model_name}')
 
     def load_config(self) -> Dict[str, Any]:
-        """Load decoder-specific configuration."""
+        """Load embedding_model-specific configuration."""
         config_file = self.paths.get_config_file()
 
         if not config_file.exists():
@@ -53,31 +53,31 @@ class IsolatedDecoderConfigLoader:
         return config
 
     def _validate_config(self, config: Dict[str, Any]) -> None:
-        """Validate decoder configuration."""
-        required_sections = ['decoder', 'processing', 'data_paths']
+        """Validate embedding_model configuration."""
+        required_sections = ['embedding_model', 'processing', 'data_paths']
 
         for section in required_sections:
             if section not in config:
                 raise ValueError(f"Missing required section '{section}' in configuration")
 
-        # Validate decoder section
-        decoder_config = config['decoder']
-        required_decoder_fields = ['name', 'path', 'type', 'batch_size', 'max_length']
+        # Validate embedding_model section
+        embedding_model_config = config['embedding_model']
+        required_embedding_model_fields = ['name', 'path', 'type', 'batch_size', 'max_length']
 
-        for field in required_decoder_fields:
-            if field not in decoder_config:
-                raise ValueError(f"Missing required decoder field: {field}")
+        for field in required_embedding_model_fields:
+            if field not in embedding_model_config:
+                raise ValueError(f"Missing required embedding_model field: {field}")
 
-        # Validate decoder path (skip validation for HuggingFace repo names)
-        decoder_path = decoder_config['path']
-        if '/' in decoder_path and not decoder_path.startswith('/'):
+        # Validate embedding_model path (skip validation for HuggingFace repo names)
+        embedding_model_path = embedding_model_config['path']
+        if '/' in embedding_model_path and not embedding_model_path.startswith('/'):
             # This looks like a HuggingFace repo name, skip path validation
-            self.logger.info(f"Using HuggingFace repository: {decoder_path}")
+            self.logger.info(f"Using HuggingFace repository: {embedding_model_path}")
         else:
             # This is a local path, validate it exists
-            path_obj = Path(decoder_path)
+            path_obj = Path(embedding_model_path)
             if not path_obj.exists():
-                raise ValueError(f"Decoder model path does not exist: {decoder_path}")
+                raise ValueError(f"EmbeddingModel model path does not exist: {embedding_model_path}")
 
         # Validate processing settings
         processing = config['processing']
@@ -126,15 +126,15 @@ class IsolatedDecoderConfigLoader:
             if isinstance(log_dir, str) and not Path(log_dir).is_absolute():
                 config['logging']['log_dir'] = str(base_dir / log_dir)
 
-        # Resolve decoder model paths
-        if 'decoder' in config and 'path' in config['decoder']:
-            decoder_path = config['decoder']['path']
-            if isinstance(decoder_path, str) and not Path(decoder_path).is_absolute():
-                # decoder_models directory is in project root
-                config['decoder']['path'] = str(base_dir / decoder_path)
+        # Resolve embedding_model model paths
+        if 'embedding_model' in config and 'path' in config['embedding_model']:
+            embedding_model_path = config['embedding_model']['path']
+            if isinstance(embedding_model_path, str) and not Path(embedding_model_path).is_absolute():
+                # embedding_models directory is in project root
+                config['embedding_model']['path'] = str(base_dir / embedding_model_path)
 
     def _get_computed_paths(self) -> Dict[str, str]:
-        """Get computed paths for the decoder."""
+        """Get computed paths for the embedding_model."""
         return {
             'configs_dir': str(self.paths.configs_dir),
             'scripts_dir': str(self.paths.scripts_dir),
@@ -148,17 +148,17 @@ class IsolatedDecoderConfigLoader:
 
     def create_model_config(self, config: Dict[str, Any]) -> ModelConfig:
         """Create ModelConfig object from configuration."""
-        decoder_config = config['decoder']
+        embedding_model_config = config['embedding_model']
 
         return ModelConfig(
-            name=decoder_config['name'],
-            path=decoder_config['path'],
-            type=decoder_config['type'],
-            batch_size=decoder_config['batch_size'],
-            max_length=decoder_config['max_length'],
-            device_map=decoder_config.get('device_map', 'auto'),
-            trust_remote_code=decoder_config.get('trust_remote_code', True),
-            additional_params=decoder_config.get('additional_params', {})
+            name=embedding_model_config['name'],
+            path=embedding_model_config['path'],
+            type=embedding_model_config['type'],
+            batch_size=embedding_model_config['batch_size'],
+            max_length=embedding_model_config['max_length'],
+            device_map=embedding_model_config.get('device_map', 'auto'),
+            trust_remote_code=embedding_model_config.get('trust_remote_code', True),
+            additional_params=embedding_model_config.get('additional_params', {})
         )
 
     def get_models_to_evaluate(self, config: Dict[str, Any]) -> List[str]:
@@ -186,13 +186,13 @@ class IsolatedDecoderConfigLoader:
 
         return gpu_info
 
-    def create_default_config(self, decoder_name: str, decoder_path: str, decoder_type: str) -> Dict[str, Any]:
-        """Create a default configuration for a decoder."""
+    def create_default_config(self, embedding_model_name: str, embedding_model_path: str, embedding_model_type: str) -> Dict[str, Any]:
+        """Create a default configuration for a embedding_model."""
         return {
-            'decoder': {
-                'name': decoder_name,
-                'path': decoder_path,
-                'type': decoder_type,
+            'embedding_model': {
+                'name': embedding_model_name,
+                'path': embedding_model_path,
+                'type': embedding_model_type,
                 'batch_size': 16,
                 'max_length': 4096,
                 'device_map': 'auto',
@@ -217,8 +217,8 @@ class IsolatedDecoderConfigLoader:
             },
             'logging': {
                 'level': 'INFO',
-                'log_dir': f'results/decoders/logs',
-                'log_prefix': f'{decoder_name}_evaluation'
+                'log_dir': f'results/embedding_models/logs',
+                'log_prefix': f'{embedding_model_name}_evaluation'
             },
             'embedding': {
                 'cache_embeddings': True,

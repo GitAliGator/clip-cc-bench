@@ -1,8 +1,8 @@
-# KaLM-Embedding-Gemma3-12B-2511 Isolated Decoder Configuration
+# KaLM-Embedding-Gemma3-12B-2511 Isolated Embedding Model Configuration
 
-decoder:
+embedding_model:
   name: "kalm"
-  path: "decoder_models/kalm"
+  path: "embedding_models/kalm"
   type: "kalm"
   batch_size: 8
   max_length: 32768        # KaLM supports up to 32k tokens (512 recommended for optimal performance)
@@ -49,5 +49,5 @@ models_to_evaluate:
 
 logging:
   level: "INFO"
-  log_dir: "results/decoders/logs/kalm"
+  log_dir: "results/embedding_models/logs/kalm"
   log_prefix: "kalm_evaluation"

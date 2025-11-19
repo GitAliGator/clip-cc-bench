@@ -1,7 +1,7 @@
 """
 Shared Result Management System
 
-Thread-safe result management for concurrent decoder evaluations.
+Thread-safe result management for concurrent embedding_model evaluations.
 Handles CSV and JSON file updates with proper locking.
 """
 
@@ -13,29 +13,29 @@ from pathlib import Path
 from typing import List, Dict, Any, Optional
 from datetime import datetime
 
-from base_types import DecoderEvaluationResult, SimilarityScore
+from base_types import EmbeddingEvaluationResult, SimilarityScore
 
 
 class SharedResultManager:
-    """Thread-safe result manager for concurrent decoder evaluations."""
+    """Thread-safe result manager for concurrent embedding_model evaluations."""
 
-    def __init__(self, results_base_dir: Path, decoder_name: str):
+    def __init__(self, results_base_dir: Path, embedding_model_name: str):
         self.results_base_dir = Path(results_base_dir)
-        self.decoder_name = decoder_name
-        self.logger = logging.getLogger(f'result_manager.{decoder_name}')
+        self.embedding_model_name = embedding_model_name
+        self.logger = logging.getLogger(f'result_manager.{embedding_model_name}')
 
-        # Result directories - decoder-isolated structure
-        self.individual_csv_dir = self.results_base_dir / "decoders" / "individual_results" / "csv" / self.decoder_name
-        self.individual_json_dir = self.results_base_dir / "decoders" / "individual_results" / "json" / self.decoder_name
-        self.aggregated_results_dir = self.results_base_dir / "decoders" / "aggregated_results"
-        self.decoder_aggregated_dir = self.aggregated_results_dir / self.decoder_name
-        self.logs_dir = self.results_base_dir / "decoders" / "logs" / self.decoder_name
+        # Result directories - embedding_model-isolated structure
+        self.individual_csv_dir = self.results_base_dir / "embedding_models" / "individual_results" / "csv" / self.embedding_model_name
+        self.individual_json_dir = self.results_base_dir / "embedding_models" / "individual_results" / "json" / self.embedding_model_name
+        self.aggregated_results_dir = self.results_base_dir / "embedding_models" / "aggregated_results"
+        self.embedding_model_aggregated_dir = self.aggregated_results_dir / self.embedding_model_name
+        self.logs_dir = self.results_base_dir / "embedding_models" / "logs" / self.embedding_model_name
 
         # Ensure directories exist
-        for dir_path in [self.individual_csv_dir, self.individual_json_dir, self.aggregated_results_dir, self.decoder_aggregated_dir, self.logs_dir]:
+        for dir_path in [self.individual_csv_dir, self.individual_json_dir, self.aggregated_results_dir, self.embedding_model_aggregated_dir, self.logs_dir]:
             dir_path.mkdir(parents=True, exist_ok=True)
 
-    def save_individual_result(self, result: DecoderEvaluationResult) -> bool:
+    def save_individual_result(self, result: EmbeddingEvaluationResult) -> bool:
         """Save individual evaluation result to both CSV and JSON."""
         try:
             # Save to CSV (thread-safe)
@@ -49,10 +49,10 @@ class SharedResultManager:
             self.logger.error(f"Failed to save individual result for {result.video_id}: {e}")
             return False
 
-    def _save_individual_result_csv(self, result: DecoderEvaluationResult):
-        """Save individual result to CSV file in decoder-specific directory with fine-grained metrics."""
+    def _save_individual_result_csv(self, result: EmbeddingEvaluationResult):
+        """Save individual result to CSV file in embedding_model-specific directory with fine-grained metrics."""
         model_csv_file = self.individual_csv_dir / f"{result.model_name}.csv"
-        score = result.decoder_similarities.get(self.decoder_name, SimilarityScore(0.5, 0.5))
+        score = result.embedding_model_scores.get(self.embedding_model_name, SimilarityScore(0.5, 0.5))
 
         # Read existing data if file exists
         data = []
@@ -100,8 +100,8 @@ class SharedResultManager:
             writer = csv.writer(f)
             writer.writerows(data)
 
-    def _save_individual_result_json(self, result: DecoderEvaluationResult):
-        """Save individual result to JSON file in decoder-specific directory with fine-grained metrics."""
+    def _save_individual_result_json(self, result: EmbeddingEvaluationResult):
+        """Save individual result to JSON file in embedding_model-specific directory with fine-grained metrics."""
         model_json_file = self.individual_json_dir / f"{result.model_name}.json"
 
         # Load existing data if file exists
@@ -123,9 +123,9 @@ class SharedResultManager:
                 'candidate_length': len(result.prediction_text)
             }
 
-        # Update with decoder's results
-        if self.decoder_name in result.decoder_similarities:
-            sim_score = result.decoder_similarities[self.decoder_name]
+        # Update with embedding_model's results
+        if self.embedding_model_name in result.embedding_model_scores:
+            sim_score = result.embedding_model_scores[self.embedding_model_name]
 
             # Check if this is a fallback score and mark as failure
             is_fallback = sim_score.metadata.get('fallback_score', False) if sim_score.metadata else False
@@ -163,8 +163,8 @@ class SharedResultManager:
         with open(model_json_file, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
 
-    def create_decoder_summary(self, all_results: List[DecoderEvaluationResult]) -> Dict[str, Any]:
-        """Create aggregated summary for this decoder."""
+    def create_embedding_model_summary(self, all_results: List[EmbeddingEvaluationResult]) -> Dict[str, Any]:
+        """Create aggregated summary for this embedding_model."""
         if not all_results:
             return {}
 
@@ -177,8 +177,8 @@ class SharedResultManager:
         successful_evaluations = 0
 
         for result in all_results:
-            if result.success and self.decoder_name in result.decoder_similarities:
-                sim_score = result.decoder_similarities[self.decoder_name]
+            if result.success and self.embedding_model_name in result.embedding_model_scores:
+                sim_score = result.embedding_model_scores[self.embedding_model_name]
                 # Check if this is a fallback score - if so, don't count as successful
                 is_fallback = sim_score.metadata.get('fallback_score', False) if sim_score.metadata else False
                 if not is_fallback:
@@ -195,7 +195,7 @@ class SharedResultManager:
 
         if not similarities:
             return {
-                'decoder_name': self.decoder_name,
+                'embedding_model_name': self.embedding_model_name,
                 'total_evaluations': len(all_results),
                 'successful_evaluations': 0,
                 'error_rate': 1.0,
@@ -204,7 +204,7 @@ class SharedResultManager:
 
         # Calculate statistics
         summary = {
-            'decoder_name': self.decoder_name,
+            'embedding_model_name': self.embedding_model_name,
             'total_evaluations': len(all_results),
             'successful_evaluations': successful_evaluations,
             'error_rate': (len(all_results) - successful_evaluations) / len(all_results),
@@ -257,18 +257,18 @@ class SharedResultManager:
         """Get list of all model names that have result files."""
         model_names = set()
 
-        # Check CSV files in decoder-specific directory
+        # Check CSV files in embedding_model-specific directory
         for csv_file in self.individual_csv_dir.glob("*.csv"):
             model_names.add(csv_file.stem)
 
-        # Check JSON files in decoder-specific directory
+        # Check JSON files in embedding_model-specific directory
         for json_file in self.individual_json_dir.glob("*.json"):
             model_names.add(json_file.stem)
 
         return sorted(list(model_names))
 
     def load_model_results(self, model_name: str) -> Optional[Dict[str, Any]]:
-        """Load existing results for a model from decoder-specific directory."""
+        """Load existing results for a model from embedding_model-specific directory."""
         json_file = self.individual_json_dir / f"{model_name}.json"
 
         if json_file.exists():
@@ -280,7 +280,7 @@ class SharedResultManager:
 
         return None
 
-    def create_per_model_summary(self, model_results: List[DecoderEvaluationResult], model_name: str) -> Dict[str, Any]:
+    def create_per_model_summary(self, model_results: List[EmbeddingEvaluationResult], model_name: str) -> Dict[str, Any]:
         """Create summary statistics for a specific model with fine-grained metrics."""
         if not model_results:
             return {}
@@ -294,8 +294,8 @@ class SharedResultManager:
         successful_evaluations = 0
 
         for result in model_results:
-            if result.success and self.decoder_name in result.decoder_similarities:
-                sim_score = result.decoder_similarities[self.decoder_name]
+            if result.success and self.embedding_model_name in result.embedding_model_scores:
+                sim_score = result.embedding_model_scores[self.embedding_model_name]
                 # Check if this is a fallback score - if so, don't count as successful
                 is_fallback = sim_score.metadata.get('fallback_score', False) if sim_score.metadata else False
                 if not is_fallback:
@@ -312,7 +312,7 @@ class SharedResultManager:
 
         if not similarities:
             return {
-                'decoder_name': self.decoder_name,
+                'embedding_model_name': self.embedding_model_name,
                 'model_name': model_name,
                 'total_evaluations': len(model_results),
                 'successful_evaluations': 0,
@@ -322,7 +322,7 @@ class SharedResultManager:
 
         # Calculate statistics
         summary = {
-            'decoder_name': self.decoder_name,
+            'embedding_model_name': self.embedding_model_name,
             'model_name': model_name,
             'total_evaluations': len(model_results),
             'successful_evaluations': successful_evaluations,
@@ -372,42 +372,42 @@ class SharedResultManager:
 
         return summary
 
-    def save_per_model_summary(self, model_results: List[DecoderEvaluationResult], model_name: str):
-        """Save per-model summary to decoder-specific aggregated results."""
+    def save_per_model_summary(self, model_results: List[EmbeddingEvaluationResult], model_name: str):
+        """Save per-model summary to embedding_model-specific aggregated results."""
         summary = self.create_per_model_summary(model_results, model_name)
 
         if not summary:
             return
 
-        # Save to decoder-specific aggregated directory
-        model_summary_file = self.decoder_aggregated_dir / f"{model_name}.json"
+        # Save to embedding_model-specific aggregated directory
+        model_summary_file = self.embedding_model_aggregated_dir / f"{model_name}.json"
         with open(model_summary_file, 'w', encoding='utf-8') as f:
             json.dump(summary, f, indent=2, ensure_ascii=False)
 
         # Update aggregated CSV
         self.update_aggregated_csv(model_name, summary)
 
-        # Update cross-decoder stats
-        self.update_cross_decoder_stats(model_name, summary)
+        # Update cross-embedding_model stats
+        self.update_cross_embedding_model_stats(model_name, summary)
 
     def update_aggregated_csv(self, model_name: str, summary: Dict[str, Any]):
-        """Update the aggregated results CSV file by reading from all decoder directories."""
+        """Update the aggregated results CSV file by reading from all embedding_model directories."""
         csv_file = self.aggregated_results_dir / "aggregated_results.csv"
 
-        # Discover all decoder directories
-        decoders_base_dir = self.results_base_dir / "decoders" / "aggregated_results"
-        decoder_dirs = [d for d in decoders_base_dir.iterdir() if d.is_dir() and d.name != '__pycache__']
+        # Discover all embedding_model directories
+        embedding_models_base_dir = self.results_base_dir / "embedding_models" / "aggregated_results"
+        embedding_model_dirs = [d for d in embedding_models_base_dir.iterdir() if d.is_dir() and d.name != '__pycache__']
 
-        # Collect data from all decoder directories
+        # Collect data from all embedding_model directories
         data = {}
-        decoders = set()
+        embedding_models = set()
 
-        for decoder_dir in decoder_dirs:
-            decoder_name = decoder_dir.name
-            decoders.add(decoder_name)
+        for embedding_model_dir in embedding_model_dirs:
+            embedding_model_name = embedding_model_dir.name
+            embedding_models.add(embedding_model_name)
 
-            # Read all model summaries for this decoder
-            for model_file in decoder_dir.glob("*.json"):
+            # Read all model summaries for this embedding_model
+            for model_file in embedding_model_dir.glob("*.json"):
                 model = model_file.stem
                 try:
                     with open(model_file, 'r', encoding='utf-8') as f:
@@ -415,18 +415,18 @@ class SharedResultManager:
                         if model not in data:
                             data[model] = {}
                         # Store both coarse and fine_f1 and hm_cf
-                        data[model][f"{decoder_name}_coarse"] = f"{model_summary['coarse_grained_stats']['mean']:.4f}"
+                        data[model][f"{embedding_model_name}_coarse"] = f"{model_summary['coarse_grained_stats']['mean']:.4f}"
                         if 'fine_grained_stats' in model_summary:
-                            data[model][f"{decoder_name}_fine_f1"] = f"{model_summary['fine_grained_stats']['f1']['mean']:.4f}"
+                            data[model][f"{embedding_model_name}_fine_f1"] = f"{model_summary['fine_grained_stats']['f1']['mean']:.4f}"
                         if 'hybrid_stats' in model_summary:
-                            data[model][f"{decoder_name}_hm_cf"] = f"{model_summary['hybrid_stats']['hm_cf']['mean']:.4f}"
+                            data[model][f"{embedding_model_name}_hm_cf"] = f"{model_summary['hybrid_stats']['hm_cf']['mean']:.4f}"
                 except Exception as e:
                     self.logger.warning(f"Could not read {model_file}: {e}")
 
         # Build column names
         fieldnames = ['Model Name']
-        for decoder in sorted(decoders):
-            fieldnames.extend([f"{decoder}_coarse", f"{decoder}_fine_f1", f"{decoder}_hm_cf"])
+        for embedding_model in sorted(embedding_models):
+            fieldnames.extend([f"{embedding_model}_coarse", f"{embedding_model}_fine_f1", f"{embedding_model}_hm_cf"])
 
         # Write updated CSV
         with open(csv_file, 'w', newline='', encoding='utf-8') as f:
@@ -439,28 +439,28 @@ class SharedResultManager:
                     row[col] = data[model].get(col, '')
                 writer.writerow(row)
 
-    def update_cross_decoder_stats(self, model_name: str, summary: Dict[str, Any]):
-        """Update cross-decoder comparison statistics."""
-        cross_stats_file = self.aggregated_results_dir / "cross_decoder_stats.json"
+    def update_cross_embedding_model_stats(self, model_name: str, summary: Dict[str, Any]):
+        """Update cross-embedding_model comparison statistics."""
+        cross_stats_file = self.aggregated_results_dir / "cross_embedding_model_stats.json"
 
-        # Load existing cross-decoder stats
+        # Load existing cross-embedding_model stats
         cross_stats = {}
         if cross_stats_file.exists():
             try:
                 with open(cross_stats_file, 'r', encoding='utf-8') as f:
                     cross_stats = json.load(f)
             except Exception as e:
-                self.logger.warning(f"Could not load cross-decoder stats: {e}")
+                self.logger.warning(f"Could not load cross-embedding_model stats: {e}")
 
         # Initialize model entry if it doesn't exist
         if model_name not in cross_stats:
             cross_stats[model_name] = {
-                'decoder_comparisons': {},
+                'embedding_model_comparisons': {},
                 'timestamp': datetime.now().isoformat()
             }
 
-        # Update this decoder's stats for the model
-        cross_stats[model_name]['decoder_comparisons'][self.decoder_name] = {
+        # Update this embedding_model's stats for the model
+        cross_stats[model_name]['embedding_model_comparisons'][self.embedding_model_name] = {
             'coarse_grained': {
                 'mean': summary['coarse_grained_stats']['mean'],
                 'std': summary['coarse_grained_stats']['std'],
@@ -471,63 +471,63 @@ class SharedResultManager:
 
         # Add fine-grained and hybrid stats if available
         if 'fine_grained_stats' in summary:
-            cross_stats[model_name]['decoder_comparisons'][self.decoder_name]['fine_grained'] = {
+            cross_stats[model_name]['embedding_model_comparisons'][self.embedding_model_name]['fine_grained'] = {
                 'precision': summary['fine_grained_stats']['precision'],
                 'recall': summary['fine_grained_stats']['recall'],
                 'f1': summary['fine_grained_stats']['f1']
             }
 
         if 'hybrid_stats' in summary:
-            cross_stats[model_name]['decoder_comparisons'][self.decoder_name]['hybrid'] = summary['hybrid_stats']
+            cross_stats[model_name]['embedding_model_comparisons'][self.embedding_model_name]['hybrid'] = summary['hybrid_stats']
 
         # Calculate rankings based on hm_cf (or coarse if hm_cf not available)
-        decoder_scores = {}
-        for dec, stats in cross_stats[model_name]['decoder_comparisons'].items():
+        embedding_model_scores = {}
+        for dec, stats in cross_stats[model_name]['embedding_model_comparisons'].items():
             if 'hybrid' in stats and 'hm_cf' in stats['hybrid']:
-                decoder_scores[dec] = stats['hybrid']['hm_cf']['mean']
+                embedding_model_scores[dec] = stats['hybrid']['hm_cf']['mean']
             else:
-                decoder_scores[dec] = stats['coarse_grained']['mean']
+                embedding_model_scores[dec] = stats['coarse_grained']['mean']
 
-        if decoder_scores:
-            sorted_decoders = sorted(decoder_scores.items(), key=lambda x: x[1], reverse=True)
-            cross_stats[model_name]['best_decoder'] = sorted_decoders[0][0]
-            cross_stats[model_name]['ranking'] = [dec for dec, _ in sorted_decoders]
+        if embedding_model_scores:
+            sorted_embedding_models = sorted(embedding_model_scores.items(), key=lambda x: x[1], reverse=True)
+            cross_stats[model_name]['best_embedding_model'] = sorted_embedding_models[0][0]
+            cross_stats[model_name]['ranking'] = [dec for dec, _ in sorted_embedding_models]
 
             # Calculate performance gap (difference between best and worst)
-            if len(sorted_decoders) > 1:
-                cross_stats[model_name]['performance_gap'] = round(sorted_decoders[0][1] - sorted_decoders[-1][1], 6)
+            if len(sorted_embedding_models) > 1:
+                cross_stats[model_name]['performance_gap'] = round(sorted_embedding_models[0][1] - sorted_embedding_models[-1][1], 6)
 
         # Update overall summary statistics
         cross_stats['summary'] = self._calculate_summary_stats(cross_stats)
 
-        # Save updated cross-decoder stats
+        # Save updated cross-embedding_model stats
         with open(cross_stats_file, 'w', encoding='utf-8') as f:
             json.dump(cross_stats, f, indent=2, ensure_ascii=False)
 
     def _calculate_summary_stats(self, cross_stats: Dict[str, Any]) -> Dict[str, Any]:
-        """Calculate summary statistics across all models and decoders."""
-        model_entries = {k: v for k, v in cross_stats.items() if k != 'summary' and isinstance(v, dict) and 'decoder_comparisons' in v}
+        """Calculate summary statistics across all models and embedding_models."""
+        model_entries = {k: v for k, v in cross_stats.items() if k != 'summary' and isinstance(v, dict) and 'embedding_model_comparisons' in v}
 
         if not model_entries:
             return {'total_models': 0, 'timestamp': datetime.now().isoformat()}
 
-        # Collect all decoder performance data
-        decoder_performances = {}
+        # Collect all embedding_model performance data
+        embedding_model_performances = {}
         for model_name, model_data in model_entries.items():
-            for decoder_name, decoder_stats in model_data.get('decoder_comparisons', {}).items():
-                if decoder_name not in decoder_performances:
-                    decoder_performances[decoder_name] = []
+            for embedding_model_name, embedding_model_stats in model_data.get('embedding_model_comparisons', {}).items():
+                if embedding_model_name not in embedding_model_performances:
+                    embedding_model_performances[embedding_model_name] = []
                 # Use hm_cf if available, otherwise coarse
-                if 'hybrid' in decoder_stats and 'hm_cf' in decoder_stats['hybrid']:
-                    decoder_performances[decoder_name].append(decoder_stats['hybrid']['hm_cf']['mean'])
+                if 'hybrid' in embedding_model_stats and 'hm_cf' in embedding_model_stats['hybrid']:
+                    embedding_model_performances[embedding_model_name].append(embedding_model_stats['hybrid']['hm_cf']['mean'])
                 else:
-                    decoder_performances[decoder_name].append(decoder_stats['coarse_grained']['mean'])
+                    embedding_model_performances[embedding_model_name].append(embedding_model_stats['coarse_grained']['mean'])
 
-        # Calculate overall best decoder
-        overall_best_decoder = None
-        if decoder_performances:
-            decoder_averages = {dec: sum(scores) / len(scores) for dec, scores in decoder_performances.items()}
-            overall_best_decoder = max(decoder_averages.items(), key=lambda x: x[1])[0]
+        # Calculate overall best embedding_model
+        overall_best_embedding_model = None
+        if embedding_model_performances:
+            embedding_model_averages = {dec: sum(scores) / len(scores) for dec, scores in embedding_model_performances.items()}
+            overall_best_embedding_model = max(embedding_model_averages.items(), key=lambda x: x[1])[0]
 
         # Calculate average performance gaps
         performance_gaps = []
@@ -539,9 +539,9 @@ class SharedResultManager:
 
         return {
             'total_models': len(model_entries),
-            'total_decoders': len(decoder_performances),
-            'overall_best_decoder': overall_best_decoder,
+            'total_embedding_models': len(embedding_model_performances),
+            'overall_best_embedding_model': overall_best_embedding_model,
             'avg_performance_gap': round(avg_performance_gap, 6),
-            'decoder_averages': {dec: round(sum(scores) / len(scores), 6) for dec, scores in decoder_performances.items()},
+            'embedding_model_averages': {dec: round(sum(scores) / len(scores), 6) for dec, scores in embedding_model_performances.items()},
             'timestamp': datetime.now().isoformat()
         }

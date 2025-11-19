@@ -1,8 +1,8 @@
-# Qwen3-Embedding-8B Isolated Decoder Configuration
+# Qwen3-Embedding-8B Isolated Embedding Model Configuration
 
-decoder:
+embedding_model:
   name: "qwen3-8b"
-  path: "decoder_models/qwen3-8b"
+  path: "embedding_models/qwen3-8b"
   type: "qwen"
   batch_size: 8
   max_length: 32768        # Qwen3 supports up to 32k tokens
@@ -48,5 +48,5 @@ models_to_evaluate:
 
 logging:
   level: "INFO"
-  log_dir: "results/decoders/logs/qwen"
+  log_dir: "results/embedding_models/logs/qwen"
   log_prefix: "qwen_evaluation"

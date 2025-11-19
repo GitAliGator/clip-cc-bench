@@ -56,29 +56,29 @@ class ProjectPaths:
         """Get model predictions directory."""
         return self.get_data_dir() / "models"
 
-    def get_decoder_results_dir(self) -> Path:
-        """Get decoder results base directory."""
-        return self.get_results_dir() / "decoders"
+    def get_embedding_model_results_dir(self) -> Path:
+        """Get embedding_model results base directory."""
+        return self.get_results_dir() / "embedding_models"
 
-    def get_decoder_logs_dir(self) -> Path:
-        """Get decoder logs directory."""
-        return self.get_decoder_results_dir() / "logs"
+    def get_embedding_model_logs_dir(self) -> Path:
+        """Get embedding_model logs directory."""
+        return self.get_embedding_model_results_dir() / "logs"
 
     def get_individual_results_dir(self) -> Path:
         """Get individual results directory."""
-        return self.get_decoder_results_dir() / "individual_results"
+        return self.get_embedding_model_results_dir() / "individual_results"
 
     def get_aggregated_results_dir(self) -> Path:
         """Get aggregated results directory."""
-        return self.get_decoder_results_dir() / "aggregated_results"
+        return self.get_embedding_model_results_dir() / "aggregated_results"
 
-    def get_decoder_config_file(self, decoder_name: str) -> Path:
-        """Get decoder-specific config file (flattened structure)."""
-        return self.get_configs_dir() / f"{decoder_name}.yaml"
+    def get_embedding_model_config_file(self, embedding_model_name: str) -> Path:
+        """Get embedding_model-specific config file (flattened structure)."""
+        return self.get_configs_dir() / f"{embedding_model_name}.yaml"
 
-    def get_decoder_models_dir(self) -> Path:
-        """Get decoder models directory (in project root)."""
-        return self.base_dir / "decoder_models"
+    def get_embedding_models_dir(self) -> Path:
+        """Get embedding_model models directory (in project root)."""
+        return self.base_dir / "embedding_models"
 
     def to_dict(self) -> Dict[str, str]:
         """Convert paths to dictionary for config files."""
@@ -90,8 +90,8 @@ class ProjectPaths:
             'configs_dir': str(self.get_configs_dir()),
             'ground_truth_file': str(self.get_ground_truth_file()),
             'predictions_dir': str(self.get_predictions_dir()),
-            'decoder_results_dir': str(self.get_decoder_results_dir()),
-            'decoder_logs_dir': str(self.get_decoder_logs_dir()),
+            'embedding_model_results_dir': str(self.get_embedding_model_results_dir()),
+            'embedding_model_logs_dir': str(self.get_embedding_model_logs_dir()),
             'individual_results_dir': str(self.get_individual_results_dir()),
             'aggregated_results_dir': str(self.get_aggregated_results_dir())
         }

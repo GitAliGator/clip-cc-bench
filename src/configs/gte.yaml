@@ -1,8 +1,8 @@
-# GTE-Qwen2-7B-Instruct Isolated Decoder Configuration
+# GTE-Qwen2-7B-Instruct Isolated Embedding Model Configuration
 
-decoder:
+embedding_model:
   name: "gte-qwen2-7b"
-  path: "decoder_models/gte-qwen2-7b"
+  path: "embedding_models/gte-qwen2-7b"
   type: "gte"
   batch_size: 8
   max_length: 8192         # Can handle up to 32k, using 8192 for efficiency
@@ -47,5 +47,5 @@ models_to_evaluate:
 
 logging:
   level: "INFO"
-  log_dir: "results/decoders/logs/gte"
+  log_dir: "results/embedding_models/logs/gte"
   log_prefix: "gte_evaluation"
