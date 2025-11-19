@@ -28,6 +28,8 @@ src/scripts/*/.venv/
 # These are now outside the repo in parent directory, but ignore if someone copies them
 venv/
 venv_*/
+# Exception: track venv_configs/ directory (contains setup scripts and requirements)
+!venv_configs/
 .venv/
 env/
 ENV/

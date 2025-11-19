@@ -17,6 +17,8 @@ flash-attn>=2.5.6
 # Additional dependencies
 scikit-learn
 scipy
+matplotlib
+seaborn
 Pillow
 PyYAML>=6.0
 tqdm

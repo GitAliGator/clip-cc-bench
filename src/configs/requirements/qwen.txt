@@ -14,8 +14,6 @@ datasets>=4.0.0
 # Additional dependencies
 scikit-learn
 scipy
-matplotlib
-seaborn
 Pillow
 PyYAML>=6.0
 tqdm

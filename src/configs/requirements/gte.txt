@@ -16,15 +16,11 @@ datasets>=4.0.0
 nltk>=3.8.1
 mosestokenizer
 contractions
-wtpsplit
-rouge-score
 regex
 
 # Additional dependencies
 scikit-learn
 scipy
-matplotlib
-seaborn
 Pillow
 PyYAML>=6.0
 tqdm
