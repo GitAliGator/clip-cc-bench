@@ -77,8 +77,8 @@ class ProjectPaths:
         return self.get_configs_dir() / f"{decoder_name}.yaml"
 
     def get_decoder_models_dir(self) -> Path:
-        """Get decoder models directory (centralized in parent directory)."""
-        return self.base_dir.parent / "decoder_models"
+        """Get decoder models directory (in project root)."""
+        return self.base_dir / "decoder_models"
 
     def to_dict(self) -> Dict[str, str]:
         """Convert paths to dictionary for config files."""

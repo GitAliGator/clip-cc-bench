@@ -130,11 +130,8 @@ class IsolatedDecoderConfigLoader:
         if 'decoder' in config and 'path' in config['decoder']:
             decoder_path = config['decoder']['path']
             if isinstance(decoder_path, str) and not Path(decoder_path).is_absolute():
-                # decoder_models directory is centralized in parent directory
-                if decoder_path.startswith('decoder_models/'):
-                    config['decoder']['path'] = str(base_dir.parent / decoder_path)
-                else:
-                    config['decoder']['path'] = str(base_dir / decoder_path)
+                # decoder_models directory is in project root
+                config['decoder']['path'] = str(base_dir / decoder_path)
 
     def _get_computed_paths(self) -> Dict[str, str]:
         """Get computed paths for the decoder."""
