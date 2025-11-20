@@ -1,42 +1,42 @@
 {
   "embedding_model_name": "nv-embed",
   "model_name": "mplug",
-  "total_evaluations": 199,
-  "successful_evaluations": 199,
+  "total_evaluations": 6,
+  "successful_evaluations": 6,
   "error_rate": 0.0,
   "coarse_grained_stats": {
-    "mean": 0.629361,
-    "min": 0.264414,
-    "max": 0.879057,
-    "std": 0.129418
+    "mean": 0.566709,
+    "min": 0.354059,
+    "max": 0.744111,
+    "std": 0.154205
   },
-  "timestamp": "2025-11-13T18:51:35.086822",
+  "timestamp": "2025-11-20T14:59:03.086871",
   "fine_grained_stats": {
     "precision": {
-      "mean": 0.49139,
-      "std": 0.072468,
-      "min": 0.312022,
-      "max": 0.718756
+      "mean": 0.490689,
+      "std": 0.070729,
+      "min": 0.360821,
+      "max": 0.57188
     },
     "recall": {
-      "mean": 0.441668,
-      "std": 0.063135,
-      "min": 0.262973,
-      "max": 0.627759
+      "mean": 0.416788,
+      "std": 0.042666,
+      "min": 0.341946,
+      "max": 0.471697
     },
     "f1": {
-      "mean": 0.463319,
-      "std": 0.060546,
-      "min": 0.307422,
-      "max": 0.616197
+      "mean": 0.450205,
+      "std": 0.053527,
+      "min": 0.35113,
+      "max": 0.506174
     }
   },
   "hybrid_stats": {
     "hm_cf": {
-      "mean": 0.529083,
-      "std": 0.079793,
-      "min": 0.299455,
-      "max": 0.720499
+      "mean": 0.496959,
+      "std": 0.088672,
+      "min": 0.352589,
+      "max": 0.581882
     }
   }
 }

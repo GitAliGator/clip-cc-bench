@@ -100,26 +100,29 @@ longvu,0.6329,0.4257,0.5079
 ```
 
 **New Format (hierarchical headers with avg±std):**
+
 ```csv
-VLM,nv-embed_Coarse-Grained,nv-embed_Fine-Grained F1,nv-embed_Hybrid (HM-CF)
-,mean±std,mean±std,mean±std
-videollama3,0.68±0.10,0.47±0.07,0.55±0.08
-llava_one_vision,0.64±0.07,0.44±0.06,0.52±0.06
-mplug,0.63±0.13,0.46±0.06,0.53±0.08
-longvu,0.61±0.10,0.44±0.06,0.51±0.07
+vlm,nv-embed,nv-embed,nv-embed,nv-embed,nv-embed,gte-qwen2-7b,gte-qwen2-7b,gte-qwen2-7b,gte-qwen2-7b,gte-qwen2-7b
+,coarse_grained,fine_grained_precision,fine_grained_recall,fine_grained_f1,harmonic_mean_cf,coarse_grained,fine_grained_precision,fine_grained_recall,fine_grained_f1,harmonic_mean_cf
+videollama3,0.68±0.10,0.47±0.08,0.46±0.08,0.47±0.07,0.55±0.08,0.69±0.09,0.48±0.07,0.47±0.07,0.48±0.06,0.56±0.07
+llava_one_vision,0.64±0.07,0.48±0.06,0.42±0.06,0.44±0.06,0.52±0.06,0.65±0.05,0.63±0.03,0.61±0.03,0.62±0.03,0.63±0.02
 ```
 
 **Key Changes:**
-- **Hierarchical headers**: First row has metric names with embedding model prefix
-- **Second row**: Shows "mean±std" for each metric column (lowercase)
+- **Row 1**: Embedding model names (repeated for each metric group), lowercase
+- **Row 2**: Metric names (coarse_grained, fine_grained_precision, fine_grained_recall, fine_grained_f1, harmonic_mean_cf), lowercase
+- **5 metrics per embedding model** for comprehensive analysis
+- **No "mean±std" labels** in row 2 - metrics speak for themselves
+- **Single file** contains ALL embedding models (columns grow as you add models)
 - Combined mean and std into single `avg±std` format
-- Removed "Measurement Tool" column (embedded in header)
-- Changed "Model Name" to "VLM" for clarity
+- All lowercase for consistency
 - Values rounded to 2 decimal places for readability
 
 ---
 
-## 3. detailed_stats.csv → vlm_performance_detailed.csv
+## 3. detailed_stats.csv → coarse_fine_harmonic_results.csv
+
+**Purpose**: Focused results showing only the 3 key VLM ranking metrics (coarse, fine F1, hybrid).
 
 **Current Format (with separate std columns):**
 ```csv
@@ -130,23 +133,25 @@ longvu,0.61±0.10,0.44±0.06,0.51±0.07
 ```
 
 **New Format (hierarchical headers with avg±std):**
+
 ```csv
-VLM,nv-embed_Coarse-Grained,nv-embed_Fine-Precision,nv-embed_Fine-Recall,nv-embed_Fine-F1,nv-embed_Hybrid (HM-CF)
-,mean±std,mean±std,mean±std,mean±std,mean±std
-videollama3,0.68±0.10,0.47±0.08,0.46±0.08,0.47±0.07,0.55±0.08
-mplug,0.63±0.13,0.49±0.07,0.44±0.06,0.46±0.06,0.53±0.08
-llava_one_vision,0.64±0.07,0.48±0.06,0.42±0.06,0.44±0.06,0.52±0.06
-longvu,0.61±0.10,0.48±0.07,0.42±0.07,0.44±0.06,0.51±0.07
+vlm,nv-embed,nv-embed,nv-embed,gte-qwen2-7b,gte-qwen2-7b,gte-qwen2-7b
+,coarse_grained,fine_grained_f1,harmonic_mean_cf,coarse_grained,fine_grained_f1,harmonic_mean_cf
+videollama3,0.68±0.10,0.47±0.07,0.55±0.08,0.69±0.09,0.48±0.06,0.56±0.07
+llava_one_vision,0.64±0.07,0.44±0.06,0.52±0.06,0.65±0.05,0.62±0.03,0.63±0.02
+mplug,0.63±0.13,0.46±0.06,0.53±0.08,0.74±0.04,0.65±0.03,0.69±0.02
+longvu,0.61±0.10,0.44±0.06,0.51±0.07,0.69±0.03,0.61±0.03,0.65±0.03
 ```
 
 **Key Changes:**
-- **Hierarchical headers**: First row has metric names with embedding model prefix
-- **Second row**: Shows "mean±std" for each metric column (lowercase)
+- **Row 1**: Embedding model names (repeated for each metric group), lowercase
+- **Row 2**: Metric names (coarse_grained, fine_grained_f1, harmonic_mean_cf), lowercase
+- **Same metrics as aggregated_results.csv** for consistency
+- **No "mean±std" labels** in row 2 - metrics speak for themselves
+- **Single file** contains ALL embedding models (columns grow as you add models)
 - **Removed "Rank" column** - ranking handled by rank_vlms.py
-- **Removed "Measurement Tool" column** - embedded in header instead
 - Combined mean/std into `avg±std` format
-- Includes all fine-grained metrics (Precision, Recall, F1)
-- Clearer metric names
+- All lowercase for consistency
 
 ---
 
@@ -170,8 +175,7 @@ longvu,0.61±0.10,0.48±0.07,0.42±0.07,0.44±0.06,0.51±0.07
 
 1. Update `src/utils/result_manager.py` to generate new JSON format
 2. Update `src/scripts/rank_vlms.py` to generate new CSV formats
-3. Rename files:
+3. Rename file:
    - `cross_embedding_model_stats.json` → `vlm_performance_stats.json`
-   - `detailed_stats.csv` → `vlm_performance_detailed.csv`
 4. Test with current nv-embed results
 5. Verify all 5 embedding models produce consistent format

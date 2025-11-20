@@ -14,7 +14,9 @@ class ProjectPaths:
     """Centralized path management for the entire project."""
 
     # Default base directory - can be easily changed for different systems
-    DEFAULT_BASE_DIR = "/mmfs2/home/jacks.local/mali9292/aaai_student_abstract/clip-cc-bench"
+    # Default base directory - relative to this file
+    # This file is in src/utils/paths.py, so we go up 3 levels to get to the project root
+    DEFAULT_BASE_DIR = Path(__file__).resolve().parents[2]
 
     def __init__(self, base_dir: str = None):
         """Initialize with base directory."""

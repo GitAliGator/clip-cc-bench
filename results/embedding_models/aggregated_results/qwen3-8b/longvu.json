@@ -1,42 +1,42 @@
 {
   "embedding_model_name": "qwen3-8b",
   "model_name": "longvu",
-  "total_evaluations": 199,
-  "successful_evaluations": 199,
+  "total_evaluations": 6,
+  "successful_evaluations": 6,
   "error_rate": 0.0,
   "coarse_grained_stats": {
-    "mean": 0.669994,
-    "min": 0.46973,
-    "max": 0.814728,
-    "std": 0.067979
+    "mean": 0.646985,
+    "min": 0.590304,
+    "max": 0.731017,
+    "std": 0.052974
   },
-  "timestamp": "2025-11-13T21:27:50.206919",
+  "timestamp": "2025-11-20T15:03:58.835921",
   "fine_grained_stats": {
     "precision": {
-      "mean": 0.682135,
-      "std": 0.04295,
-      "min": 0.567788,
-      "max": 0.803926
+      "mean": 0.69155,
+      "std": 0.019768,
+      "min": 0.660911,
+      "max": 0.715486
     },
     "recall": {
-      "mean": 0.654477,
-      "std": 0.040975,
-      "min": 0.538527,
-      "max": 0.753201
+      "mean": 0.634843,
+      "std": 0.019775,
+      "min": 0.596237,
+      "max": 0.661093
     },
     "f1": {
-      "mean": 0.667205,
-      "std": 0.034782,
-      "min": 0.567355,
-      "max": 0.756989
+      "mean": 0.661647,
+      "std": 0.013439,
+      "min": 0.648055,
+      "max": 0.687215
     }
   },
   "hybrid_stats": {
     "hm_cf": {
-      "mean": 0.667488,
-      "std": 0.046878,
-      "min": 0.516621,
-      "max": 0.767728
+      "mean": 0.653432,
+      "std": 0.031311,
+      "min": 0.620113,
+      "max": 0.70844
     }
   }
 }
