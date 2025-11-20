@@ -1,0 +1,170 @@
+{
+  "vlm_performance": {
+    "internvl": {
+      "metrics": {
+        "coarse_grained": {
+          "mean": 0.5695,
+          "std": 0.0982,
+          "min": 0.0265,
+          "max": 0.8433,
+          "mean±std": "0.57±0.10"
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.3839,
+            "std": 0.0618,
+            "min": 0.0793,
+            "max": 0.5692,
+            "mean±std": "0.38±0.06"
+          },
+          "recall": {
+            "mean": 0.3731,
+            "std": 0.0726,
+            "min": 0.0241,
+            "max": 0.5453,
+            "mean±std": "0.37±0.07"
+          },
+          "f1": {
+            "mean": 0.3763,
+            "std": 0.0631,
+            "min": 0.0369,
+            "max": 0.5252,
+            "mean±std": "0.38±0.06"
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.4515,
+            "std": 0.0726,
+            "min": 0.0308,
+            "max": 0.6470,
+            "mean±std": "0.45±0.07"
+          }
+        }
+      },
+      "embedding_model": "nv-embed",
+      "num_videos_evaluated": 156,
+      "timestamp": "2025-11-19T19:32:02.865044"
+    },
+    "llava_one_vision": {
+      "metrics": {
+        "coarse_grained": {
+          "mean": 0.6438,
+          "std": 0.0717,
+          "min": 0.4827,
+          "max": 0.8242,
+          "mean±std": "0.64±0.07"
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.4795,
+            "std": 0.0643,
+            "min": 0.3281,
+            "max": 0.6814,
+            "mean±std": "0.48±0.06"
+          },
+          "recall": {
+            "mean": 0.4163,
+            "std": 0.0643,
+            "min": 0.2756,
+            "max": 0.6407,
+            "mean±std": "0.42±0.06"
+          },
+          "f1": {
+            "mean": 0.4436,
+            "std": 0.0568,
+            "min": 0.3141,
+            "max": 0.6243,
+            "mean±std": "0.44±0.06"
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.5239,
+            "std": 0.0580,
+            "min": 0.3850,
+            "max": 0.6776,
+            "mean±std": "0.52±0.06"
+          }
+        }
+      },
+      "embedding_model": "nv-embed",
+      "num_videos_evaluated": 156,
+      "timestamp": "2025-11-19T19:33:33.065865"
+    },
+    "videollama3": {
+      "metrics": {
+        "coarse_grained": {
+          "mean": 0.6812,
+          "std": 0.0970,
+          "min": 0.2526,
+          "max": 0.8559,
+          "mean±std": "0.68±0.10"
+        },
+        "fine_grained": {
+          "precision": {
+            "mean": 0.4697,
+            "std": 0.0763,
+            "min": 0.0,
+            "max": 0.6501,
+            "mean±std": "0.47±0.08"
+          },
+          "recall": {
+            "mean": 0.4646,
+            "std": 0.0790,
+            "min": 0.0,
+            "max": 0.6437,
+            "mean±std": "0.46±0.08"
+          },
+          "f1": {
+            "mean": 0.4653,
+            "std": 0.0720,
+            "min": 0.0,
+            "max": 0.6458,
+            "mean±std": "0.47±0.07"
+          }
+        },
+        "hybrid": {
+          "hm_cf": {
+            "mean": 0.5489,
+            "std": 0.0825,
+            "min": 0.0,
+            "max": 0.7176,
+            "mean±std": "0.55±0.08"
+          }
+        }
+      },
+      "embedding_model": "nv-embed",
+      "num_videos_evaluated": 156,
+      "timestamp": "2025-11-19T19:43:45.151033"
+    }
+  },
+  "summary": {
+    "total_vlms_evaluated": 3,
+    "embedding_model": "nv-embed",
+    "performance_distribution": {
+      "hm_cf": {
+        "mean_across_vlms": 0.5081,
+        "std_across_vlms": 0.0507,
+        "min": 0.4515,
+        "max": 0.5489,
+        "mean±std": "0.51±0.05"
+      },
+      "coarse_grained": {
+        "mean_across_vlms": 0.6315,
+        "std_across_vlms": 0.0567,
+        "min": 0.5695,
+        "max": 0.6812,
+        "mean±std": "0.63±0.06"
+      },
+      "fine_f1": {
+        "mean_across_vlms": 0.4284,
+        "std_across_vlms": 0.0458,
+        "min": 0.3763,
+        "max": 0.4653,
+        "mean±std": "0.43±0.05"
+      }
+    },
+    "timestamp": "2025-11-19T19:45:46.055961"
+  }
+}
