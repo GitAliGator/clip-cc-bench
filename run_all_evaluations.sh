@@ -30,11 +30,20 @@ run_evaluation() {
     echo -e "${YELLOW}[$(date '+%Y-%m-%d %H:%M:%S')] Starting ${model_name} evaluation...${NC}"
     echo "----------------------------------------"
 
+    # Save current directory and ensure paths are absolute BEFORE sourcing
+    # (activation script may overwrite SCRIPT_DIR variable)
+    local ORIGINAL_DIR=$(pwd)
+    local ABSOLUTE_EVAL_SCRIPT=$(realpath "${eval_script}")
+    local ABSOLUTE_CONFIG_FILE=$(realpath "${config_file}")
+
     # Source the activation script
     source "${activate_script}"
 
-    # Run the evaluation
-    python "${eval_script}" --config "${config_file}"
+    # Return to original directory (activation script may change it)
+    cd "${ORIGINAL_DIR}"
+
+    # Run the evaluation with absolute paths
+    python "${ABSOLUTE_EVAL_SCRIPT}" --config "${ABSOLUTE_CONFIG_FILE}"
 
     # Deactivate the environment
     deactivate
@@ -81,6 +90,14 @@ run_evaluation \
     "${SCRIPT_DIR}/src/scripts/run_kalm_evaluation.py" \
     "${SCRIPT_DIR}/src/configs/kalm.yaml"
 
+# 6. Run VLM Ranking
+echo "========================================"
+echo "Running VLM Ranking Algorithm..."
+echo "========================================"
+python "${SCRIPT_DIR}/src/scripts/rank_vlms.py"
+echo -e "${GREEN}Ranking completed!${NC}"
+echo ""
+
 # Calculate total time
 END_TIME=$(date +%s)
 TOTAL_TIME=$((END_TIME - START_TIME))
@@ -89,7 +106,7 @@ MINUTES=$(((TOTAL_TIME % 3600) / 60))
 SECONDS=$((TOTAL_TIME % 60))
 
 echo "========================================"
-echo -e "${GREEN}All evaluations completed successfully!${NC}"
+echo -e "${GREEN}All evaluations and ranking completed successfully!${NC}"
 echo "Total time: ${HOURS}h ${MINUTES}m ${SECONDS}s"
 echo "========================================"
 echo ""
@@ -99,3 +116,5 @@ echo "  - results/embedding_models/logs/gte/"
 echo "  - results/embedding_models/logs/nemo/"
 echo "  - results/embedding_models/logs/qwen/"
 echo "  - results/embedding_models/logs/kalm/"
+echo "  - results/ranking/vlm_ranking.csv"
+echo "  - results/ranking/detailed_stats.csv"
