@@ -5,9 +5,13 @@
 
 set -e  # Exit on error
 
-# Get the directory where this script is located
+# Get the directory where this script is located and save it
+# NOTE: Activation scripts will overwrite SCRIPT_DIR, so we need to preserve it
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 VENV_CONFIGS_DIR="${SCRIPT_DIR}/venv_configs"
+
+# Save the original script directory (activation scripts will corrupt SCRIPT_DIR)
+readonly ORIGINAL_SCRIPT_DIR="${SCRIPT_DIR}"
 
 # Color output
 RED='\033[0;31m'
@@ -34,13 +38,12 @@ run_evaluation() {
     # to protect against variable corruption from activation script
     local EVAL_SCRIPT="${eval_script}"
     local CONFIG_FILE="${config_file}"
-    local SAVED_SCRIPT_DIR="${SCRIPT_DIR}"
 
     # Source the activation script (may overwrite variables and change directory)
     source "${activate_script}"
 
     # Restore our script directory and change to it
-    cd "${SAVED_SCRIPT_DIR}"
+    cd "${ORIGINAL_SCRIPT_DIR}"
 
     # Run the evaluation with the saved paths
     python "${EVAL_SCRIPT}" --config "${CONFIG_FILE}"
@@ -48,8 +51,12 @@ run_evaluation() {
     # Deactivate the environment
     deactivate
 
+    # CRITICAL: Restore SCRIPT_DIR for next evaluation call
+    # (The activation script overwrites it, breaking subsequent ${SCRIPT_DIR} expansions)
+    SCRIPT_DIR="${ORIGINAL_SCRIPT_DIR}"
+
     # Return to script directory for next iteration
-    cd "${SAVED_SCRIPT_DIR}"
+    cd "${ORIGINAL_SCRIPT_DIR}"
 
     echo -e "${GREEN}[$(date '+%Y-%m-%d %H:%M:%S')] ${model_name} evaluation completed!${NC}"
     echo ""
