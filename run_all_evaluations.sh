@@ -30,26 +30,26 @@ run_evaluation() {
     echo -e "${YELLOW}[$(date '+%Y-%m-%d %H:%M:%S')] Starting ${model_name} evaluation...${NC}"
     echo "----------------------------------------"
 
-    # CRITICAL: Always start from SCRIPT_DIR to ensure paths resolve correctly
-    # (Previous evaluations may have left us in a different directory)
-    cd "${SCRIPT_DIR}"
+    # Paths are already absolute (using ${SCRIPT_DIR}), just store them in local vars
+    # to protect against variable corruption from activation script
+    local EVAL_SCRIPT="${eval_script}"
+    local CONFIG_FILE="${config_file}"
+    local SAVED_SCRIPT_DIR="${SCRIPT_DIR}"
 
-    # Now resolve paths to absolute (they're relative to SCRIPT_DIR)
-    local ABSOLUTE_EVAL_SCRIPT=$(realpath "${eval_script}")
-    local ABSOLUTE_CONFIG_FILE=$(realpath "${config_file}")
-
-    # Source the activation script (may change directory)
+    # Source the activation script (may overwrite variables and change directory)
     source "${activate_script}"
 
-    # Return to script directory
-    cd "${SCRIPT_DIR}"
+    # Restore our script directory and change to it
+    cd "${SAVED_SCRIPT_DIR}"
 
-    # Run the evaluation with absolute paths
-    python "${ABSOLUTE_EVAL_SCRIPT}" --config "${ABSOLUTE_CONFIG_FILE}"
+    # Run the evaluation with the saved paths
+    python "${EVAL_SCRIPT}" --config "${CONFIG_FILE}"
 
-    # Deactivate the environment and return to script directory
+    # Deactivate the environment
     deactivate
-    cd "${SCRIPT_DIR}"
+
+    # Return to script directory for next iteration
+    cd "${SAVED_SCRIPT_DIR}"
 
     echo -e "${GREEN}[$(date '+%Y-%m-%d %H:%M:%S')] ${model_name} evaluation completed!${NC}"
     echo ""
