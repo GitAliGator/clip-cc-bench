@@ -1,0 +1,6 @@
+# Download NV-Embed-v2 model files here
+
+Download model weights from HuggingFace:
+https://huggingface.co/nvidia/NV-Embed-v2
+
+Place all model files directly in this directory.

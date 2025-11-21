@@ -1,0 +1,6 @@
+# Download gte-Qwen2-7B-instruct model files here
+
+Download model weights from HuggingFace:
+https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct
+
+Place all model files directly in this directory.

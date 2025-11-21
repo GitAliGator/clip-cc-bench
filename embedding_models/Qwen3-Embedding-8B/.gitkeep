@@ -1,0 +1,6 @@
+# Download Qwen3-Embedding-8B model files here
+
+Download model weights from HuggingFace:
+https://huggingface.co/Qwen/Qwen3-Embedding-8B
+
+Place all model files directly in this directory.

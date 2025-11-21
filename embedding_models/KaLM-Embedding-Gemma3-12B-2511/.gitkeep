@@ -1,0 +1,6 @@
+# Download KaLM-Embedding-Gemma3-12B-2511 model files here
+
+Download model weights from HuggingFace:
+https://huggingface.co/pgfoundation/KaLM-Embedding-Gemma3-12B-2511
+
+Place all model files directly in this directory.

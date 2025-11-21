@@ -22,8 +22,8 @@ processing:
 
 data_paths:
   # Use relative paths - will be resolved from base directory
-  ground_truth_file: "/mmfs2/home/jacks.local/mali9292/aaai_student_abstract/tmp/ground_truth-subset/clip_cc_dataset.json"
-  predictions_dir: "/mmfs2/home/jacks.local/mali9292/aaai_student_abstract/tmp/models-subset"
+  ground_truth_file: "data/ground_truth/clip_cc_dataset.json"
+  predictions_dir: "data/models"
   results_base_dir: "results"
 
 # Text generation models to evaluate

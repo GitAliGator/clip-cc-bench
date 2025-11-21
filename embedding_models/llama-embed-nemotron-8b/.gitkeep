@@ -1,0 +1,6 @@
+# Download llama-embed-nemotron-8b model files here
+
+Download model weights from HuggingFace:
+https://huggingface.co/nvidia/llama-embed-nemotron-8b
+
+Place all model files directly in this directory.
