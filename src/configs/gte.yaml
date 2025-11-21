@@ -5,7 +5,7 @@ embedding_model:
   path: "embedding_models/gte-Qwen2-7B-instruct"
   type: "gte"
   batch_size: 8
-  max_length: 8192         # Can handle up to 32k, using 8192 for efficiency
+  max_length: 32768         # Can handle up to 32k, using 8192 for efficiency
   trust_remote_code: true
   additional_params: {}
 
