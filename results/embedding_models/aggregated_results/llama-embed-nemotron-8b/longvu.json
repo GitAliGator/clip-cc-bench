@@ -1,0 +1,42 @@
+{
+  "embedding_model_name": "nemo",
+  "model_name": "longvu",
+  "total_evaluations": 6,
+  "successful_evaluations": 6,
+  "error_rate": 0.0,
+  "coarse_grained_stats": {
+    "mean": 0.661434,
+    "min": 0.60499,
+    "max": 0.733503,
+    "std": 0.039435
+  },
+  "timestamp": "2025-11-20T18:28:29.232042",
+  "fine_grained_stats": {
+    "precision": {
+      "mean": 0.536049,
+      "std": 0.026908,
+      "min": 0.498151,
+      "max": 0.582873
+    },
+    "recall": {
+      "mean": 0.470805,
+      "std": 0.034881,
+      "min": 0.41498,
+      "max": 0.509583
+    },
+    "f1": {
+      "mean": 0.500749,
+      "std": 0.027803,
+      "min": 0.466575,
+      "max": 0.538614
+    }
+  },
+  "hybrid_stats": {
+    "hm_cf": {
+      "mean": 0.569417,
+      "std": 0.027534,
+      "min": 0.538075,
+      "max": 0.62113
+    }
+  }
+}

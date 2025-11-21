@@ -84,7 +84,7 @@ def run_evaluation(config: Dict[str, Any], target_models: List[str] = None) -> D
 
     # Initialize result manager
     results_base_dir = Path(config['data_paths']['results_base_dir'])
-    result_manager = SharedResultManager(results_base_dir, "nemo")
+    result_manager = SharedResultManager(results_base_dir, config['embedding_model']['name'])
 
     # Initialize evaluator
     logger.info("Initializing Nemo evaluator...")

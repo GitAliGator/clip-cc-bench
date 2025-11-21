@@ -44,7 +44,7 @@
       },
       "embedding_model": "kalm",
       "num_videos_evaluated": 6,
-      "timestamp": "2025-11-20T16:57:50.112027"
+      "timestamp": "2025-11-20T18:31:03.994186"
     },
     "longvu": {
       "metrics": {
@@ -90,7 +90,7 @@
       },
       "embedding_model": "kalm",
       "num_videos_evaluated": 6,
-      "timestamp": "2025-11-20T16:57:52.967615"
+      "timestamp": "2025-11-20T18:31:06.833182"
     },
     "mplug": {
       "metrics": {
@@ -136,7 +136,7 @@
       },
       "embedding_model": "kalm",
       "num_videos_evaluated": 6,
-      "timestamp": "2025-11-20T16:57:57.600826"
+      "timestamp": "2025-11-20T18:31:11.435614"
     }
   },
   "summary": {
@@ -165,6 +165,6 @@
         "mean±std": "0.74±0.01"
       }
     },
-    "timestamp": "2025-11-20T16:57:57.600991"
+    "timestamp": "2025-11-20T18:31:11.435797"
   }
 }

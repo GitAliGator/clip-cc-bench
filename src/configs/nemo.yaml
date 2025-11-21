@@ -1,8 +1,8 @@
 # NVIDIA Llama-Embed-Nemotron-8B Isolated Embedding Model Configuration
 
 embedding_model:
-  name: "nemo"
-  path: "embedding_models/nemo"
+  name: "llama-embed-nemotron-8b"
+  path: "embedding_models/llama-embed-nemotron-8b"
   type: "nemo"
   batch_size: 8
   max_length: 4096         # Nemotron default max length

@@ -1,8 +1,8 @@
 # KaLM-Embedding-Gemma3-12B-2511 Isolated Embedding Model Configuration
 
 embedding_model:
-  name: "kalm"
-  path: "embedding_models/kalm"
+  name: "KaLM-Embedding-Gemma3-12B-2511"
+  path: "embedding_models/KaLM-Embedding-Gemma3-12B-2511"
   type: "kalm"
   batch_size: 8
   max_length: 32768        # KaLM supports up to 32k tokens (512 recommended for optimal performance)

@@ -1,0 +1,42 @@
+{
+  "embedding_model_name": "nv-embed",
+  "model_name": "llava_one_vision",
+  "total_evaluations": 6,
+  "successful_evaluations": 6,
+  "error_rate": 0.0,
+  "coarse_grained_stats": {
+    "mean": 0.626181,
+    "min": 0.589921,
+    "max": 0.665776,
+    "std": 0.02684
+  },
+  "timestamp": "2025-11-20T18:25:58.536429",
+  "fine_grained_stats": {
+    "precision": {
+      "mean": 0.478916,
+      "std": 0.051889,
+      "min": 0.413984,
+      "max": 0.572648
+    },
+    "recall": {
+      "mean": 0.386387,
+      "std": 0.04152,
+      "min": 0.325813,
+      "max": 0.439158
+    },
+    "f1": {
+      "mean": 0.427478,
+      "std": 0.044757,
+      "min": 0.364645,
+      "max": 0.494597
+    }
+  },
+  "hybrid_stats": {
+    "hm_cf": {
+      "mean": 0.506267,
+      "std": 0.030926,
+      "min": 0.471209,
+      "max": 0.548471
+    }
+  }
+}

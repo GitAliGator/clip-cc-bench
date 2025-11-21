@@ -67,35 +67,35 @@ START_TIME=$(date +%s)
 
 # 1. NV-Embed Evaluation
 run_evaluation \
-    "NV-Embed" \
+    "NV-Embed-v2" \
     "${VENV_CONFIGS_DIR}/activate_nv-embed_env.sh" \
     "${SCRIPT_DIR}/src/scripts/run_nv_embed_evaluation.py" \
     "${SCRIPT_DIR}/src/configs/nv-embed.yaml"
 
 # 2. GTE Evaluation
 run_evaluation \
-    "GTE-Qwen2-7B" \
+    "gte-Qwen2-7B-instruct" \
     "${VENV_CONFIGS_DIR}/activate_gte_env.sh" \
     "${SCRIPT_DIR}/src/scripts/run_gte_evaluation.py" \
     "${SCRIPT_DIR}/src/configs/gte.yaml"
 
 # 3. Nemo Evaluation
 run_evaluation \
-    "NVIDIA Nemotron" \
+    "llama-embed-nemotron-8b" \
     "${VENV_CONFIGS_DIR}/activate_nemo_env.sh" \
     "${SCRIPT_DIR}/src/scripts/run_nemo_evaluation.py" \
     "${SCRIPT_DIR}/src/configs/nemo.yaml"
 
 # 4. Qwen Evaluation
 run_evaluation \
-    "Qwen3-8B" \
+    "Qwen3-Embedding-8B" \
     "${VENV_CONFIGS_DIR}/activate_qwen_env.sh" \
     "${SCRIPT_DIR}/src/scripts/run_qwen_evaluation.py" \
     "${SCRIPT_DIR}/src/configs/qwen.yaml"
 
 # 5. KaLM Evaluation
 run_evaluation \
-    "KaLM-Gemma3-12B" \
+    "KaLM-Embedding-Gemma3-12B-2511" \
     "${VENV_CONFIGS_DIR}/activate_kalm_env.sh" \
     "${SCRIPT_DIR}/src/scripts/run_kalm_evaluation.py" \
     "${SCRIPT_DIR}/src/configs/kalm.yaml"
@@ -121,10 +121,10 @@ echo "Total time: ${HOURS}h ${MINUTES}m ${SECONDS}s"
 echo "========================================"
 echo ""
 echo "Results are stored in:"
-echo "  - results/embedding_models/logs/nv-embed/"
-echo "  - results/embedding_models/logs/gte/"
-echo "  - results/embedding_models/logs/nemo/"
-echo "  - results/embedding_models/logs/qwen/"
-echo "  - results/embedding_models/logs/kalm/"
+echo "  - results/embedding_models/logs/NV-Embed-v2/"
+echo "  - results/embedding_models/logs/gte-Qwen2-7B-instruct/"
+echo "  - results/embedding_models/logs/llama-embed-nemotron-8b/"
+echo "  - results/embedding_models/logs/Qwen3-Embedding-8B/"
+echo "  - results/embedding_models/logs/KaLM-Embedding-Gemma3-12B-2511/"
 echo "  - results/ranking/vlm_overall_ranking.csv"
 echo "  - results/ranking/vlm_per_judge_metrics.csv"

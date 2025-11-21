@@ -1,8 +1,8 @@
 # NV-Embed Isolated Embedding Model Configuration
 
 embedding_model:
-  name: "nv-embed"
-  path: "embedding_models/nv-embed"
+  name: "NV-Embed-v2"
+  path: "embedding_models/NV-Embed-v2"
   type: "nvembed"
   batch_size: 8             # Default from NV-Embed repo
   max_length: 32768         # Default max context length

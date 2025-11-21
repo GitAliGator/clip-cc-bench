@@ -1,8 +1,8 @@
 # Qwen3-Embedding-8B Isolated Embedding Model Configuration
 
 embedding_model:
-  name: "qwen3-8b"
-  path: "embedding_models/qwen3-8b"
+  name: "Qwen3-Embedding-8B"
+  path: "embedding_models/Qwen3-Embedding-8B"
   type: "qwen"
   batch_size: 8
   max_length: 32768        # Qwen3 supports up to 32k tokens
