@@ -5,7 +5,7 @@ embedding_model:
   path: "embedding_models/llama-embed-nemotron-8b"
   type: "nemo"
   batch_size: 8
-  max_length: 4096         # Nemotron default max length
+  max_length: 32768         # Nemotron default max length
   trust_remote_code: true
   additional_params:
     torch_dtype: "float32"
