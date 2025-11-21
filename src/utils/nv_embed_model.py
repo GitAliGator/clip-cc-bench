@@ -21,7 +21,7 @@ from paths import get_project_paths
 
 # Add local NV-Embed implementation path dynamically
 _project_paths = get_project_paths()
-_nv_embed_path = str(_project_paths.get_embedding_models_dir() / "nv-embed")
+_nv_embed_path = str(_project_paths.get_embedding_models_dir() / "NV-Embed-v2")
 sys.path.append(_nv_embed_path)
 from modeling_nvembed import NVEmbedModel as LocalNVEmbedModel
 
