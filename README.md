@@ -150,7 +150,7 @@ deactivate
 
 **3. Download embedding models**
 
-Download model weights from HuggingFace to the `embedding_models/` directory. See `embedding_models/README.md` for complete download instructions and storage requirements (~70GB total).
+Download the required embedding model weights from HuggingFace and place them directly in their respective directories under `embedding_models/`. Ensure model files are placed directly without creating subdirectories. Total storage required: ~70GB.
 
 **4. Prepare evaluation data**
 
