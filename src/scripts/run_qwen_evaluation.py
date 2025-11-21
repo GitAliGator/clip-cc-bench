@@ -29,14 +29,10 @@ def setup_logging(config: Dict[str, Any]) -> logging.Logger:
     log_config = config.get('logging', {})
     log_level = log_config.get('level', 'INFO')
 
-    # Use log_dir from config or create from results_base_dir
-    if 'log_dir' in log_config:
-        log_dir = Path(log_config['log_dir'])
-    elif 'paths' in config and 'logs_dir' in config['paths']:
-        log_dir = Path(config['paths']['logs_dir'])
-    else:
-        results_base_dir = Path(config['data_paths']['results_base_dir'])
-        log_dir = results_base_dir / "embedding_models" / "logs" / "qwen"
+    # Use embedding_model name for consistency with result_manager
+    embedding_model_name = config['embedding_model']['name']
+    results_base_dir = Path(config['data_paths']['results_base_dir'])
+    log_dir = results_base_dir / "embedding_models" / "logs" / embedding_model_name
 
     log_dir.mkdir(parents=True, exist_ok=True)
 

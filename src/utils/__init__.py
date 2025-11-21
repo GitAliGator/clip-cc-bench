@@ -6,21 +6,21 @@ from .base_types import (
     EmbeddingResult,
     EvaluationResult,
     SimilarityScore,
-    EncoderEvaluationResult,
+    EmbeddingEvaluationResult,
     ModelConfig,
-    EncoderPaths
+    EmbeddingModelPaths
 )
 
 from .result_manager import SharedResultManager
-from .config_loader import IsolatedEncoderConfigLoader
+from .config_loader import EmbeddingModelConfigLoader
 
 __all__ = [
     'EmbeddingResult',
     'EvaluationResult',
     'SimilarityScore',
-    'EncoderEvaluationResult',
+    'EmbeddingEvaluationResult',
     'ModelConfig',
-    'EncoderPaths',
+    'EmbeddingModelPaths',
     'SharedResultManager',
-    'IsolatedEncoderConfigLoader'
+    'EmbeddingModelConfigLoader'
 ]

@@ -48,5 +48,4 @@ models_to_evaluate:
 
 logging:
   level: "INFO"
-  log_dir: "results/embedding_models/logs/qwen"
   log_prefix: "qwen_evaluation"

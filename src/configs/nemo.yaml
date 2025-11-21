@@ -49,5 +49,4 @@ models_to_evaluate:
 
 logging:
   level: "INFO"
-  log_dir: "results/embedding_models/logs/nemo"
   log_prefix: "nemo_evaluation"

@@ -47,5 +47,4 @@ models_to_evaluate:
 
 logging:
   level: "INFO"
-  log_dir: "results/embedding_models/logs/gte"
   log_prefix: "gte_evaluation"

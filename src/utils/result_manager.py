@@ -414,134 +414,190 @@ class SharedResultManager:
                         model_summary = json.load(f)
                         if model not in data:
                             data[model] = {}
-                        # Store both coarse and fine_f1 and hm_cf
-                        data[model][f"{embedding_model_name}_coarse"] = f"{model_summary['coarse_grained_stats']['mean']:.4f}"
+                        
+                        # Store metrics with avg±std format
+                        # Coarse
+                        coarse_mean = model_summary['coarse_grained_stats']['mean']
+                        coarse_std = model_summary['coarse_grained_stats']['std']
+                        data[model][f"{embedding_model_name}_coarse_grained"] = f"{coarse_mean:.2f}±{coarse_std:.2f}"
+
+                        # Fine-grained
                         if 'fine_grained_stats' in model_summary:
-                            data[model][f"{embedding_model_name}_fine_f1"] = f"{model_summary['fine_grained_stats']['f1']['mean']:.4f}"
+                            fine_stats = model_summary['fine_grained_stats']
+                            for metric in ['precision', 'recall', 'f1']:
+                                mean = fine_stats[metric]['mean']
+                                std = fine_stats[metric]['std']
+                                data[model][f"{embedding_model_name}_fine_grained_{metric}"] = f"{mean:.2f}±{std:.2f}"
+
+                        # Hybrid
                         if 'hybrid_stats' in model_summary:
-                            data[model][f"{embedding_model_name}_hm_cf"] = f"{model_summary['hybrid_stats']['hm_cf']['mean']:.4f}"
+                            hm_mean = model_summary['hybrid_stats']['hm_cf']['mean']
+                            hm_std = model_summary['hybrid_stats']['hm_cf']['std']
+                            data[model][f"{embedding_model_name}_harmonic_mean_cf"] = f"{hm_mean:.2f}±{hm_std:.2f}"
+
                 except Exception as e:
                     self.logger.warning(f"Could not read {model_file}: {e}")
 
-        # Build column names
-        fieldnames = ['Model Name']
-        for embedding_model in sorted(embedding_models):
-            fieldnames.extend([f"{embedding_model}_coarse", f"{embedding_model}_fine_f1", f"{embedding_model}_hm_cf"])
+        # Build column names (Hierarchical structure flattened for CSV)
+        # Row 1: Embedding model names
+        # Row 2: Metric names
+        # We'll write this as a standard CSV but with specific column ordering
+        
+        sorted_embedding_models = sorted(list(embedding_models))
+        metrics = [
+            'coarse_grained',
+            'fine_grained_precision',
+            'fine_grained_recall',
+            'fine_grained_f1',
+            'harmonic_mean_cf'
+        ]
+        
+        # Create header rows
+        header_row1 = ['vlm']
+        header_row2 = ['']
+        
+        for embed in sorted_embedding_models:
+            for _ in metrics:
+                header_row1.append(embed)
+            header_row2.extend(metrics)
 
         # Write updated CSV
         with open(csv_file, 'w', newline='', encoding='utf-8') as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
-            writer.writeheader()
+            writer = csv.writer(f)
+            writer.writerow(header_row1)
+            writer.writerow(header_row2)
 
             for model in sorted(data.keys()):
-                row = {'Model Name': model}
-                for col in fieldnames[1:]:  # Skip 'Model Name'
-                    row[col] = data[model].get(col, '')
+                row = [model]
+                for embed in sorted_embedding_models:
+                    for metric in metrics:
+                        key = f"{embed}_{metric}"
+                        row.append(data[model].get(key, ''))
                 writer.writerow(row)
 
     def update_cross_embedding_model_stats(self, model_name: str, summary: Dict[str, Any]):
-        """Update cross-embedding_model comparison statistics."""
-        cross_stats_file = self.aggregated_results_dir / "cross_embedding_model_stats.json"
+        """Update cross-embedding_model comparison statistics (vlm_performance_stats.json)."""
+        stats_file = self.aggregated_results_dir / "vlm_performance_stats.json"
 
-        # Load existing cross-embedding_model stats
-        cross_stats = {}
-        if cross_stats_file.exists():
+        # Load existing stats
+        stats = {}
+        if stats_file.exists():
             try:
-                with open(cross_stats_file, 'r', encoding='utf-8') as f:
-                    cross_stats = json.load(f)
+                with open(stats_file, 'r', encoding='utf-8') as f:
+                    stats = json.load(f)
             except Exception as e:
-                self.logger.warning(f"Could not load cross-embedding_model stats: {e}")
+                self.logger.warning(f"Could not load vlm_performance_stats: {e}")
 
-        # Initialize model entry if it doesn't exist
-        if model_name not in cross_stats:
-            cross_stats[model_name] = {
-                'embedding_model_comparisons': {},
+        # Initialize structure if empty
+        if 'vlm_performance' not in stats:
+            stats['vlm_performance'] = {}
+
+        # Helper to format mean±std
+        def fmt_ms(mean, std):
+            return f"{mean:.2f}±{std:.2f}"
+
+        # Update VLM performance data
+        vlm_data = {
+            "metrics": {
+                "coarse_grained": {
+                    "mean": summary['coarse_grained_stats']['mean'],
+                    "std": summary['coarse_grained_stats']['std'],
+                    "min": summary['coarse_grained_stats']['min'],
+                    "max": summary['coarse_grained_stats']['max'],
+                    "mean±std": fmt_ms(summary['coarse_grained_stats']['mean'], summary['coarse_grained_stats']['std'])
+                }
+            },
+            "embedding_model": self.embedding_model_name,
+            "num_videos_evaluated": summary['total_evaluations'],
+            "timestamp": datetime.now().isoformat()
+        }
+
+        # Add fine-grained stats
+        if 'fine_grained_stats' in summary:
+            vlm_data['metrics']['fine_grained'] = {}
+            for metric in ['precision', 'recall', 'f1']:
+                s = summary['fine_grained_stats'][metric]
+                vlm_data['metrics']['fine_grained'][metric] = {
+                    "mean": s['mean'],
+                    "std": s['std'],
+                    "min": s['min'],
+                    "max": s['max'],
+                    "mean±std": fmt_ms(s['mean'], s['std'])
+                }
+
+        # Add hybrid stats
+        if 'hybrid_stats' in summary:
+            vlm_data['metrics']['hybrid'] = {
+                "hm_cf": {
+                    "mean": summary['hybrid_stats']['hm_cf']['mean'],
+                    "std": summary['hybrid_stats']['hm_cf']['std'],
+                    "min": summary['hybrid_stats']['hm_cf']['min'],
+                    "max": summary['hybrid_stats']['hm_cf']['max'],
+                    "mean±std": fmt_ms(summary['hybrid_stats']['hm_cf']['mean'], summary['hybrid_stats']['hm_cf']['std'])
+                }
+            }
+
+        # Update the VLM entry
+        stats['vlm_performance'][model_name] = vlm_data
+
+        # Update summary
+        stats['summary'] = self._calculate_summary_stats(stats)
+
+        # Save updated stats
+        with open(stats_file, 'w', encoding='utf-8') as f:
+            json.dump(stats, f, indent=2, ensure_ascii=False)
+
+    def _calculate_summary_stats(self, stats: Dict[str, Any]) -> Dict[str, Any]:
+        """Calculate summary statistics across all VLMs."""
+        vlm_perf = stats.get('vlm_performance', {})
+        
+        if not vlm_perf:
+            return {
+                'total_vlms_evaluated': 0,
+                'embedding_model': self.embedding_model_name,
                 'timestamp': datetime.now().isoformat()
             }
 
-        # Update this embedding_model's stats for the model
-        cross_stats[model_name]['embedding_model_comparisons'][self.embedding_model_name] = {
-            'coarse_grained': {
-                'mean': summary['coarse_grained_stats']['mean'],
-                'std': summary['coarse_grained_stats']['std'],
-                'min': summary['coarse_grained_stats']['min'],
-                'max': summary['coarse_grained_stats']['max']
+        # Collect metrics across VLMs
+        hm_scores = []
+        coarse_scores = []
+        fine_f1_scores = []
+
+        for vlm_data in vlm_perf.values():
+            metrics = vlm_data.get('metrics', {})
+            
+            # HM
+            if 'hybrid' in metrics and 'hm_cf' in metrics['hybrid']:
+                hm_scores.append(metrics['hybrid']['hm_cf']['mean'])
+            
+            # Coarse
+            if 'coarse_grained' in metrics:
+                coarse_scores.append(metrics['coarse_grained']['mean'])
+                
+            # Fine F1
+            if 'fine_grained' in metrics and 'f1' in metrics['fine_grained']:
+                fine_f1_scores.append(metrics['fine_grained']['f1']['mean'])
+
+        def calc_dist(scores):
+            if not scores:
+                return {}
+            mean_val = np.mean(scores)
+            std_val = np.std(scores)
+            return {
+                "mean_across_vlms": round(mean_val, 4),
+                "std_across_vlms": round(std_val, 4),
+                "min": round(np.min(scores), 4),
+                "max": round(np.max(scores), 4),
+                "mean±std": f"{mean_val:.2f}±{std_val:.2f}"
             }
-        }
-
-        # Add fine-grained and hybrid stats if available
-        if 'fine_grained_stats' in summary:
-            cross_stats[model_name]['embedding_model_comparisons'][self.embedding_model_name]['fine_grained'] = {
-                'precision': summary['fine_grained_stats']['precision'],
-                'recall': summary['fine_grained_stats']['recall'],
-                'f1': summary['fine_grained_stats']['f1']
-            }
-
-        if 'hybrid_stats' in summary:
-            cross_stats[model_name]['embedding_model_comparisons'][self.embedding_model_name]['hybrid'] = summary['hybrid_stats']
-
-        # Calculate rankings based on hm_cf (or coarse if hm_cf not available)
-        embedding_model_scores = {}
-        for dec, stats in cross_stats[model_name]['embedding_model_comparisons'].items():
-            if 'hybrid' in stats and 'hm_cf' in stats['hybrid']:
-                embedding_model_scores[dec] = stats['hybrid']['hm_cf']['mean']
-            else:
-                embedding_model_scores[dec] = stats['coarse_grained']['mean']
-
-        if embedding_model_scores:
-            sorted_embedding_models = sorted(embedding_model_scores.items(), key=lambda x: x[1], reverse=True)
-            cross_stats[model_name]['best_embedding_model'] = sorted_embedding_models[0][0]
-            cross_stats[model_name]['ranking'] = [dec for dec, _ in sorted_embedding_models]
-
-            # Calculate performance gap (difference between best and worst)
-            if len(sorted_embedding_models) > 1:
-                cross_stats[model_name]['performance_gap'] = round(sorted_embedding_models[0][1] - sorted_embedding_models[-1][1], 6)
-
-        # Update overall summary statistics
-        cross_stats['summary'] = self._calculate_summary_stats(cross_stats)
-
-        # Save updated cross-embedding_model stats
-        with open(cross_stats_file, 'w', encoding='utf-8') as f:
-            json.dump(cross_stats, f, indent=2, ensure_ascii=False)
-
-    def _calculate_summary_stats(self, cross_stats: Dict[str, Any]) -> Dict[str, Any]:
-        """Calculate summary statistics across all models and embedding_models."""
-        model_entries = {k: v for k, v in cross_stats.items() if k != 'summary' and isinstance(v, dict) and 'embedding_model_comparisons' in v}
-
-        if not model_entries:
-            return {'total_models': 0, 'timestamp': datetime.now().isoformat()}
-
-        # Collect all embedding_model performance data
-        embedding_model_performances = {}
-        for model_name, model_data in model_entries.items():
-            for embedding_model_name, embedding_model_stats in model_data.get('embedding_model_comparisons', {}).items():
-                if embedding_model_name not in embedding_model_performances:
-                    embedding_model_performances[embedding_model_name] = []
-                # Use hm_cf if available, otherwise coarse
-                if 'hybrid' in embedding_model_stats and 'hm_cf' in embedding_model_stats['hybrid']:
-                    embedding_model_performances[embedding_model_name].append(embedding_model_stats['hybrid']['hm_cf']['mean'])
-                else:
-                    embedding_model_performances[embedding_model_name].append(embedding_model_stats['coarse_grained']['mean'])
-
-        # Calculate overall best embedding_model
-        overall_best_embedding_model = None
-        if embedding_model_performances:
-            embedding_model_averages = {dec: sum(scores) / len(scores) for dec, scores in embedding_model_performances.items()}
-            overall_best_embedding_model = max(embedding_model_averages.items(), key=lambda x: x[1])[0]
-
-        # Calculate average performance gaps
-        performance_gaps = []
-        for model_data in model_entries.values():
-            if 'performance_gap' in model_data:
-                performance_gaps.append(model_data['performance_gap'])
-
-        avg_performance_gap = sum(performance_gaps) / len(performance_gaps) if performance_gaps else 0.0
 
         return {
-            'total_models': len(model_entries),
-            'total_embedding_models': len(embedding_model_performances),
-            'overall_best_embedding_model': overall_best_embedding_model,
-            'avg_performance_gap': round(avg_performance_gap, 6),
-            'embedding_model_averages': {dec: round(sum(scores) / len(scores), 6) for dec, scores in embedding_model_performances.items()},
-            'timestamp': datetime.now().isoformat()
+            "total_vlms_evaluated": len(vlm_perf),
+            "embedding_model": self.embedding_model_name,
+            "performance_distribution": {
+                "hm_cf": calc_dist(hm_scores),
+                "coarse_grained": calc_dist(coarse_scores),
+                "fine_f1": calc_dist(fine_f1_scores)
+            },
+            "timestamp": datetime.now().isoformat()
         }

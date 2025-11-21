@@ -22,7 +22,7 @@
       "metadata": {
         "success": true,
         "error_message": "",
-        "computation_time": 1.2721772193908691,
+        "computation_time": 1.2722394466400146,
         "is_fallback_score": false
       }
     }
@@ -50,7 +50,7 @@
       "metadata": {
         "success": true,
         "error_message": "",
-        "computation_time": 0.3936347961425781,
+        "computation_time": 0.3936793804168701,
         "is_fallback_score": false
       }
     }
@@ -78,7 +78,7 @@
       "metadata": {
         "success": true,
         "error_message": "",
-        "computation_time": 0.3880577087402344,
+        "computation_time": 0.3876481056213379,
         "is_fallback_score": false
       }
     }
@@ -106,7 +106,7 @@
       "metadata": {
         "success": true,
         "error_message": "",
-        "computation_time": 1.083996295928955,
+        "computation_time": 1.0838260650634766,
         "is_fallback_score": false
       }
     }
@@ -134,7 +134,7 @@
       "metadata": {
         "success": true,
         "error_message": "",
-        "computation_time": 1.062509536743164,
+        "computation_time": 1.0633347034454346,
         "is_fallback_score": false
       }
     }
@@ -162,7 +162,7 @@
       "metadata": {
         "success": true,
         "error_message": "",
-        "computation_time": 0.4210028648376465,
+        "computation_time": 0.4214019775390625,
         "is_fallback_score": false
       }
     }

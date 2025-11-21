@@ -12,13 +12,24 @@ import pandas as pd
 import numpy as np
 
 
-def load_evaluation_results(base_dir: str = "results/embedding_models/aggregated_results") -> Dict:
+# Resolve project root relative to this script
+# script is in src/scripts/ -> project root is ../../
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_RESULTS_DIR = PROJECT_ROOT / "results"
+
+def load_evaluation_results(base_dir: Path = None) -> Dict:
     """
     Load all evaluation results from the aggregated results directory.
+
+    Args:
+        base_dir: Directory containing aggregated results. Defaults to project_root/results/embedding_models/aggregated_results
 
     Returns:
         Dictionary with structure: {embedding_model: {vlm_name: stats}}
     """
+    if base_dir is None:
+        base_dir = DEFAULT_RESULTS_DIR / "embedding_models" / "aggregated_results"
+    
     base_path = Path(base_dir)
     results = {}
 
@@ -116,11 +127,11 @@ def compute_borda_scores(results: Dict) -> Tuple[Dict[str, int], Dict[str, float
     return borda_scores, mean_judge_scores, mean_judge_std
 
 
-def generate_table1(borda_scores: Dict[str, int],
-                    mean_judge_scores: Dict[str, float],
-                    mean_judge_std: Dict[str, float]) -> pd.DataFrame:
+def generate_overall_vlm_ranking_table(borda_scores: Dict[str, int],
+                                       mean_judge_scores: Dict[str, float],
+                                       mean_judge_std: Dict[str, float]) -> pd.DataFrame:
     """
-    Generate Table 1: Overall VLM ranking summary.
+    Generate overall VLM ranking table.
 
     Returns:
         DataFrame with columns: [Rank, VLM, Borda, MeanJudge, StdJudge]
@@ -143,13 +154,13 @@ def generate_table1(borda_scores: Dict[str, int],
     return df
 
 
-def generate_table2(results: Dict) -> pd.DataFrame:
+def generate_per_judge_vlm_metrics_table(results: Dict) -> pd.DataFrame:
     """
-    Generate Table 2: Per-judge detailed statistics.
+    Generate per-judge VLM metrics table (vlm_per_judge_metrics.csv).
 
     Creates a hierarchical column structure with:
     - Top level: Embedding model names
-    - Second level: Coarse, Coarse_Std, Fine, Fine_Std, HM, HM_Std
+    - Second level: Coarse, Fine F1, HM (formatted as avg±std)
 
     Returns:
         DataFrame with MultiIndex columns
@@ -163,37 +174,33 @@ def generate_table2(results: Dict) -> pd.DataFrame:
         row = {'VLM': vlm}
         for embed in embedding_models:
             stats = results[embed][vlm]
-            row[f'{embed}_Coarse'] = round(stats['coarse'], 2)
-            row[f'{embed}_Coarse_Std'] = round(stats['coarse_std'], 2)
-            row[f'{embed}_Fine'] = round(stats['fine'], 2)
-            row[f'{embed}_Fine_Std'] = round(stats['fine_std'], 2)
-            row[f'{embed}_HM'] = round(stats['hm'], 2)
-            row[f'{embed}_HM_Std'] = round(stats['hm_std'], 2)
+            
+            # Format as avg±std
+            coarse = f"{stats['coarse']:.2f}±{stats['coarse_std']:.2f}"
+            fine_f1 = f"{stats['fine']:.2f}±{stats['fine_std']:.2f}"
+            hm = f"{stats['hm']:.2f}±{stats['hm_std']:.2f}"
+            
+            row[f'{embed}_coarse_grained'] = coarse
+            row[f'{embed}_fine_grained_f1'] = fine_f1
+            row[f'{embed}_harmonic_mean_cf'] = hm
+            
         data.append(row)
 
     df = pd.DataFrame(data)
 
     # Create MultiIndex columns
-    columns = [('', 'VLM')]
+    columns = [('', 'vlm')]
+    metrics = ['coarse_grained', 'fine_grained_f1', 'harmonic_mean_cf']
+    
     for embed in embedding_models:
-        columns.extend([
-            (embed, 'Coarse'),
-            (embed, 'Coarse_Std'),
-            (embed, 'Fine'),
-            (embed, 'Fine_Std'),
-            (embed, 'HM'),
-            (embed, 'HM_Std')
-        ])
+        for metric in metrics:
+            columns.append((embed, metric))
 
     # Reorder dataframe columns to match the MultiIndex structure
     ordered_data = {'VLM': df['VLM']}
     for embed in embedding_models:
-        ordered_data[f'{embed}_Coarse'] = df[f'{embed}_Coarse']
-        ordered_data[f'{embed}_Coarse_Std'] = df[f'{embed}_Coarse_Std']
-        ordered_data[f'{embed}_Fine'] = df[f'{embed}_Fine']
-        ordered_data[f'{embed}_Fine_Std'] = df[f'{embed}_Fine_Std']
-        ordered_data[f'{embed}_HM'] = df[f'{embed}_HM']
-        ordered_data[f'{embed}_HM_Std'] = df[f'{embed}_HM_Std']
+        for metric in metrics:
+            ordered_data[f'{embed}_{metric}'] = df[f'{embed}_{metric}']
 
     df_ordered = pd.DataFrame(ordered_data)
     df_ordered.columns = pd.MultiIndex.from_tuples(columns)
@@ -201,40 +208,43 @@ def generate_table2(results: Dict) -> pd.DataFrame:
     return df_ordered
 
 
-def save_results(table1: pd.DataFrame, table2: pd.DataFrame, output_dir: str = "results/ranking"):
+def save_results(overall_vlm_ranking: pd.DataFrame, per_judge_vlm_metrics: pd.DataFrame, output_dir: Path = None):
     """
     Save the ranking tables to CSV files.
     """
+    if output_dir is None:
+        output_dir = DEFAULT_RESULTS_DIR / "ranking"
+        
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
 
-    # Save Table 1 (no float_format needed since we already rounded to 2 decimals)
-    table1_file = output_path / "vlm_ranking.csv"
-    table1.to_csv(table1_file, index=False)
-    print(f"Table 1 saved to: {table1_file}")
+    # Save overall VLM ranking table
+    overall_ranking_file = output_path / "vlm_overall_ranking.csv"
+    overall_vlm_ranking.to_csv(overall_ranking_file, index=False)
+    print(f"Overall VLM ranking table saved to: {overall_ranking_file}")
 
-    # Save Table 2 (no float_format needed since we already rounded to 2 decimals)
-    table2_file = output_path / "detailed_stats.csv"
-    table2.to_csv(table2_file)
-    print(f"Table 2 saved to: {table2_file}")
-
-
+    # Save per-judge VLM metrics table
+    per_judge_metrics_file = output_path / "vlm_per_judge_metrics.csv"
+    per_judge_vlm_metrics.to_csv(per_judge_metrics_file)
+    print(f"Per-judge VLM metrics table saved to: {per_judge_metrics_file}")
 
 
-def print_summary(table1: pd.DataFrame):
+
+
+def print_summary(overall_vlm_ranking: pd.DataFrame):
     """
     Print a summary of the ranking results.
     """
     print("=" * 80)
-    print("TABLE 1: VLM RANKING SUMMARY")
+    print("OVERALL VLM RANKING SUMMARY")
     print("=" * 80)
-    print(table1.to_string(index=False))
+    print(overall_vlm_ranking.to_string(index=False))
     print()
 
     print("=" * 80)
     print("TOP 5 VLMs:")
     print("=" * 80)
-    top5 = table1.head(5)
+    top5 = overall_vlm_ranking.head(5)
     for idx, row in top5.iterrows():
         print(f"{row['Rank']}. {row['VLM']}")
         print(f"   Borda Score: {row['Borda']}")
@@ -273,16 +283,16 @@ def main():
 
     # Step 5: Generate tables
     print("Step 5: Generating ranking tables...")
-    table1 = generate_table1(borda_scores, mean_judge_scores, mean_judge_std)
-    table2 = generate_table2(results)
+    overall_vlm_ranking = generate_overall_vlm_ranking_table(borda_scores, mean_judge_scores, mean_judge_std)
+    per_judge_vlm_metrics = generate_per_judge_vlm_metrics_table(results)
     print()
 
     # Print summary
-    print_summary(table1)
+    print_summary(overall_vlm_ranking)
 
     # Save results
     print("Step 6: Saving results...")
-    save_results(table1, table2)
+    save_results(overall_vlm_ranking, per_judge_vlm_metrics)
     print()
 
     print("=" * 80)
